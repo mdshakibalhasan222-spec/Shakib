@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#e0f2fe">
-    <title>ERP 2026 - বাংলাদেশ পুলিশ</title>
+    <title>ERP 2026 - সিকিউরিটি প্রো</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;800&display=swap');
         
@@ -49,45 +49,49 @@
 
         .glass-panel { background: var(--glass-bg); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
 
-        /* 🌟 NEW UNIQUE TOP NAVBAR (Based on Reference Image) 🌟 */
+        /* 🌟 CLEAN COMPACT NAVBAR 🌟 */
         .top-navbar {
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 10px 25px; z-index: 1000; height: 85px;
+            padding: 10px 20px; z-index: 1000; height: 80px;
             background: #ffffff; border-bottom: 1px solid rgba(226, 232, 240, 0.8);
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
-        .nav-brand { display: flex; align-items: center; gap: 12px; }
-        .nav-brand img { width: 55px; height: 55px; object-fit: contain; padding: 2px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;}
-        .nav-brand h2 { font-size: 19px; font-weight: 800; color: #1e293b; line-height: 1.1; margin:0;}
-        .nav-brand span { font-size: 12px; color: var(--accent-blue); font-weight: 700; display: block; margin-top:2px;}
+        .nav-brand { display: flex; align-items: center; gap: 12px; min-width: max-content; }
+        .nav-brand img { width: 45px; height: 45px; object-fit: contain; padding: 2px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;}
+        .nav-brand h2 { font-size: 16px; font-weight: 800; color: #1e293b; line-height: 1.1; margin:0;}
+        .nav-brand span { font-size: 11px; color: var(--accent-blue); font-weight: 700; display: block; margin-top:2px;}
         
-        .nav-menu { display: flex; gap: 10px; align-items: center; }
+        .nav-menu { display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; -ms-overflow-style: none; }
+        .nav-menu::-webkit-scrollbar { display: none; }
+        
         .nav-item { 
-            padding: 10px 18px; cursor: pointer; border-radius: 20px; font-weight: 700; font-size: 14px; 
+            padding: 8px 12px; cursor: pointer; border-radius: 16px; font-weight: 700; font-size: 13px; 
             color: #475569; background: #f8fafc; border: 1px solid #e2e8f0;
-            display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;
+            display: flex; align-items: center; gap: 6px; transition: all 0.2s ease; white-space: nowrap;
         }
-        .nav-item:hover { background: #fff; color: var(--accent-blue); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(14,165,233,0.1); border-color: var(--accent-blue); }
-        .nav-item.active { background: linear-gradient(135deg, #4f46e5, #8b5cf6) !important; color: #fff !important; border:none; box-shadow: 0 6px 15px rgba(139,92,246,0.3); }
+        .nav-item:hover { background: #fff; color: var(--accent-blue); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(14,165,233,0.1); border-color: var(--accent-blue); }
+        .nav-item.active { background: linear-gradient(135deg, #4f46e5, #8b5cf6) !important; color: #fff !important; border:none; box-shadow: 0 4px 10px rgba(139,92,246,0.3); }
         
-        .nav-profile { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 5px 15px; background: #fff; border-radius: 30px; border: 1px solid #e2e8f0; transition: 0.3s;}
-        .nav-profile:hover { border-color: var(--accent-blue); background:#f8fafc; }
-        .nav-profile img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
-        .nav-profile div { display: flex; flex-direction: column; text-align: right; }
-        .nav-profile strong { font-size: 14px; color: #1e293b; font-weight: 800; line-height: 1.2;}
-        .nav-profile span { font-size: 11px; color: var(--accent-red); font-weight: 800; }
+        .nav-right-area { display: flex; align-items: center; gap: 10px; min-width: max-content; }
 
         .nav-bell {
-            position: relative; cursor: pointer; background: #f8fafc; width: 45px; height: 45px; border-radius: 50%;
+            position: relative; cursor: pointer; background: #f8fafc; width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; transition: 0.2s;
         }
         .nav-bell:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-color: var(--accent-orange); }
         .nav-bell .badge-count {
-            position: absolute; top: -5px; right: -5px; background: var(--accent-red); color: #fff; border-radius: 50%;
-            width: 22px; height: 22px; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid #fff;
+            position: absolute; top: -4px; right: -4px; background: var(--accent-red); color: #fff; border-radius: 50%;
+            width: 20px; height: 20px; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid #fff;
         }
 
-        .logout-btn-ui { background: #ef4444; color: #fff; font-weight: 800; font-size: 14px; padding: 10px 22px; border-radius: 20px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(239,68,68,0.2); }
+        .nav-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 4px 12px; background: #fff; border-radius: 30px; border: 1px solid #e2e8f0; transition: 0.3s;}
+        .nav-profile:hover { border-color: var(--accent-blue); background:#f8fafc; }
+        .nav-profile img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+        .nav-profile div { display: flex; flex-direction: column; text-align: right; }
+        .nav-profile strong { font-size: 13px; color: #1e293b; font-weight: 800; line-height: 1.2;}
+        .nav-profile span { font-size: 10px; color: var(--accent-red); font-weight: 800; }
+
+        .logout-btn-ui { background: #ef4444; color: #fff; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 16px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(239,68,68,0.2); }
         .logout-btn-ui:hover { background: #dc2626; transform: scale(1.05); }
 
         .main { flex: 1; padding: 30px; overflow-y: auto; position: relative; scroll-behavior: smooth; overflow-x: hidden;}
@@ -210,6 +214,11 @@
             -webkit-appearance: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
         }
         .dp-select:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 4px rgba(14,165,233,0.15); }
+
+        /* 🌟 PERMISSION GRID CSS 🌟 */
+        .perm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .perm-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.8); border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .perm-item input { width: 16px; height: 16px; margin: 0; padding: 0; cursor: pointer; }
 
         /* 🌟 QR SCAN MODE UI FIX 🌟 */
         body.invoice-only-mode .top-navbar,
@@ -339,12 +348,12 @@
         <div class="nav-item" id="nav-act" onclick="gotoAct('সব')"><span>⚖️</span> এডিট/তালিকা</div>
         <div class="nav-item" id="nav-io" onclick="go('io')"><span>👮</span> আই.ও.</div>
         <div class="nav-item" id="nav-invPage" onclick="go('invPage')"><span>🧾</span> ইনভয়েস</div>
-        <div class="nav-item admin-only" id="nav-report" onclick="go('report')"><span>📈</span> রিপোর্ট</div>
-        <div class="nav-item admin-only" id="nav-emp" onclick="go('emp')"><span>👥</span> লগ ও সিকিউরিটি</div>
-        <div class="nav-item admin-only" id="nav-set" onclick="go('set')"><span>⚙️</span> সেটিংস</div>
+        <div class="nav-item" id="nav-report" onclick="go('report')"><span>📈</span> রিপোর্ট</div>
+        <div class="nav-item" id="nav-emp" onclick="go('emp')"><span>👥</span> লগ ও সিকিউরিটি</div>
+        <div class="nav-item" id="nav-set" onclick="checkAdminPinForPage('set')"><span>⚙️</span> সেটিংস</div>
     </div>
 
-    <div style="display:flex; align-items:center; gap:12px;">
+    <div class="nav-right-area">
         <div class="nav-bell admin-only" id="navApprBtn" onclick="openApprovals()" style="display:none;" title="পেন্ডিং অনুমোদন">
             <span style="font-size:20px;">🔔</span>
             <span id="navAppBadge" class="badge-count">০</span>
@@ -367,7 +376,8 @@
     <div class="mobile-nav-item" id="mob-add" onclick="go('add')"><span>📝</span>এন্ট্রি</div>
     <div class="mobile-nav-item" id="mob-act" onclick="gotoAct('সব')"><span>⚖️</span>লিস্ট</div>
     <div class="mobile-nav-item" id="mob-invPage" onclick="go('invPage')"><span>🧾</span>বিল</div>
-    <div class="mobile-nav-item admin-only" id="mob-set" onclick="go('set')"><span>⚙️</span>সেটিংস</div>
+    <div class="mobile-nav-item admin-only" id="mob-set" onclick="checkAdminPinForPage('set')"><span>⚙️</span>সেটিংস</div>
+    <div class="mobile-nav-item" onclick="askLogout()"><span>🚪</span>লগআউট</div>
 </div>
 
 <div class="main">
@@ -673,7 +683,7 @@
             <div class="box glass-panel">
                 <div class="box-title" style="color:var(--accent-purple);">🗂️ সংরক্ষিত ইনভয়েস খুঁজুন</div>
                 <div style="display:flex; gap:10px;">
-                    <input type="text" id="searchInvInput" placeholder="ইনভয়েস নম্বর দিয়ে খুঁজুন (যেমন: INV-24...)" style="flex:2; margin-bottom:0;" onkeyup="renderInvoiceArchive()">
+                    <input type="text" id="searchInvInput" placeholder="ইনভয়েস নম্বর দিয়ে খুঁজুন" style="flex:2; margin-bottom:0;" onkeyup="renderInvoiceArchive()">
                     <button class="btn-ios btn-solid-blue" style="flex:1; margin-bottom:0;" onclick="renderInvoiceArchive()">সার্চ করুন</button>
                 </div>
                 <div style="overflow-x:auto; margin-top:20px;">
@@ -814,49 +824,50 @@
 </div>
 
 <div class="modal no-print" id="accessModal">
-    <div class="modal-box" style="max-width:450px;">
-        <h2 style="color:var(--accent-purple); margin-bottom:15px; font-size:20px; text-align:center;">⚙️ এক্সেস ও পারমিশন কন্ট্রোল</h2>
+    <div class="modal-box" style="max-width:550px;">
+        <h2 style="color:var(--accent-purple); margin-bottom:10px; font-size:20px; text-align:center;">⚙️ সম্পূর্ণ এক্সেস কন্ট্রোল</h2>
         <h3 id="accEmpName" style="text-align:center; color:var(--text-muted); margin-bottom:15px;"></h3>
         
         <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid var(--accent-green);">
             <span style="font-weight:800; color:var(--accent-green);">🟢 অ্যাকাউন্ট অ্যাক্টিভ (লগইন)</span>
-            <input type="checkbox" id="accStatus" style="width:20px; height:20px;">
+            <input type="checkbox" id="accStatus" style="width:20px; height:20px; cursor:pointer;">
         </label>
         
         <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:20px; border:1px solid var(--accent-red);">
-            <span style="font-weight:800; color:var(--accent-red);">👑 সুপার অ্যাডমিন এক্সেস</span>
-            <input type="checkbox" id="accFull" style="width:20px; height:20px;">
+            <span style="font-weight:800; color:var(--accent-red);">👑 সুপার অ্যাডমিন এক্সেস (সব খোলা থাকবে)</span>
+            <input type="checkbox" id="accFull" style="width:20px; height:20px; cursor:pointer;">
         </label>
 
-        <div style="font-size:13px; font-weight:700; color:var(--text-muted); margin-bottom:10px;">নির্দিষ্ট কাজের পারমিশন:</div>
+        <div style="font-size:13px; font-weight:800; color:var(--text-main); margin-bottom:8px; border-bottom:1px dashed #cbd5e1; padding-bottom:5px;">📂 মেনু ও পেজ এক্সেস</div>
+        <div class="perm-grid">
+            <label class="perm-item"><span>📊 ড্যাশবোর্ড</span><input type="checkbox" id="acc_p_dash"></label>
+            <label class="perm-item"><span>📝 নতুন এন্ট্রি</span><input type="checkbox" id="acc_p_add"></label>
+            <label class="perm-item"><span>⚖️ তালিকা</span><input type="checkbox" id="acc_p_act"></label>
+            <label class="perm-item"><span>👮 আই.ও. পেজ</span><input type="checkbox" id="acc_p_io"></label>
+            <label class="perm-item"><span>🧾 ইনভয়েস</span><input type="checkbox" id="acc_p_inv"></label>
+            <label class="perm-item"><span>📈 রিপোর্ট</span><input type="checkbox" id="acc_p_rep"></label>
+            <label class="perm-item"><span>⚙️ সেটিংস</span><input type="checkbox" id="acc_p_set"></label>
+            <label class="perm-item"><span>👥 লগ/সিকিউরিটি</span><input type="checkbox" id="acc_p_emp"></label>
+        </div>
 
-        <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;">
-            <span style="font-weight:700;">📝 নতুন মামলা এন্ট্রি</span>
-            <input type="checkbox" id="accAdd" style="width:20px; height:20px;">
+        <div style="font-size:13px; font-weight:800; color:var(--text-main); margin-bottom:8px; margin-top:10px; border-bottom:1px dashed #cbd5e1; padding-bottom:5px;">🔘 বাটন ও অ্যাকশন এক্সেস</div>
+        <div class="perm-grid">
+            <label class="perm-item"><span>✏️ এডিট বাটন</span><input type="checkbox" id="acc_b_edit"></label>
+            <label class="perm-item"><span>💰 টাকা জমা বাটন</span><input type="checkbox" id="acc_b_pay"></label>
+            <label class="perm-item"><span>✅ নিষ্পত্তি বাটন</span><input type="checkbox" id="acc_b_disp"></label>
+            <label class="perm-item"><span>🔄 হস্তান্তর বাটন</span><input type="checkbox" id="acc_b_trans"></label>
+            <label class="perm-item"><span>🗑️ ডিলিট বাটন</span><input type="checkbox" id="acc_b_del"></label>
+        </div>
+
+        <div style="font-size:13px; font-weight:800; color:var(--text-muted); margin-top:15px; margin-bottom:8px;">অ্যাডভান্সড সিকিউরিটি লিমিট:</div>
+        <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid var(--accent-orange);">
+            <span style="font-weight:700; color:var(--accent-orange);">💻 পিসি বাইন্ডিং (শুধু এই পিসিতে)</span>
+            <input type="checkbox" id="accDeviceBind" style="width:20px; height:20px; cursor:pointer;">
         </label>
+        <input type="text" id="accPayLimit" placeholder="টাকা জমার লিমিট (যেমন: ৫০০০)" style="margin-bottom:10px;">
 
-        <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;">
-            <span style="font-weight:700;">✏️ মামলা এডিট</span>
-            <input type="checkbox" id="accEdit" style="width:20px; height:20px;">
-        </label>
-
-        <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;">
-            <span style="font-weight:700;">💰 টাকা জমা গ্রহণ</span>
-            <input type="checkbox" id="accPay" style="width:20px; height:20px;">
-        </label>
-
-        <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;">
-            <span style="font-weight:700;">⚖️ মামলা নিষ্পত্তি/হস্তান্তর</span>
-            <input type="checkbox" id="accDisp" style="width:20px; height:20px;">
-        </label>
-
-        <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:15px; border:1px solid #cbd5e1;">
-            <span style="font-weight:700;">🧾 ইনভয়েস তৈরি</span>
-            <input type="checkbox" id="accInv" style="width:20px; height:20px;">
-        </label>
-
-        <button type="button" class="btn-ios btn-solid-blue" onclick="saveAccessControl()">পারমিশন আপডেট করুন</button>
-        <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বন্ধ</button>
+        <button type="button" class="btn-ios btn-solid-blue" style="margin-top:10px;" onclick="saveAccessControl()">পারমিশন আপডেট করুন</button>
+        <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বন্ধ করুন</button>
     </div>
 </div>
 
@@ -1023,18 +1034,18 @@
     </div>
 </div>
 
+<div class="modal no-print" id="pinLockModal"><div class="modal-box" style="max-width:400px; text-align:center;"><h2 style="color:var(--accent-red); margin-bottom:15px; font-size:20px;">🔒 অ্যাডমিন পিন প্রয়োজন</h2><p style="margin-bottom:15px; font-size:14px; font-weight:bold; color:var(--text-muted);">এই পেজে প্রবেশের জন্য আপনার গোপন পিন দিন।</p><input type="password" id="entryLockPin" placeholder="পিন কোড" style="text-align:center; font-weight:bold; letter-spacing:3px;"><button type="button" class="btn-ios btn-solid-blue" onclick="verifyAdminPin()">প্রবেশ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM(); go('dash')">ফিরে যান</button></div></div>
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
 <script>
-    // 🌟 QR SCAN MODE SHORT-CIRCUIT 🌟
+    // 🌟 QR SCAN MODE HARD-BLOCK 🌟
     const urlParams = new URLSearchParams(window.location.search);
     const viewInv = urlParams.get('inv');
     let isInvoiceViewMode = !!viewInv;
 
-    if(isInvoiceViewMode) {
-         document.body.classList.add('invoice-only-mode');
-    }
+    if(isInvoiceViewMode) { document.body.classList.add('invoice-only-mode'); }
 
     // 🌟 DATA INITIALIZATION 🌟
     let activeRole = sessionStorage.getItem('ROLE') || 'admin';
@@ -1042,27 +1053,21 @@
 
     let db = [], ios = [], emps = [], logs = [], savedInvoices = [], pendingDb = [], recycleDb = []; 
     let uId = "sakib", pin = "1234", adminName = "সাকিব আল হাসান", sq = "প্রিয় রং?", sa = "নীল";
-    let curAvatar = "", thanaName = "সিরাজদিখান থানা", distName = "মুন্সীগঞ্জ", autoLogoutEnabled = true, sysLogo = "";
+    let curAvatar = "", thanaName = "সিরাজদিখান থানা", distName = "মুন্সীগঞ্জ", autoLogoutEnabled = true, officeTimeRestricted = false, sysLogo = "", adminLockPin = "";
 
     let curId = null, curIOIdx = null, curEditInvId = null, editingPendingId = null;
     let currentPage = 1, rowsPerPage = 10, filteredData = [];
     let currentActFilter = 'সব', currentSpecFilter = '', currentIOTabFilter = 'কর্মরত';
     let logoutTimer, isNavigating = false, isProcessing = false;
+    let deviceFingerprint = localStorage.getItem('deviceFingerprint') || generateFingerprint();
 
     const bnMonths = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
     const toBN = n => (n == null ? "" : n.toString()).replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
     const fromBN = n => parseFloat((n == null ? "" : n.toString()).replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d)).replace(/[^0-9.]/g, '')) || 0;
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyCNOTKFnWbBMCj2kbVa1yjENLixwyF4ASE",
-        authDomain: "case-data-management-system.firebaseapp.com",
-        databaseURL: "https://case-data-management-system-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "case-data-management-system",
-        storageBucket: "case-data-management-system.firebasestorage.app",
-        messagingSenderId: "706396545562",
-        appId: "1:706396545562:web:264d8620652f8ef4e327a3"
-    };
+    function generateFingerprint() { let fp = 'dev_' + Math.random().toString(36).substr(2, 9); localStorage.setItem('deviceFingerprint', fp); return fp; }
 
+    const firebaseConfig = { apiKey: "AIzaSyCNOTKFnWbBMCj2kbVa1yjENLixwyF4ASE", authDomain: "case-data-management-system.firebaseapp.com", databaseURL: "https://case-data-management-system-default-rtdb.asia-southeast1.firebasedatabase.app", projectId: "case-data-management-system", storageBucket: "case-data-management-system.firebasestorage.app", messagingSenderId: "706396545562", appId: "1:706396545562:web:264d8620652f8ef4e327a3" };
     firebase.initializeApp(firebaseConfig); const fireDb = firebase.database();
 
     function loadFromLocal() {
@@ -1073,7 +1078,6 @@
         savedInvoices = JSON.parse(localStorage.getItem('ERP_inv')) || [];
         pendingDb = JSON.parse(localStorage.getItem('ERP_pending')) || [];
         recycleDb = JSON.parse(localStorage.getItem('ERP_recycle')) || [];
-        
         uId = localStorage.getItem('ERP_uId') || "sakib"; pin = localStorage.getItem('ERP_pin') || "1234"; sq = localStorage.getItem('ERP_sq') || "প্রিয় রং?"; sa = localStorage.getItem('ERP_sa') || "নীল";
         adminName = localStorage.getItem('ERP_adminName') || "সাকিব আল হাসান"; thanaName = localStorage.getItem('ERP_thanaName') || "সিরাজদিখান থানা"; distName = localStorage.getItem('ERP_distName') || "মুন্সীগঞ্জ";
         sysLogo = localStorage.getItem('ERP_sysLogo') || ""; curAvatar = localStorage.getItem('USER_IMG_SAKIB') || "";
@@ -1084,18 +1088,12 @@
         localStorage.setItem('ERP_uId', uId); localStorage.setItem('ERP_pin', pin); localStorage.setItem('ERP_sq', sq); localStorage.setItem('ERP_sa', sa); localStorage.setItem('ERP_adminName', adminName); localStorage.setItem('ERP_thanaName', thanaName); localStorage.setItem('ERP_distName', distName); localStorage.setItem('ERP_sysLogo', sysLogo);
     }
 
-    function save() { 
-        localSaveOnly(); 
-        if(typeof fireDb !== 'undefined') {
-            fireDb.ref('ERP_DATA').set({ db, ios, emps, logs, savedInvoices, pendingDb, recycleDb, uId, pin, sq, sa, adminName, thanaName, distName, sysLogo, curAvatar }).catch(e => console.log("Cloud sync delayed"));
-        }
-    }
+    function save() { localSaveOnly(); if(typeof fireDb !== 'undefined') { fireDb.ref('ERP_DATA').set({ db, ios, emps, logs, savedInvoices, pendingDb, recycleDb, uId, pin, sq, sa, adminName, thanaName, distName, sysLogo, curAvatar }).catch(e => console.log("Cloud sync delayed")); } }
 
     function syncFirebase() {
         loadFromLocal(); 
-        
         if(isInvoiceViewMode) {
-            // ONLY LOAD INVOICE - DO NOT INIT APP
+            document.getElementById('loginWall').style.display = 'none';
             if(typeof fireDb !== 'undefined') {
                 fireDb.ref('ERP_DATA/savedInvoices').once('value').then(snapshot => {
                     let data = snapshot.val();
@@ -1107,7 +1105,7 @@
                     }
                 });
             }
-            return; // Stop right here!
+            return; 
         }
         
         init(); 
@@ -1117,16 +1115,37 @@
                 if (data) {
                     db = data.db || db; ios = data.ios || ios; emps = data.emps || emps; logs = data.logs || logs; savedInvoices = data.savedInvoices || savedInvoices; pendingDb = data.pendingDb || []; recycleDb = data.recycleDb || [];
                     uId = data.uId || uId; pin = data.pin || pin; sq = data.sq || sq; sa = data.sa || sa; adminName = data.adminName || adminName; thanaName = data.thanaName || thanaName; distName = data.distName || distName; sysLogo = data.sysLogo || sysLogo; curAvatar = data.curAvatar || curAvatar; 
-                    localSaveOnly(); init(); 
+                    localSaveOnly(); init(); checkRemoteLogout();
                 } else if(db.length > 0) { save(); }
             });
         }
     }
 
-    function empAccess() { let e = emps.find(x => x.name === activeUserName); let def = { status: true, full: false, add: true, edit: false, pay: false, disp: false, inv: false }; return e ? (e.access || def) : def; }
+    // 🌟 COMPLETE GRANULAR ACCESS CHECK 🌟
+    function empAccess() { 
+        let e = emps.find(x => x.name === activeUserName); 
+        let def = { 
+            status: true, full: false, 
+            p_dash: true, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false,
+            b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false,
+            deviceId: null, expiryTime: null, payLimit: 0 
+        }; 
+        if(e && e.access) {
+            let acc = e.access;
+            // Backwards compatibility map
+            if(acc.p_dash === undefined) {
+                acc.p_dash = true; acc.p_add = acc.add || false; acc.p_act = acc.edit || false; acc.p_io = false; acc.p_inv = acc.inv || false; acc.p_rep = false; acc.p_set = false; acc.p_emp = false;
+                acc.b_edit = acc.edit || false; acc.b_pay = acc.pay || false; acc.b_disp = acc.disp || false; acc.b_trans = acc.disp || false; acc.b_del = false;
+            }
+            return acc;
+        }
+        return def;
+    }
+
+    function checkRemoteLogout() { if(activeRole === 'emp') { let e = emps.find(x => x.name === activeUserName); if(e && e.forceLogout) { e.forceLogout = false; save(); alert("অ্যাডমিন আপনাকে সিস্টেম থেকে লগআউট করেছেন।"); logout(); } } }
     function isTransferred(ioName) { let io = ios.find(i => i.n === ioName); return io ? io.st === 'বদলী' : false; }
-    function addLog(actionText) { let timeStr = getToday(); logs.unshift({ time: timeStr, u: activeUserName, txt: actionText }); if(logs.length > 150) logs.pop(); save(); renderLogs(); }
-    function renderLogs() { let html = logs.map(l => `<div class="log-box"><div class="log-time">🕒 ${toBN(l.time)}</div><div style="display:flex; justify-content:space-between; align-items:center;"><span class="log-user">👤 ${l.u}</span><span class="log-text">${l.txt}</span></div></div>`).join(''); if(logs.length === 0) html = `<div style="text-align:center; color:var(--text-muted); font-weight:600; padding:20px;">কোনো অ্যাক্টিভিটি পাওয়া যায়নি</div>`; if(document.getElementById('logContainer')) document.getElementById('logContainer').innerHTML = html; }
+    function addLog(actionText) { let timeStr = getToday(); logs.unshift({ time: timeStr, u: activeUserName, txt: actionText }); if(logs.length > 300) logs.pop(); save(); renderLogs(); }
+    function renderLogs() { let html = logs.map(l => `<div class="log-box"><div class="log-time">🕒 ${toBN(l.time)}</div><div style="display:flex; justify-content:space-between; align-items:center;"><span class="log-user">👤 ${l.u}</span><span class="log-text">${toBN(l.txt)}</span></div></div>`).join(''); if(logs.length === 0) html = `<div style="text-align:center; color:var(--text-muted); font-weight:600; padding:20px;">কোনো অ্যাক্টিভিটি পাওয়া যায়নি</div>`; if(document.getElementById('logContainer')) document.getElementById('logContainer').innerHTML = html; }
     function applyLogos() { let defaultLogo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bangladesh_Police_logo.svg/200px-Bangladesh_Police_logo.svg.png'; let logoToUse = (sysLogo && sysLogo.length > 10) ? sysLogo : defaultLogo; let ids = ['loginLogoImg', 'reportLogoImg', 'invoiceLogoImg', 'navLogo']; ids.forEach(id => { let el = document.getElementById(id); if(el) { el.src = logoToUse; el.style.display = 'inline-block'; } }); }
     function dateBN(s) { if(!s) return "--"; const parts = s.split('-'); if(parts.length !== 3) return "--"; return `${toBN(parts[2])} ${bnMonths[parseInt(parts[1])-1]} ${toBN(parts[0])}`; }
     function getToday() { let d = new Date(); return `${toBN(d.getDate())} ${bnMonths[d.getMonth()]} ${toBN(d.getFullYear())} - ${toBN(d.getHours())}:${toBN(d.getMinutes())}`; }
@@ -1135,7 +1154,6 @@
     function updateDPDays() { let y = parseInt(document.getElementById('dpYear').value); let m = parseInt(document.getElementById('dpMonth').value); let daysInMonth = new Date(y, m, 0).getDate(); let daySel = document.getElementById('dpDay'); let currentDay = parseInt(daySel.value) || 1; daySel.innerHTML = ''; for(let i=1; i<=daysInMonth; i++) { let valStr = i < 10 ? '0'+i : i; daySel.innerHTML += `<option value="${valStr}">${toBN(i)}</option>`; } if(currentDay <= daysInMonth) daySel.value = currentDay < 10 ? '0'+currentDay : currentDay; else daySel.value = daysInMonth < 10 ? '0'+daysInMonth : daysInMonth; }
     function openDP(targetId) { document.getElementById('datePickerModal').dataset.target = targetId; let d = new Date(); let existing = document.getElementById(targetId).value; if(existing) { let p = existing.split('-'); if(p.length===3) d = new Date(p[0], p[1]-1, p[2]); } let monthSel = document.getElementById('dpMonth'); let yearSel = document.getElementById('dpYear'); monthSel.innerHTML=''; yearSel.innerHTML=''; for(let i=0; i<12; i++) monthSel.innerHTML += `<option value="${(i+1)<10?'0'+(i+1):(i+1)}">${bnMonths[i]}</option>`; let curY = new Date().getFullYear(); for(let i=curY-5; i<=curY+5; i++) yearSel.innerHTML += `<option value="${i}">${toBN(i)}</option>`; monthSel.value = (d.getMonth()+1)<10?'0'+(d.getMonth()+1):(d.getMonth()+1); yearSel.value = d.getFullYear(); updateDPDays(); document.getElementById('dpDay').value = d.getDate()<10?'0'+d.getDate():d.getDate(); document.getElementById('datePickerModal').style.display='flex'; }
     function confirmDate() { let t = document.getElementById('datePickerModal').dataset.target; let y = document.getElementById('dpYear').value; let m = document.getElementById('dpMonth').value; let d = document.getElementById('dpDay').value; document.getElementById(t).value = `${y}-${m}-${d}`; document.getElementById(t+'_disp').innerHTML = `📅 ${toBN(d)} ${bnMonths[parseInt(m)-1]} ${toBN(y)}`; document.getElementById(t+'_disp').style.borderColor = "var(--accent-blue)"; document.getElementById(t+'_disp').style.background = "#fff"; document.getElementById('datePickerModal').style.display = 'none'; }
-    
     function openMP(targetId) { document.getElementById('monthPickerModal').dataset.target = targetId; let d = new Date(); let existing = document.getElementById(targetId).value; if(existing) { let p = existing.split('-'); if(p.length===2) d = new Date(p[0], p[1]-1, 1); } let monthSel = document.getElementById('mpMonth'); let yearSel = document.getElementById('mpYear'); monthSel.innerHTML=''; yearSel.innerHTML=''; for(let i=0; i<12; i++) monthSel.innerHTML += `<option value="${(i+1)<10?'0'+(i+1):(i+1)}">${bnMonths[i]}</option>`; let curY = new Date().getFullYear(); for(let i=curY-5; i<=curY+5; i++) yearSel.innerHTML += `<option value="${i}">${toBN(i)}</option>`; monthSel.value = (d.getMonth()+1)<10?'0'+(d.getMonth()+1):(d.getMonth()+1); yearSel.value = d.getFullYear(); document.getElementById('monthPickerModal').style.display='flex'; }
     function confirmMonth() { let t = document.getElementById('monthPickerModal').dataset.target; let y = document.getElementById('mpYear').value; let m = document.getElementById('mpMonth').value; document.getElementById(t).value = `${y}-${m}`; document.getElementById(t+'_disp').innerHTML = `🗓️ ${bnMonths[parseInt(m)-1]} ${toBN(y)}`; document.getElementById(t+'_disp').style.borderColor = "var(--accent-purple)"; document.getElementById(t+'_disp').style.background = "#fff"; document.getElementById('monthPickerModal').style.display = 'none'; }
 
@@ -1148,26 +1166,26 @@
 
     function login() { 
         let inputId = document.getElementById('loginId').value.trim(); let inputPass = document.getElementById('loginPass').value; let loginSuccess = false;
+        
         if(inputId === uId && inputPass === pin) { activeRole = 'admin'; activeUserName = adminName; loginSuccess = true; } 
         else {
             let emp = emps.find(e => e.id === inputId && e.pin === inputPass);
             if(emp) { 
                 if(emp.access && emp.access.status === false) return showToast("আপনার অ্যাকাউন্টটি অ্যাডমিন কর্তৃক বন্ধ করা হয়েছে!", "var(--accent-red)");
+                if(emp.access && emp.access.expiryTime && new Date().getTime() > emp.access.expiryTime) return showToast("আপনার কাজের সময় শেষ হয়ে গেছে!", "var(--accent-red)");
+                if(emp.access && emp.access.deviceId && emp.access.deviceId !== deviceFingerprint) return showToast("আপনি শুধুমাত্র অনুমোদিত পিসি থেকে লগইন করতে পারবেন!", "var(--accent-red)");
+                if(officeTimeRestricted) { let hr = new Date().getHours(); if(hr < 9 || hr >= 17) return showToast("লগইন শুধুমাত্র সকাল ৯টা থেকে বিকাল ৫টা পর্যন্ত অনুমোদিত!", "var(--accent-red)"); }
+                
+                if(emp.access && emp.access.requireBind && !emp.access.deviceId) { emp.access.deviceId = deviceFingerprint; emp.access.requireBind = false; save(); }
+                
                 activeRole = 'emp'; activeUserName = emp.name; loginSuccess = true; 
             }
         }
 
-        if(loginSuccess) { 
-            document.querySelector('.login-wrapper').classList.add('login-success-anim');
-            let lw = document.getElementById('loginWall'); lw.classList.add('wall-fade-anim');
-            setTimeout(()=>{ lw.style.display='none'; sessionStorage.setItem('L','y'); sessionStorage.setItem('ROLE', activeRole); sessionStorage.setItem('CUR_USER', activeUserName); showToast("সফলভাবে লগইন হয়েছে!"); init(); }, 300);
-        } else {
-            if(navigator.vibrate) navigator.vibrate([200, 100, 200]);
-            let box = document.getElementById('loginBox'); box.classList.remove('shake-error'); void box.offsetWidth; box.classList.add('shake-error');
-            setTimeout(() => box.classList.remove('shake-error'), 400); showToast("ইউজার আইডি অথবা পাসওয়ার্ড ভুল!", "var(--accent-red)");
-        } 
+        if(loginSuccess) { document.querySelector('.login-wrapper').classList.add('login-success-anim'); let lw = document.getElementById('loginWall'); lw.classList.add('wall-fade-anim'); setTimeout(()=>{ lw.style.display='none'; sessionStorage.setItem('L','y'); sessionStorage.setItem('ROLE', activeRole); sessionStorage.setItem('CUR_USER', activeUserName); showToast("সফলভাবে লগইন হয়েছে!"); init(); }, 300); } 
+        else { if(navigator.vibrate) navigator.vibrate([200, 100, 200]); let box = document.getElementById('loginBox'); box.classList.remove('shake-error'); void box.offsetWidth; box.classList.add('shake-error'); setTimeout(() => box.classList.remove('shake-error'), 400); showToast("ইউজার আইডি অথবা পাসওয়ার্ড ভুল!", "var(--accent-red)"); } 
     }
-    if(sessionStorage.getItem('L')) document.getElementById('loginWall').style.display = 'none';
+    if(sessionStorage.getItem('L') && !isInvoiceViewMode) document.getElementById('loginWall').style.display = 'none';
 
     function setMType(val, el) { document.getElementById('mType').value = val; document.querySelectorAll('#mTypeTabs .type-tab').forEach(t => t.classList.remove('active')); el.classList.add('active'); let t = document.getElementById('mType').value; document.getElementById('mDate_disp').style.display = (t === 'সিআর') ? 'none' : 'block'; document.getElementById('mCat').style.display = (t === 'ইউডি') ? 'none' : 'block'; }
     function filterIOSelect(mode) { let query = document.getElementById(mode + 'IOSearch').value.toLowerCase(); let selectEl = document.getElementById(mode + 'IOList'); let ioArray = (mode === 'm') ? ios.filter(i => (i.st || 'কর্মরত') !== 'বদলী') : ios; let filtered = ioArray.filter(i => i.n.toLowerCase().includes(query)); selectEl.innerHTML = filtered.map((i, idx) => `<option value="${i.n}" ${idx===0 ? 'selected' : ''}>${i.n} ${(i.st==='বদলী')?'(বদলী)':''}</option>`).join(''); if(filtered.length > 0 && !selectEl.value) { selectEl.value = filtered[0].n; } }
@@ -1176,23 +1194,16 @@
         if(data.length === 0) return `<tr><td colspan="7" style="text-align:center; padding:30px; color:var(--text-muted); font-weight:600;">কোন তথ্য পাওয়া যায়নি</td></tr>`;
         return data.map((c, idx) => {
             let badliClass = isTransferred(c.io) ? 'bg-badli' : ''; let stBadge = c.st==='চলমান'?'bg-run':(c.st.includes('হস্তান্তর')?'bg-trans':'bg-fin'); if(badliClass) stBadge = badliClass;
-            let slNo = toBN(startIndex + idx + 1); 
+            let acc = empAccess(); let isFull = activeRole === 'admin' || acc.full;
+            let actHtml = '';
+            
+            if(isFull || acc.b_trans) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-orange);" onclick="openTransfer(${c.id})">হস্তান্তর</button>`;
+            if(isFull || acc.b_pay) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-green);" onclick="curId=${c.id}; document.getElementById('editPaidAmt').value=db.find(x=>x.id==${c.id}).p; document.getElementById('payModal').style.display='flex'">টাকা</button>`;
+            if(isFull || acc.b_disp) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-blue);" onclick="curId=${c.id}; openDisp()">${c.st==='চলমান'?'নিষ্পত্তি':'এডিট'}</button>`;
+            if(isFull || acc.b_edit) actHtml += `<button type="button" class="btn-action" style="background:#475569;" onclick="openEditCase(${c.id})">এডিট</button>`;
+            if(isFull || acc.b_del) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-red);" onclick="askPerm('delCase', ${c.id})">মুছুন</button>`;
 
-            return `<tr>
-                <td style="font-weight:800; color:#475569;">${slNo}</td>
-                <td><span class="clickable" onclick="openTimeline(${c.id})">${toBN(c.no)}</span></td>
-                <td style="text-align:left; padding-left:15px;"><div style="background:rgba(14,165,233,0.1); color:var(--accent-blue); padding:4px 8px; border-radius:6px; display:inline-block; font-weight:800; font-size:12px; margin-bottom:4px;">${c.t}</div><div style="font-size:14px; font-weight:700; color:var(--text-main);">${c.cat ? c.cat : '<span style="color:#94a3b8">বিষয় উল্লেখ নেই</span>'}</div></td>
-                <td><span class="clickable" onclick="openIO('${c.io}')">${c.io} ${badliClass ? '(বদলী)' : ''}</span></td>
-                <td style="color:var(--accent-red); font-weight:800">৳${toBN(fromBN(c.r)-fromBN(c.p))}</td>
-                <td><span class="badge ${stBadge}">${c.st} ${c.dispNo ? toBN(c.dispNo) : ''}</span></td>
-                <td style="text-align:center; white-space:nowrap;" class="no-print">
-                    <button type="button" class="btn-action" style="background:var(--accent-orange);" onclick="openTransfer(${c.id})">হস্তান্তর</button>
-                    <button type="button" class="btn-action" style="background:var(--accent-green);" onclick="curId=${c.id}; document.getElementById('editPaidAmt').value=db.find(x=>x.id==${c.id}).p; document.getElementById('payModal').style.display='flex'">টাকা</button>
-                    <button type="button" class="btn-action" style="background:var(--accent-blue);" onclick="curId=${c.id}; openDisp()">${c.st==='চলমান'?'নিষ্পত্তি':'এডিট'}</button>
-                    <button type="button" class="btn-action" style="background:#475569;" onclick="openEditCase(${c.id})">এডিট</button>
-                    <button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delCase', ${c.id})">মুছুন</button>
-                </td>
-            </tr>`;
+            return `<tr><td style="font-weight:800; color:#475569;">${toBN(startIndex + idx + 1)}</td><td><span class="clickable" onclick="openTimeline(${c.id})">${toBN(c.no)}</span></td><td style="text-align:left; padding-left:15px;"><div style="background:rgba(14,165,233,0.1); color:var(--accent-blue); padding:4px 8px; border-radius:6px; display:inline-block; font-weight:800; font-size:12px; margin-bottom:4px;">${c.t}</div><div style="font-size:14px; font-weight:700; color:var(--text-main);">${c.cat ? c.cat : '<span style="color:#94a3b8">বিষয় উল্লেখ নেই</span>'}</div></td><td><span class="clickable" onclick="openIO('${c.io}')">${c.io} ${badliClass ? '(বদলী)' : ''}</span></td><td style="color:var(--accent-red); font-weight:800">৳${toBN(fromBN(c.r)-fromBN(c.p))}</td><td><span class="badge ${stBadge}">${c.st} ${c.dispNo ? toBN(c.dispNo) : ''}</span></td><td style="text-align:center; white-space:nowrap;" class="no-print">${actHtml}</td></tr>`;
         }).join('');
     }
 
@@ -1204,18 +1215,17 @@
     }
 
     function gotoAct(filterVal) { setActFilter(filterVal); go('act'); }
-    function openSpecList(type) { currentSpecFilter = type; let title = ""; let listData = []; if(type === 'run') { title = "চলমান মামলা সমূহ"; listData = db.filter(c => c.st === 'চলমান' && !isTransferred(c.io)).reverse(); } else if(type === 'fin') { title = "নিষ্পত্তিকৃত মামলা সমূহ"; listData = db.filter(c => c.st !== 'চলমান' && !isTransferred(c.io)).reverse(); } else if(type === 'due') { title = "বকেয়া টাকার তালিকা"; listData = db.filter(c => (fromBN(c.r) - fromBN(c.p)) > 0 && !isTransferred(c.io)).reverse(); } document.getElementById('specListTitle').innerText = title; document.querySelector('#specListTable tbody').innerHTML = getTableRows(listData, 0); document.querySelectorAll('#specListTable .admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; }); go('specList'); }
+    function openSpecList(type) { currentSpecFilter = type; let title = ""; let listData = []; if(type === 'run') { title = "চলমান মামলা সমূহ"; listData = db.filter(c => c.st === 'চলমান' && !isTransferred(c.io)).reverse(); } else if(type === 'fin') { title = "নিষ্পত্তিকৃত মামলা সমূহ"; listData = db.filter(c => c.st !== 'চলমান' && !isTransferred(c.io)).reverse(); } else if(type === 'due') { title = "বকেয়া টাকার তালিকা"; listData = db.filter(c => (fromBN(c.r) - fromBN(c.p)) > 0 && !isTransferred(c.io)).reverse(); } document.getElementById('specListTitle').innerText = title; document.querySelector('#specListTable tbody').innerHTML = getTableRows(listData, 0); go('specList'); }
 
     function setActFilter(val) { currentActFilter = val; document.querySelectorAll('#actFilterTabs .type-tab').forEach(t => t.classList.remove('active')); document.getElementById('tab-' + val).classList.add('active'); currentPage = 1; filterActTable(); }
 
     function filterActTable() {
         let name = document.getElementById('searchIOSelect').value, stat = document.getElementById('filterIOStat').value, query = document.getElementById('searchGlobal').value.toLowerCase();
         filteredData = db.filter(c => { let ioIsTransferred = isTransferred(c.io); let matchType = false; if(currentActFilter === 'বদলী_মামলা') { matchType = ioIsTransferred; } else { if(ioIsTransferred) return false; if(currentActFilter === 'সব') matchType = true; else if(currentActFilter === 'চলমান') matchType = (c.st === 'চলমান'); else if(currentActFilter === 'নিষ্পত্তি') matchType = (c.st !== 'চলমান'); else if(currentActFilter === 'বকেয়া') matchType = ((fromBN(c.r) - fromBN(c.p)) > 0); } let matchName = (name === "সব") || (c.io === name); let ioData = ios.find(i => i.n === c.io); let matchStat = (stat === "সব") || (ioData && (ioData.st || 'কর্মরত') === stat); let matchQuery = c.no.toLowerCase().includes(query) || c.io.toLowerCase().includes(query) || (c.cat && c.cat.toLowerCase().includes(query)); return matchType && matchName && matchStat && matchQuery; }).reverse(); 
-        let totalPages = Math.ceil(filteredData.length / rowsPerPage) || 1; if(currentPage > totalPages) currentPage = totalPages; document.getElementById('pageInfo').innerText = `পৃষ্ঠা ${toBN(currentPage)} / ${toBN(totalPages)}`; document.getElementById('prevBtn').disabled = currentPage === 1; document.getElementById('nextBtn').disabled = currentPage === totalPages; let start = (currentPage - 1) * rowsPerPage; document.querySelector('#actTable tbody').innerHTML = getTableRows(filteredData.slice(start, start + rowsPerPage), start); document.querySelectorAll('#actTable .admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; });
+        let totalPages = Math.ceil(filteredData.length / rowsPerPage) || 1; if(currentPage > totalPages) currentPage = totalPages; document.getElementById('pageInfo').innerText = `পৃষ্ঠা ${toBN(currentPage)} / ${toBN(totalPages)}`; document.getElementById('prevBtn').disabled = currentPage === 1; document.getElementById('nextBtn').disabled = currentPage === totalPages; let start = (currentPage - 1) * rowsPerPage; document.querySelector('#actTable tbody').innerHTML = getTableRows(filteredData.slice(start, start + rowsPerPage), start);
     }
 
     function changePage(step) { currentPage += step; filterActTable(); }
-
     function saveOfficialInfo() { thanaName = document.getElementById('setThanaName').value || thanaName; distName = document.getElementById('setDistName').value || distName; adminName = document.getElementById('setAdminName').value || adminName; if(activeRole==='admin') activeUserName = adminName; applyOfficialInfo(); save(); showToast("অফিসিয়াল তথ্য সেভ হয়েছে!"); }
 
     function applyOfficialInfo() {
@@ -1229,33 +1239,57 @@
     }
 
     function toggleAllIO(el) { document.querySelectorAll('.inv-io-chk').forEach(chk => chk.checked = el.checked); }
-
     function renderInvIOList() { let ioType = document.querySelector('input[name="invIoType"]:checked').value; let filteredIOs = ios.filter(i => (i.st || 'কর্মরত') === ioType); let html = `<label><input type="checkbox" id="invChkAll" onchange="toggleAllIO(this)" checked style="margin-right:8px;"><b>সব সিলেক্ট করুন</b></label><hr style="border:0; border-top:1px dashed #ccc; margin:10px 0;">`; html += filteredIOs.map(i => `<label><input type="checkbox" class="inv-io-chk" value="${i.n}" checked>${i.n}</label>`).join(''); if(document.getElementById('invIOListContainer')) document.getElementById('invIOListContainer').innerHTML = html; }
-
     function updateWorkplaceDropdown() { let workplaces = [...new Set(ios.map(i => i.s).filter(s => s))]; let opts = `<option value="সব">সকল কর্মস্থল</option>` + workplaces.map(w => `<option value="${w}">${w}</option>`).join(''); let sel = document.getElementById('ioWorkplaceFilter'); let curVal = sel ? sel.value : 'সব'; if(sel) { sel.innerHTML = opts; if(workplaces.includes(curVal)) sel.value = curVal; } }
-
     function filterIOs(status, el) { currentIOTabFilter = status; document.querySelectorAll('#ioFilterTabs .type-tab').forEach(t => t.classList.remove('active')); el.classList.add('active'); renderIOPageTable(); }
-
-    function renderIOPageTable() {
-        let wpFilter = document.getElementById('ioWorkplaceFilter') ? document.getElementById('ioWorkplaceFilter').value : 'সব'; let filteredIOs = ios.filter(i => (i.st || 'কর্মরত') === currentIOTabFilter && (wpFilter === 'সব' || i.s === wpFilter)); document.querySelector('#ioTableBody').innerHTML = filteredIOs.map((i)=> { let actIdx = ios.indexOf(i); return `<tr><td><span class="clickable" onclick="openIO('${i.n}')"><b>${i.n}</b></span></td><td>${i.s}</td><td><span class="badge ${currentIOTabFilter==='কর্মরত'?'bg-run':'bg-trans'}">${currentIOTabFilter}</span></td><td style="text-align:center; white-space:nowrap;" class="admin-only no-print"><button type="button" class="btn-action" style="background:var(--accent-blue);" onclick="openEditIO(${actIdx})">এডিট</button><button type="button" class="btn-action" style="background:var(--accent-red);" onclick="askPerm('delIO', ${actIdx})">মুছুন</button></td></tr>`; }).join(''); if(filteredIOs.length === 0) document.querySelector('#ioTableBody').innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--text-muted); padding:20px;">কোনো অফিসার নেই</td></tr>`; document.querySelectorAll('#ioTableBody .admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; });
-    }
+    function renderIOPageTable() { let wpFilter = document.getElementById('ioWorkplaceFilter') ? document.getElementById('ioWorkplaceFilter').value : 'সব'; let filteredIOs = ios.filter(i => (i.st || 'কর্মরত') === currentIOTabFilter && (wpFilter === 'সব' || i.s === wpFilter)); document.querySelector('#ioTableBody').innerHTML = filteredIOs.map((i)=> { let actIdx = ios.indexOf(i); let acc = empAccess(); let isFull = activeRole === 'admin' || acc.full; let actHtml = ''; if(isFull || acc.b_edit) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-blue);" onclick="openEditIO(${actIdx})">এডিট</button>`; if(isFull || acc.b_del) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-red);" onclick="askPerm('delIO', ${actIdx})">মুছুন</button>`; return `<tr><td><span class="clickable" onclick="openIO('${i.n}')"><b>${i.n}</b></span></td><td>${i.s}</td><td><span class="badge ${currentIOTabFilter==='কর্মরত'?'bg-run':'bg-trans'}">${currentIOTabFilter}</span></td><td style="text-align:center; white-space:nowrap;" class="no-print">${actHtml}</td></tr>`; }).join(''); if(filteredIOs.length === 0) document.querySelector('#ioTableBody').innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--text-muted); padding:20px;">কোনো অফিসার নেই</td></tr>`; }
 
     function renderEmp() {
-        let tbody = emps.map((e, idx) => { let statusBadge = (e.access && e.access.status === false) ? '<span class="badge bg-badli">সাসপেন্ড</span>' : '<span class="badge bg-run">অ্যাক্টিভ</span>'; return `<tr><td><b>${e.name}</b> <br> ${statusBadge}</td><td>${e.id}</td><td>*** <br><small class="clickable" onclick="adminResetEmpPass(${idx})" style="color:var(--accent-red); font-size:11px;">রিসেট করুন</small></td><td style="text-align:center;" class="no-print"><button type="button" class="btn-action admin-only" style="background:var(--accent-purple);" onclick="openAccessControl(${idx})">পারমিশন</button><button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delEmp', ${idx})">মুছুন</button></td></tr>`; }).join('');
+        let tbody = emps.map((e, idx) => { let statusBadge = (e.access && e.access.status === false) ? '<span class="badge bg-badli">সাসপেন্ড</span>' : '<span class="badge bg-run">অ্যাক্টিভ</span>'; let devBadge = (e.access && e.access.deviceId) ? '<br><small style="color:var(--accent-orange)">পিসি লক করা</small><button onclick="clearDeviceBind('+idx+')" style="border:none; background:transparent; color:red; cursor:pointer; font-size:10px;">(খুলুন)</button>' : ''; return `<tr><td><b>${e.name}</b> <br> ${statusBadge}</td><td>${e.id} ${devBadge}</td><td>*** <br><small class="clickable" onclick="adminResetEmpPass(${idx})" style="color:var(--accent-red); font-size:11px;">রিসেট করুন</small></td><td style="text-align:center;" class="no-print"><button type="button" class="btn-action admin-only" style="background:var(--accent-orange);" onclick="forceLogoutEmp(${idx})">লগআউট</button><button type="button" class="btn-action admin-only" style="background:var(--accent-purple);" onclick="openAccessControl(${idx})">পারমিশন</button><button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delEmp', ${idx})">মুছুন</button></td></tr>`; }).join('');
         if(emps.length === 0) tbody = `<tr><td colspan="4" style="text-align:center; color:var(--text-muted);">কোনো কর্মচারী নেই</td></tr>`; if(document.querySelector('#empTable tbody')) document.querySelector('#empTable tbody').innerHTML = tbody; document.querySelectorAll('#empTable .admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; });
     }
 
-    function addEmp() { let name = document.getElementById('newEmpName').value; let id = document.getElementById('newEmpId').value.trim(); let pin = document.getElementById('newEmpPin').value; if(!name || !id || !pin) return showToast("সব তথ্য দিন", "var(--accent-red)"); if(emps.find(e => e.id === id) || uId === id) return showToast("এই লগইন আইডি আগে থেকেই আছে", "var(--accent-red)"); emps.push({name, id, pin, access: { status: true, full: false, add: true, edit: false, pay: false, disp: false, inv: false }}); save(); document.getElementById('newEmpName').value=''; document.getElementById('newEmpId').value=''; document.getElementById('newEmpPin').value=''; showToast("কর্মচারী অ্যাকাউন্ট তৈরি হয়েছে!"); renderEmp(); }
+    function addEmp() { let name = document.getElementById('newEmpName').value; let id = document.getElementById('newEmpId').value.trim(); let pin = document.getElementById('newEmpPin').value; if(!name || !id || !pin) return showToast("সব তথ্য দিন", "var(--accent-red)"); if(emps.find(e => e.id === id) || uId === id) return showToast("এই লগইন আইডি আগে থেকেই আছে", "var(--accent-red)"); emps.push({name, id, pin, access: { status: true, full: false, p_dash: true, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false, b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false }}); save(); document.getElementById('newEmpName').value=''; document.getElementById('newEmpId').value=''; document.getElementById('newEmpPin').value=''; showToast("কর্মচারী অ্যাকাউন্ট তৈরি হয়েছে!"); renderEmp(); }
+    function forceLogoutEmp(idx) { emps[idx].forceLogout = true; save(); showToast("রিমোট লগআউট সিগন্যাল পাঠানো হয়েছে!", "var(--accent-orange)"); }
+    function clearDeviceBind(idx) { emps[idx].access.deviceId = null; emps[idx].access.requireBind = false; save(); renderEmp(); showToast("পিসি লক খুলে দেওয়া হয়েছে!"); }
 
     function renderRecycleBin() { let html = recycleDb.map(c => `<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(239,68,68,0.2); padding:8px 0;"><span style="font-size:14px; color:var(--text-main);"><b>${toBN(c.no)}</b> (${c.cat}) - মুছে ফেলার সময়: ${toBN(c.delTime)}</span><button onclick="restoreCase(${c.id})" class="btn-action" style="background:var(--accent-green);">রিস্টোর</button></div>`).join(''); if(recycleDb.length === 0) html = `<div style="text-align:center; color:var(--text-muted); font-size:13px;">রিসাইকেল বিনে কিছু নেই</div>`; if(document.getElementById('recycleContainer')) document.getElementById('recycleContainer').innerHTML = html; }
-    
-    function restoreCase(id) { let c = recycleDb.find(x => x.id == id); if(c) { delete c.delTime; db.push(c); recycleDb = recycleDb.filter(x => x.id != id); addLog(`রিসাইকেল থেকে রিস্টোর: ${c.no}`); processUIUpdate(); showToast("মামলাটি রিস্টোর হয়েছে!"); } }
+    function restoreCase(id) { let c = recycleDb.find(x => x.id == id); if(c) { delete c.delTime; db.push(c); recycleDb = recycleDb.filter(x => x.id != id); addLog(`রিসাইকেল থেকে রিস্টোর: ${toBN(c.no)}`); processUIUpdate(); showToast("মামলাটি রিস্টোর হয়েছে!"); } }
 
     function init() {
-        if(isInvoiceViewMode) return; // Prevent rendering dashboard if in invoice mode
+        if(isInvoiceViewMode) return; 
 
-        document.getElementById('dashUserName').innerText = activeUserName; document.getElementById('dashUserRole').innerText = activeRole === 'admin' ? "সিস্টেম এডমিন" : "কর্মচারী"; document.querySelectorAll('.admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; }); document.querySelectorAll('.admin-only.nav-item, .admin-only.mobile-nav-item').forEach(el => { el.style.display = activeRole === 'admin' ? 'flex' : 'none'; }); document.getElementById('autoLogoutSwitch').checked = autoLogoutEnabled; 
+        document.getElementById('dashUserName').innerText = activeUserName; document.getElementById('dashUserRole').innerText = activeRole === 'admin' ? "সিস্টেম এডমিন" : "কর্মচারী"; 
         
+        let acc = empAccess(); let isFull = activeRole === 'admin' || acc.full;
+        
+        document.querySelectorAll('.admin-only').forEach(el => { el.style.display = isFull ? 'inline-block' : 'none'; }); 
+        document.querySelectorAll('.admin-only.nav-item, .admin-only.mobile-nav-item').forEach(el => { el.style.display = isFull ? 'flex' : 'none'; }); 
+        document.getElementById('autoLogoutSwitch').checked = autoLogoutEnabled; if(document.getElementById('officeTimeSwitch')) document.getElementById('officeTimeSwitch').checked = officeTimeRestricted;
+        
+        // 🌟 STRICT MENU HIDING BASED ON PERMISSIONS 🌟
+        document.getElementById('nav-dash').style.display = (isFull || acc.p_dash) ? 'flex' : 'none';
+        document.getElementById('nav-add').style.display = (isFull || acc.p_add) ? 'flex' : 'none';
+        document.getElementById('nav-act').style.display = (isFull || acc.p_act) ? 'flex' : 'none';
+        document.getElementById('nav-io').style.display = (isFull || acc.p_io) ? 'flex' : 'none';
+        document.getElementById('nav-invPage').style.display = (isFull || acc.p_inv) ? 'flex' : 'none';
+        document.getElementById('nav-report').style.display = (isFull || acc.p_rep) ? 'flex' : 'none';
+        document.getElementById('nav-emp').style.display = (isFull || acc.p_emp) ? 'flex' : 'none';
+        document.getElementById('nav-set').style.display = (isFull || acc.p_set) ? 'flex' : 'none';
+
+        // Same for mobile nav
+        if(document.getElementById('mob-dash')) document.getElementById('mob-dash').style.display = (isFull || acc.p_dash) ? 'flex' : 'none';
+        if(document.getElementById('mob-add')) document.getElementById('mob-add').style.display = (isFull || acc.p_add) ? 'flex' : 'none';
+        if(document.getElementById('mob-act')) document.getElementById('mob-act').style.display = (isFull || acc.p_act) ? 'flex' : 'none';
+        if(document.getElementById('mob-invPage')) document.getElementById('mob-invPage').style.display = (isFull || acc.p_inv) ? 'flex' : 'none';
+        if(document.getElementById('mob-set')) document.getElementById('mob-set').style.display = (isFull || acc.p_set) ? 'flex' : 'none';
+
+        // Redirect to first available page if current page is hidden
+        let currentActivePage = document.querySelector('.page.active-page');
+        if(currentActivePage && document.getElementById('nav-' + currentActivePage.id) && document.getElementById('nav-' + currentActivePage.id).style.display === 'none') {
+            if(isFull || acc.p_dash) go('dash'); else if(acc.p_add) go('add'); else if(acc.p_act) go('act'); else if(acc.p_io) go('io'); else if(acc.p_inv) go('invPage');
+        }
+
         let avatarToUse = curAvatar && curAvatar.length > 10 ? curAvatar : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'; if(document.getElementById('dashAvatar')) document.getElementById('dashAvatar').src = avatarToUse;
         
         applyOfficialInfo(); renderEmp(); renderLogs(); renderInvoiceArchive(); updateWorkplaceDropdown(); renderRecycleBin();
@@ -1267,11 +1301,13 @@
 
         updateDashCharts(); let searchIO = document.getElementById('searchIOSelect').value; let ioOpts = `<option value="সব">সকল আই.ও.</option>` + ios.map(i=>{ let label = i.n + ((i.st === 'বদলী') ? ' (বদলী)' : ''); return `<option value="${i.n}">${label}</option>`; }).join(''); document.getElementById('searchIOSelect').innerHTML = ioOpts; filterIOSelect('m'); filterIOSelect('e'); if(typeof renderInvIOList === 'function') renderInvIOList(); if(searchIO && document.querySelector(`#searchIOSelect option[value="${searchIO}"]`)) document.getElementById('searchIOSelect').value = searchIO; renderIOPageTable(); filterActTable();
         
-        let badgeCount = pendingDb.length; if(document.getElementById('navAppBadge')) { document.getElementById('navAppBadge').innerText = toBN(badgeCount); document.getElementById('navApprBtn').style.display = badgeCount > 0 && activeRole === 'admin' ? 'flex' : 'none'; } if(document.getElementById('dashApprBtn')) { document.getElementById('dashApprBtn').style.display = badgeCount > 0 && activeRole === 'admin' ? 'inline-block' : 'none'; document.getElementById('dashApprBtn').innerHTML = `🔔 পেন্ডিং কাজ <span style="background:#fff; color:var(--accent-orange); padding:2px 6px; border-radius:10px; font-size:12px; margin-left:5px; font-weight:bold;">${toBN(badgeCount)}</span>`; }
+        let badgeCount = pendingDb.length; 
+        if(document.getElementById('navAppBadge')) { document.getElementById('navAppBadge').innerText = toBN(badgeCount); document.getElementById('navApprBtn').style.display = badgeCount > 0 && isFull ? 'flex' : 'none'; } 
+        if(document.getElementById('dashApprBtn')) { document.getElementById('dashApprBtn').style.display = badgeCount > 0 && isFull ? 'inline-block' : 'none'; document.getElementById('dashApprBtn').innerHTML = `🔔 পেন্ডিং কাজ <span style="background:#fff; color:var(--accent-orange); padding:2px 6px; border-radius:10px; font-size:12px; margin-left:5px; font-weight:bold;">${toBN(badgeCount)}</span>`; }
     }
 
     function askSaveCase() { 
-        if(activeRole === 'emp' && !empAccess().add && !empAccess().full) return showToast("আপনার নতুন এন্ট্রি করার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().p_add && !empAccess().full) return showToast("আপনার নতুন এন্ট্রি করার অনুমতি নেই!", "var(--accent-red)");
         if(!document.getElementById('mNo').value) return showToast("মামলার নম্বর দিন", "var(--accent-red)"); let ioVal = document.getElementById('mIOList').value; if(!ioVal || !ios.find(i=>i.n === ioVal)) return showToast("সঠিক কর্মরত অফিসারের নাম নির্বাচন করুন", "var(--accent-red)"); openSheet('নিশ্চিত করুন', 'আপনি কি নতুন মামলাটি এন্ট্রি করতে চান?', 'এন্ট্রি করুন', proceedSaveCase);
     }
     
@@ -1280,85 +1316,94 @@
         try {
             let noVal = document.getElementById('mNo').value; let catVal = document.getElementById('mCat').value; let mDateVal = document.getElementById('mDate').value || new Date().toISOString().split('T')[0]; let newCase = {id:Date.now(), t:document.getElementById('mType').value, no:noVal, cat:catVal, d:mDateVal, io:document.getElementById('mIOList').value, r:document.getElementById('mRate').value||0, p:document.getElementById('mPaid').value||0, st:'চলমান'};
             if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data = newCase; approveAction(editingPendingId); editingPendingId = null; document.getElementById('mNo').value=''; document.getElementById('mCat').value=''; document.getElementById('mRate').value=''; document.getElementById('mPaid').value=''; filterIOSelect('m'); closeM(); return; }
-            if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'ADD', data: newCase, by: activeUserName, time: getToday(), pid: Date.now(), msg: `নতুন মামলা এন্ট্রি: ${noVal}` }); addLog(`নতুন এন্ট্রির অনুরোধ: ${noVal}`); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); } else { newCase.h = [{time: getToday(), text: `মামলা রুজু হয়েছে (${document.getElementById('mIOList').value}) - By ${activeUserName}`}]; db.push(newCase); addLog(`নতুন এন্ট্রি: ${noVal} (${catVal || '-'})`); showToast("মামলা এন্ট্রি হয়েছে!"); }
+            if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'ADD', data: newCase, by: activeUserName, time: getToday(), pid: Date.now(), msg: `নতুন মামলা এন্ট্রি: ${toBN(noVal)}` }); addLog(`নতুন এন্ট্রির অনুরোধ: ${toBN(noVal)}`); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); } else { newCase.h = [{time: getToday(), text: `মামলা রুজু হয়েছে (${document.getElementById('mIOList').value}) - By ${activeUserName}`}]; db.push(newCase); addLog(`নতুন এন্ট্রি: ${toBN(noVal)} (${catVal || '-'})`); showToast("মামলা এন্ট্রি হয়েছে!"); }
             document.getElementById('mNo').value=''; document.getElementById('mCat').value=''; document.getElementById('mRate').value=''; document.getElementById('mPaid').value=''; document.getElementById('mIOSearch').value=''; filterIOSelect('m'); document.getElementById('mDate').value=''; document.getElementById('mDate_disp').innerHTML='📅 এন্ট্রির তারিখ নির্বাচন করুন'; document.getElementById('mDate_disp').style.background=''; save(); init();
         } finally { setTimeout(() => { isProcessing = false; }, 400); }
     }
 
     function openEditCase(id) {
-        if(activeRole === 'emp' && !empAccess().edit && !empAccess().full) return showToast("আপনার এডিট করার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().b_edit && !empAccess().full) return showToast("আপনার এডিট করার অনুমতি নেই!", "var(--accent-red)");
         curId = id; let c = db.find(x => x.id == id); document.getElementById('eType').value = c.t; document.getElementById('eNo').value = c.no; document.getElementById('eCat').value = c.cat || ''; document.getElementById('eDate').value = c.d || ''; if(c.d) { document.getElementById('eDate_disp').innerHTML = `📅 ${dateBN(c.d)}`; document.getElementById('eDate_disp').style.borderColor="var(--accent-blue)"; } else { document.getElementById('eDate_disp').innerHTML = `📅 তারিখ আপডেট করুন`; } document.getElementById('eIOList').value = c.io; document.getElementById('eRate').value = c.r; document.getElementById('ePaid').value = c.p; document.getElementById('editCaseModal').style.display = 'flex';
     }
     
     function saveCaseEdit() {
-        if(activeRole === 'emp' && !empAccess().edit && !empAccess().full) return showToast("আপনার এডিট করার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().b_edit && !empAccess().full) return showToast("আপনার এডিট করার অনুমতি নেই!", "var(--accent-red)");
         if(isProcessing) return; isProcessing = true;
         try {
             let c = db.find(x => x.id == curId); let eIoVal = document.getElementById('eIOList').value; if(!eIoVal || !ios.find(i=>i.n === eIoVal)) { showToast("সঠিক অফিসারের নাম নির্বাচন করুন", "var(--accent-red)"); return; }
             if(activeRole === 'emp' && !empAccess().full) { let newData = { cId: curId, t: document.getElementById('eType').value, no: document.getElementById('eNo').value, cat: document.getElementById('eCat').value, d: document.getElementById('eDate').value, io: eIoVal, r: document.getElementById('eRate').value || 0, p: document.getElementById('ePaid').value || 0 }; pendingDb.push({ type: 'EDIT', data: newData, by: activeUserName, time: getToday(), pid: Date.now(), msg: `মামলার তথ্য এডিট: ${toBN(c.no)}` }); addLog(`এডিট অনুরোধ: ${toBN(c.no)}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
-            c.t = document.getElementById('eType').value; c.no = document.getElementById('eNo').value; c.cat = document.getElementById('eCat').value; c.d = document.getElementById('eDate').value; c.io = eIoVal; c.r = document.getElementById('eRate').value || 0; c.p = document.getElementById('ePaid').value || 0; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `মামলার তথ্য এডিট করা হয়েছে - By ${activeUserName}`}); addLog(`মামলা আপডেট: ${c.no}`); processUIUpdate(); showToast("মামলার তথ্য আপডেট হয়েছে!");
+            c.t = document.getElementById('eType').value; c.no = document.getElementById('eNo').value; c.cat = document.getElementById('eCat').value; c.d = document.getElementById('eDate').value; c.io = eIoVal; c.r = document.getElementById('eRate').value || 0; c.p = document.getElementById('ePaid').value || 0; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `মামলার তথ্য এডিট করা হয়েছে - By ${activeUserName}`}); addLog(`মামলা আপডেট: ${toBN(c.no)}`); processUIUpdate(); showToast("মামলার তথ্য আপডেট হয়েছে!");
         } finally { setTimeout(() => { isProcessing = false; }, 400); }
     }
 
     function confirmPay() { 
-        if(activeRole === 'emp' && !empAccess().pay && !empAccess().full) return showToast("আপনার টাকা জমা নেওয়ার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().b_pay && !empAccess().full) return showToast("আপনার টাকা জমা নেওয়ার অনুমতি নেই!", "var(--accent-red)");
         if(isProcessing) return; isProcessing = true;
         try {
             let amt = document.getElementById('editPaidAmt').value; let c = db.find(x=>x.id==curId); 
-            if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'PAY', data: { cId: curId, amt: amt }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `টাকা জমা (৳${toBN(amt)}): ${toBN(c.no)}` }); addLog(`জমা অনুরোধ: ${c.no}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
-            c.p = amt; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `টাকা জমা: ৳${toBN(amt)} - By ${activeUserName}`}); addLog(`টাকা জমা (${toBN(amt)}): ${c.no}`); processUIUpdate(); showToast("টাকা জমা আপডেট হয়েছে"); 
+            if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data.amt = amt; approveAction(editingPendingId); editingPendingId = null; closeM(); return; }
+            let payLimit = empAccess().payLimit;
+            if(activeRole === 'emp' && !empAccess().full) { 
+                if(payLimit > 0 && parseFloat(amt) > payLimit) {
+                    pendingDb.push({ type: 'PAY', data: { cId: curId, amt: amt }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `বড় এমাউন্টের টাকা জমা (৳${toBN(amt)}): ${toBN(c.no)}` }); addLog(`জমা লিমিট ক্রস (৳${toBN(amt)}): ${toBN(c.no)}`); closeM(); showToast("লিমিট অতিক্রান্ত! অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return;
+                }
+            }
+            c.p = amt; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `টাকা জমা: ৳${toBN(amt)} - By ${activeUserName}`}); addLog(`টাকা জমা (${toBN(amt)}): ${toBN(c.no)}`); processUIUpdate(); showToast("টাকা জমা আপডেট হয়েছে"); 
         } finally { setTimeout(() => { isProcessing = false; }, 400); }
     }
 
     function openDisp() { 
-        if(activeRole === 'emp' && !empAccess().disp && !empAccess().full) return showToast("আপনার মামলা নিষ্পত্তি করার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().b_disp && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
         let c = db.find(x=>x.id==curId); if(!c) return; if(c.st === 'চলমান') { document.getElementById('dispModalTitle').innerText = "মামলা নিষ্পত্তি"; document.getElementById('dispNormalView').style.display = 'block'; document.getElementById('dispEditView').style.display = 'none'; let t = c.t ? c.t.trim() : ''; document.getElementById('grOps').style.display = (t==='জিআর') ? 'block' : 'none'; document.getElementById('crOps').style.display = (t==='সিআর') ? 'block' : 'none'; document.getElementById('udOps').style.display = (t==='ইউডি') ? 'block' : 'none'; document.getElementById('gdOps').style.display = (t==='জিডি') ? 'block' : 'none'; } else { document.getElementById('dispModalTitle').innerText = "নিষ্পত্তি বাতিল"; document.getElementById('dispNormalView').style.display = 'none'; document.getElementById('dispEditView').style.display = 'block'; } document.getElementById('dispNo').value = ''; document.getElementById('proNo').value = ''; document.getElementById('dispD').value = ''; document.getElementById('dispD_disp').innerHTML = '📅 নিষ্পত্তির তারিখ (ক্লিক করুন)'; document.getElementById('dispD_disp').style.borderColor=''; document.getElementById('dispModal').style.display = 'flex'; 
     }
 
     function processDisp() { 
-        if(activeRole === 'emp' && !empAccess().disp && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().b_disp && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
         if(isProcessing) return; isProcessing = true;
         try {
             let dispDate = document.getElementById('dispD').value || new Date().toISOString().split('T')[0]; let c = db.find(x => x.id == curId); if(!c) return; let t = c.t ? c.t.trim() : ''; let dNo = ""; let st = "নিষ্পত্তি";
             if(t === 'জিআর') { st = document.getElementById('grSt').value || 'চার্জশিট'; dNo = document.getElementById('dispNo').value.trim(); } else if(t === 'সিআর') { st = 'প্রতিবেদন দাখিল'; } else if(t === 'ইউডি') { st = 'চূড়ান্ত রিপোর্ট দাখিল'; } else if(t === 'জিডি') { st = 'নিষ্পত্তি প্রসিকিউশন'; dNo = document.getElementById('proNo').value.trim(); }
+            if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data = { cId: curId, st: st, dispNo: dNo, dispD: dispDate }; approveAction(editingPendingId); editingPendingId = null; closeM(); return; }
             if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'DISP', data: { cId: curId, st: st, dispNo: dNo, dispD: dispDate }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `মামলা নিষ্পত্তি (${st}): ${toBN(c.no)}` }); addLog(`নিষ্পত্তি অনুরোধ: ${toBN(c.no)}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
-            c.st = st; c.dispNo = dNo; c.dispD = dispDate; if(!Array.isArray(c.h)) c.h = []; c.h.push({time: getToday(), text: `নিষ্পত্তি: ${c.st} ${dNo ? toBN(dNo) : ''} - By ${activeUserName}`}); addLog(`নিষ্পত্তি (${c.st}): ${c.no}`); document.getElementById('dispNo').value = ''; document.getElementById('proNo').value = ''; processUIUpdate(); showToast("মামলা নিষ্পত্তি হয়েছে!", "var(--accent-green)"); 
+            c.st = st; c.dispNo = dNo; c.dispD = dispDate; if(!Array.isArray(c.h)) c.h = []; c.h.push({time: getToday(), text: `নিষ্পত্তি: ${c.st} ${dNo ? toBN(dNo) : ''} - By ${activeUserName}`}); addLog(`নিষ্পত্তি (${c.st}): ${toBN(c.no)}`); document.getElementById('dispNo').value = ''; document.getElementById('proNo').value = ''; processUIUpdate(); showToast("মামলা নিষ্পত্তি হয়েছে!", "var(--accent-green)"); 
         } catch (err) { alert("সমস্যা হয়েছে: " + err.message); } finally { setTimeout(() => { isProcessing = false; }, 400); }
     }
 
-    function openTransfer(id) { if(activeRole === 'emp' && !empAccess().disp && !empAccess().full) return showToast("আপনার মামলা হস্তান্তর করার অনুমতি নেই!", "var(--accent-red)"); curId = id; document.getElementById('transDate').value = ""; document.getElementById('transDate_disp').innerHTML = "📅 হস্তান্তরের তারিখ"; document.getElementById('transDate_disp').style.borderColor=''; document.getElementById('transNote').value = ""; document.getElementById('transferModal').style.display = 'flex'; }
+    function openTransfer(id) { if(activeRole === 'emp' && !empAccess().b_trans && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)"); curId = id; document.getElementById('transDate').value = ""; document.getElementById('transDate_disp').innerHTML = "📅 হস্তান্তরের তারিখ"; document.getElementById('transDate_disp').style.borderColor=''; document.getElementById('transNote').value = ""; document.getElementById('transferModal').style.display = 'flex'; }
     
     function confirmTransfer() { 
-        if(activeRole === 'emp' && !empAccess().disp && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().b_trans && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
         if(isProcessing) return; isProcessing = true;
         try {
             let c = db.find(x => x.id == curId); let tD = document.getElementById('transDate').value || new Date().toISOString().split('T')[0]; let tN = document.getElementById('transNote').value.trim(); 
-            if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'TRANS', data: { cId: curId, dispD: tD, dispNo: tN }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `মামলা হস্তান্তর: ${toBN(c.no)}` }); addLog(`হস্তান্তর অনুরোধ: ${c.no}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
-            c.st = 'হস্তান্তর'; c.dispD = tD; c.dispNo = tN; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `মামলা হস্তান্তর করা হয়েছে - By ${activeUserName}`}); addLog(`মামলা হস্তান্তর: ${c.no}`); document.getElementById('transNote').value = ''; processUIUpdate(); showToast("মামলা হস্তান্তর করা হয়েছে!"); 
+            if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data = { cId: curId, dispD: tD, dispNo: tN }; approveAction(editingPendingId); editingPendingId = null; closeM(); return; }
+            if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'TRANS', data: { cId: curId, dispD: tD, dispNo: tN }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `মামলা হস্তান্তর: ${toBN(c.no)}` }); addLog(`হস্তান্তর অনুরোধ: ${toBN(c.no)}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
+            c.st = 'হস্তান্তর'; c.dispD = tD; c.dispNo = tN; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `মামলা হস্তান্তর করা হয়েছে - By ${activeUserName}`}); addLog(`মামলা হস্তান্তর: ${toBN(c.no)}`); document.getElementById('transNote').value = ''; processUIUpdate(); showToast("মামলা হস্তান্তর করা হয়েছে!"); 
         } finally { setTimeout(() => { isProcessing = false; }, 400); }
     }
 
     function makeInvoice() { 
-        if(activeRole === 'emp' && !empAccess().inv && !empAccess().full) return showToast("আপনার ইনভয়েস তৈরি করার অনুমতি নেই!", "var(--accent-red)");
+        if(activeRole === 'emp' && !empAccess().p_inv && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
         let selectedCaseIds = Array.from(document.querySelectorAll('.inv-case-chk:checked')).map(chk => parseInt(chk.value)); if(selectedCaseIds.length === 0) return showToast("অন্তত একটি মামলা সিলেক্ট করুন", "var(--accent-red)"); let selectedIOs = Array.from(document.querySelectorAll('.inv-io-chk:checked')).map(chk => chk.value); let ioType = document.querySelector('input[name="invIoType"]:checked').value; let offNameText = selectedIOs.length === 1 ? selectedIOs[0] : `একাধিক ${ioType} অফিসার (${toBN(selectedIOs.length)} জন)`; let ioSigName = selectedIOs.length === 1 ? selectedIOs[0] : "সংশ্লিষ্ট তদন্তকারী কর্মকর্তাগণ"; let ioSigTitle = selectedIOs.length === 1 ? "তদন্তকারী কর্মকর্তা" : ""; let customDateVal = document.getElementById('customInvDate').value; let today = customDateVal ? new Date(customDateVal) : new Date(); let invNoText = "INV-" + today.getFullYear().toString().substr(-2) + (today.getMonth()+1).toString().padStart(2, '0') + Math.floor(1000 + Math.random() * 9000); let invTitle = document.getElementById('cInvTitle').value || "মামলা ও জিডি বিল্যায়ন কপি"; let noteTxt = document.getElementById('cInvNote').value; let total = 0; let caseDetailsArr = [];
         selectedCaseIds.forEach(id => { let c = db.find(x => x.id == id); let rate = fromBN(document.getElementById(`invRate_${id}`).value) || 0; let disc = fromBN(document.getElementById(`invDisc_${id}`).value) || 0; let finalAmt = rate - disc; total += finalAmt; caseDetailsArr.push({ cId: c.id, no: c.no, t: c.t, cat: c.cat, d: c.d, dispD: c.dispD, st: c.st, dispNo: c.dispNo, io: c.io, rate: rate, disc: disc, finalAmt: finalAmt }); });
-        let newInvoiceObj = { id: "INV_" + Date.now(), invNo: invNoText, title: invTitle, date: today.toISOString().split('T')[0], offNameText: offNameText, ioSigName: ioSigName, ioSigTitle: ioSigTitle, note: noteTxt, total: total, cases: caseDetailsArr, multiIo: selectedIOs.length > 1 }; savedInvoices.unshift(newInvoiceObj); addLog(`ইনভয়েস তৈরি: ${invNoText}`); save(); renderAndShowInvoice(newInvoiceObj); showToast("ইনভয়েস তৈরি ও সংরক্ষণ করা হয়েছে!", "var(--accent-green)");
+        let newInvoiceObj = { id: "INV_" + Date.now(), invNo: invNoText, title: invTitle, date: today.toISOString().split('T')[0], offNameText: offNameText, ioSigName: ioSigName, ioSigTitle: ioSigTitle, note: noteTxt, total: total, cases: caseDetailsArr, multiIo: selectedIOs.length > 1 }; savedInvoices.unshift(newInvoiceObj); addLog(`ইনভয়েস তৈরি: ${toBN(invNoText)}`); save(); renderAndShowInvoice(newInvoiceObj); showToast("ইনভয়েস তৈরি ও সংরক্ষণ করা হয়েছে!", "var(--accent-green)");
     }
 
     function openApprovals() { renderApprovals(); document.getElementById('approvalModal').style.display = 'flex'; }
-    function renderApprovals() { let tbody = pendingDb.map(p => `<tr><td style="font-weight:bold; color:var(--accent-blue);">${p.by}</td><td style="font-size:14px; font-weight:600;">${toBN(p.msg)}</td><td style="font-size:12px; color:var(--text-muted);">${toBN(p.time)}</td><td style="text-align:center; white-space:nowrap;"><button class="btn-action" style="background:var(--accent-green);" onclick="approveAction(${p.pid})">✅ হ্যাঁ</button><button class="btn-action" style="background:var(--accent-red);" onclick="rejectAction(${p.pid})">❌ না</button></td></tr>`).join(''); if(pendingDb.length === 0) tbody = `<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-muted);">কোনো পেন্ডিং কাজ নেই</td></tr>`; let el = document.getElementById('approvalBody'); if(el) el.innerHTML = tbody; }
-    function approveAction(pid) { let p = pendingDb.find(x => x.pid === pid); if (!p) return; if (p.type === 'ADD') { p.data.h = [{time: getToday(), text: `মামলা রুজু হয়েছে (${p.data.io}) - By ${p.by} (অনুমোদিত)`}]; db.push(p.data); addLog(`এন্ট্রি অনুমোদন: ${p.data.no}`); } else if (p.type === 'EDIT') { let c = db.find(x => x.id == p.data.cId); if(c) { c.t = p.data.t; c.no = p.data.no; c.cat = p.data.cat; c.d = p.data.d; c.io = p.data.io; c.r = p.data.r; c.p = p.data.p; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `তথ্য এডিট (অনুমোদিত) - By ${p.by}`}); } } else if (p.type === 'PAY') { let c = db.find(x => x.id == p.data.cId); if(c) { c.p = p.data.amt; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `টাকা জমা ৳${toBN(p.data.amt)} (অনুমোদিত) - By ${p.by}`}); } } else if (p.type === 'DISP') { let c = db.find(x => x.id == p.data.cId); if(c) { c.st = p.data.st; c.dispNo = p.data.dispNo; c.dispD = p.data.dispD; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `নিষ্পত্তি ${c.st} (অনুমোদিত) - By ${p.by}`}); } } else if (p.type === 'TRANS') { let c = db.find(x => x.id == p.data.cId); if(c) { c.st = 'হস্তান্তর'; c.dispD = p.data.dispD; c.dispNo = p.data.dispNo; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `মামলা হস্তান্তর (অনুমোদিত) - By ${p.by}`}); } } pendingDb = pendingDb.filter(x => x.pid !== pid); save(); renderApprovals(); init(); showToast("অনুমোদিত হয়েছে!", "var(--accent-green)"); if(document.getElementById('specList').classList.contains('active-page')) { openSpecList(currentSpecFilter); } }
+    function renderApprovals() { let tbody = pendingDb.map(p => `<tr><td style="font-weight:bold; color:var(--accent-blue);">${p.by}</td><td style="font-size:14px; font-weight:600;">${p.msg}</td><td style="font-size:12px; color:var(--text-muted);">${p.time}</td><td style="text-align:center; white-space:nowrap;"><button class="btn-action" style="background:var(--accent-green);" onclick="approveAction(${p.pid})">✅ হ্যাঁ</button><button class="btn-action" style="background:var(--accent-blue);" onclick="editPendingAction(${p.pid})">✏️ এডিট</button><button class="btn-action" style="background:var(--accent-red);" onclick="rejectAction(${p.pid})">❌ না</button></td></tr>`).join(''); if(pendingDb.length === 0) tbody = `<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-muted);">কোনো পেন্ডিং কাজ নেই</td></tr>`; let el = document.getElementById('approvalBody'); if(el) el.innerHTML = tbody; }
+    function editPendingAction(pid) { let p = pendingDb.find(x => x.pid === pid); if (!p) return; editingPendingId = pid; if(p.type === 'ADD') { document.getElementById('mNo').value = p.data.no; document.getElementById('mCat').value = p.data.cat; document.getElementById('mType').value = p.data.t; document.getElementById('mRate').value = p.data.r; document.getElementById('mPaid').value = p.data.p; filterIOSelect('m'); setTimeout(()=>{ document.getElementById('mIOList').value = p.data.io; }, 200); go('add'); closeM(); } else if(p.type === 'EDIT') { curId = p.data.cId; openEditCase(p.data.cId); document.getElementById('eType').value = p.data.t; document.getElementById('eNo').value = p.data.no; document.getElementById('eCat').value = p.data.cat; document.getElementById('eRate').value = p.data.r; document.getElementById('ePaid').value = p.data.p; document.getElementById('eIOList').value = p.data.io; } else if(p.type === 'PAY') { curId = p.data.cId; document.getElementById('editPaidAmt').value = p.data.amt; document.getElementById('payModal').style.display='flex'; } else if(p.type === 'DISP') { curId = p.data.cId; openDisp(); if(p.data.st==='চার্জশিট'||p.data.st==='দোষীপত্র') document.getElementById('grSt').value = p.data.st; document.getElementById('dispNo').value = p.data.dispNo || ''; document.getElementById('proNo').value = p.data.dispNo || ''; } else if(p.type === 'TRANS') { curId = p.data.cId; document.getElementById('transDate').value = p.data.dispD; document.getElementById('transNote').value = p.data.dispNo; document.getElementById('transferModal').style.display='flex'; } }
+    function approveAction(pid) { let p = pendingDb.find(x => x.pid === pid); if (!p) return; if (p.type === 'ADD') { p.data.h = [{time: getToday(), text: `মামলা রুজু হয়েছে (${p.data.io}) - By ${p.by} (অনুমোদিত)`}]; db.push(p.data); addLog(`এন্ট্রি অনুমোদন: ${toBN(p.data.no)}`); } else if (p.type === 'EDIT') { let c = db.find(x => x.id == p.data.cId); if(c) { c.t = p.data.t; c.no = p.data.no; c.cat = p.data.cat; c.d = p.data.d; c.io = p.data.io; c.r = p.data.r; c.p = p.data.p; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `তথ্য এডিট (অনুমোদিত) - By ${p.by}`}); } } else if (p.type === 'PAY') { let c = db.find(x => x.id == p.data.cId); if(c) { c.p = p.data.amt; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `টাকা জমা ৳${toBN(p.data.amt)} (অনুমোদিত) - By ${p.by}`}); } } else if (p.type === 'DISP') { let c = db.find(x => x.id == p.data.cId); if(c) { c.st = p.data.st; c.dispNo = p.data.dispNo; c.dispD = p.data.dispD; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `নিষ্পত্তি ${c.st} (অনুমোদিত) - By ${p.by}`}); } } else if (p.type === 'TRANS') { let c = db.find(x => x.id == p.data.cId); if(c) { c.st = 'হস্তান্তর'; c.dispD = p.data.dispD; c.dispNo = p.data.dispNo; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `মামলা হস্তান্তর (অনুমোদিত) - By ${p.by}`}); } } pendingDb = pendingDb.filter(x => x.pid !== pid); save(); renderApprovals(); init(); showToast("অনুমোদিত হয়েছে!", "var(--accent-green)"); if(document.getElementById('specList').classList.contains('active-page')) { openSpecList(currentSpecFilter); } }
     function rejectAction(pid) { pendingDb = pendingDb.filter(x => x.pid !== pid); save(); renderApprovals(); init(); showToast("কাজটি বাতিল করা হয়েছে", "var(--accent-red)"); }
 
     function askSaveIO() { let n = document.getElementById('ioN').value; let s = document.getElementById('ioS').value; let st = document.getElementById('ioSt').value; if(!n) return showToast("অফিসারের নাম দিন", "var(--accent-red)"); ios.push({n: n, s: s, st: st || 'কর্মরত'}); addLog(`অফিসার যুক্ত: ${n}`); updateWorkplaceDropdown(); save(); showToast("অফিসার যুক্ত হয়েছে!"); document.getElementById('ioN').value=''; document.getElementById('ioS').value=''; document.getElementById('ioSt').value='কর্মরত'; }
-    function restoreToRunning() { if(activeRole === 'emp' && !empAccess().disp && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)"); if(isProcessing) return; isProcessing = true; try { let c = db.find(x=>x.id==curId); c.st = "চলমান"; c.dispNo = ""; c.dispD = ""; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `নিষ্পত্তি বাতিল, চলমান - By ${activeUserName}`}); addLog(`নিষ্পত্তি বাতিল: ${c.no}`); processUIUpdate(); showToast("মামলা চলমান করা হয়েছে"); } finally { setTimeout(() => { isProcessing = false; }, 400); } }
+    function restoreToRunning() { if(activeRole === 'emp' && !empAccess().b_disp && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)"); if(isProcessing) return; isProcessing = true; try { let c = db.find(x=>x.id==curId); c.st = "চলমান"; c.dispNo = ""; c.dispD = ""; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `নিষ্পত্তি বাতিল, চলমান - By ${activeUserName}`}); addLog(`নিষ্পত্তি বাতিল: ${toBN(c.no)}`); processUIUpdate(); showToast("মামলা চলমান করা হয়েছে"); } finally { setTimeout(() => { isProcessing = false; }, 400); } }
     function generateReport() { let mVal = document.getElementById('repMonth').value; if(!mVal) return showToast("মাসের নাম নির্বাচন করুন", "var(--accent-red)"); let parts = mVal.split('-'); let monthName = `${bnMonths[parseInt(parts[1])-1]} ${toBN(parts[0])}`; document.getElementById('repTitleMonth').innerText = monthName; let types = ['জিআর', 'সিআর', 'ইউডি', 'জিডি']; let htmlStr = ""; let totalRev = 0; types.forEach(type => { let typeCases = db.filter(c => c.t === type && c.d && c.d.startsWith(mVal)); let totalNew = typeCases.length; let totalFin = typeCases.filter(c => c.st !== 'চলমান').length; let totalPend = totalNew - totalFin; htmlStr += `<tr><td style="border-bottom: 1px solid #e2e8f0;"><b>${type}</b></td><td style="border-bottom: 1px solid #e2e8f0;">${toBN(totalNew)}</td><td style="border-bottom: 1px solid #e2e8f0;">${toBN(totalFin)}</td><td style="border-bottom: 1px solid #e2e8f0;"><b>${toBN(totalPend)}</b></td></tr>`; typeCases.forEach(c => { totalRev += fromBN(c.p); }); }); document.getElementById('repTableBody').innerHTML = htmlStr; document.getElementById('repTotalCol').innerText = "৳ " + toBN(totalRev.toLocaleString()); document.getElementById('reportPrintArea').style.display = 'block'; document.getElementById('repPrintBtn').style.display = 'block'; showToast("রিপোর্ট প্রস্তুত হয়েছে!"); }
     function switchInvTab(type, el) { document.querySelectorAll('#invTabs .type-tab').forEach(t => t.classList.remove('active')); el.classList.add('active'); document.getElementById('invNewSection').style.display = type === 'new' ? 'block' : 'none'; document.getElementById('invArchiveSection').style.display = type === 'archive' ? 'block' : 'none'; if(type==='archive') renderInvoiceArchive(); }
     function loadInvCases() { let selectedIOs = Array.from(document.querySelectorAll('.inv-io-chk:checked')).map(chk => chk.value); let month = document.getElementById('invMonth').value; if(selectedIOs.length === 0) return showToast("অন্তত একজন অফিসার নির্বাচন করুন", "var(--accent-red)"); if(!month) return showToast("যেই মাসের মামলা তা নির্বাচন করুন", "var(--accent-red)"); let cases = db.filter(c => selectedIOs.includes(c.io) && c.st !== 'চলমান' && c.dispD && c.dispD.startsWith(month)); if(cases.length === 0) { document.getElementById('invCaseSelection').style.display = 'none'; return showToast("এই মাসে নির্বাচিত অফিসারদের কোনো নিষ্পত্তিকৃত মামলা নেই", "var(--accent-orange)"); } let tbody = ""; cases.forEach(c => { let dateLabel = (c.t === 'সিআর') ? 'প্রাপ্তীর তারিখ' : 'রুজুর তারিখ'; let ioNameDisplay = (selectedIOs.length > 1) ? `<br><small style="color:#8b5cf6;">অফিসার: ${c.io}</small>` : ''; tbody += `<tr><td style="text-align:center;"><input type="checkbox" class="inv-case-chk" value="${c.id}" checked style="width:18px; height:18px; margin:0; cursor:pointer;"></td><td style="text-align:left; line-height:1.4;"><b>${toBN(c.no)}</b> <span style="background:#f1f5f9; padding:2px 6px; border-radius:4px; font-size:12px; font-weight:bold; color:#475569;">${c.t}</span>${ioNameDisplay}<br><small style="color:var(--accent-blue);">${dateLabel}: ${dateBN(c.d)}</small></td><td><input type="text" id="invRate_${c.id}" value="${toBN(c.r)}" style="padding:10px; margin:0; border-radius:8px; border:1px solid #ccc; width:100%; font-weight:bold; text-align:center;"></td><td><input type="text" id="invDisc_${c.id}" placeholder="০" style="padding:10px; margin:0; border-radius:8px; border:1px solid #ccc; width:100%; text-align:center;"></td></tr>`; }); document.getElementById('invCaseBody').innerHTML = tbody; document.getElementById('invCaseSelection').style.display = 'block'; showToast("মামলা লোড হয়েছে!"); }
     function toggleAllInvCases(el) { document.querySelectorAll('.inv-case-chk').forEach(chk => chk.checked = el.checked); }
     function renderInvoiceArchive() { let q = document.getElementById('searchInvInput') ? document.getElementById('searchInvInput').value.toLowerCase() : ''; let filtered = savedInvoices.filter(i => i.invNo.toLowerCase().includes(q) || i.offNameText.toLowerCase().includes(q)); let html = filtered.map((inv, idx) => `<tr><td style="font-weight:bold;">${toBN(idx+1)}</td><td>${dateBN(inv.date)}</td><td><b>${toBN(inv.invNo)}</b></td><td>${inv.offNameText}</td><td style="color:var(--accent-blue); font-weight:800;">৳ ${toBN(inv.total.toLocaleString())}</td><td style="text-align:center; white-space:nowrap;"><button class="btn-action" style="background:var(--accent-green);" onclick="viewSavedInvoice('${inv.id}')">প্রিন্ট / ভিউ</button><button class="btn-action admin-only" style="background:var(--accent-blue);" onclick="openEditInvoice('${inv.id}')">এডিট</button><button class="btn-action admin-only" style="background:var(--accent-red);" onclick="deleteInvoice('${inv.id}')">মুছুন</button></td></tr>`).join(''); if(filtered.length === 0) html = `<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--text-muted);">কোনো ইনভয়েস পাওয়া যায়নি</td></tr>`; if(document.getElementById('invArchiveBody')) document.getElementById('invArchiveBody').innerHTML = html; document.querySelectorAll('#invArchiveBody .admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; }); }
     function openEditInvoice(id) { curEditInvId = id; let inv = savedInvoices.find(i => i.id === id); if(!inv) return; document.getElementById('edInvTitle').value = inv.title || ''; document.getElementById('edInvNote').value = inv.note || ''; let tbody = inv.cases.map((c, idx) => `<tr><td style="font-size:14px; font-weight:700;">${toBN(c.no)}</td><td><input type="text" id="edInvRate_${idx}" value="${toBN(c.rate)}" style="padding:8px; margin:0; text-align:center;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); saveInvEdit(); }"></td><td><input type="text" id="edInvDisc_${idx}" value="${toBN(c.disc)}" style="padding:8px; margin:0; text-align:center;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); saveInvEdit(); }"></td></tr>`).join(''); document.getElementById('edInvCaseBody').innerHTML = tbody; document.getElementById('editInvModal').style.display = 'flex'; }
-    function saveInvEdit() { let inv = savedInvoices.find(i => i.id === curEditInvId); if(!inv) return; inv.title = document.getElementById('edInvTitle').value; inv.note = document.getElementById('edInvNote').value; let newTotal = 0; inv.cases.forEach((c, idx) => { c.rate = fromBN(document.getElementById(`edInvRate_${idx}`).value) || 0; c.disc = fromBN(document.getElementById(`edInvDisc_${idx}`).value) || 0; c.finalAmt = c.rate - c.disc; newTotal += c.finalAmt; }); inv.total = newTotal; addLog(`ইনভয়েস আপডেট: ${inv.invNo}`); save(); closeM(); renderInvoiceArchive(); showToast("সংরক্ষিত ইনভয়েস সফলভাবে আপডেট হয়েছে!", "var(--accent-green)"); }
+    function saveInvEdit() { let inv = savedInvoices.find(i => i.id === curEditInvId); if(!inv) return; inv.title = document.getElementById('edInvTitle').value; inv.note = document.getElementById('edInvNote').value; let newTotal = 0; inv.cases.forEach((c, idx) => { c.rate = fromBN(document.getElementById(`edInvRate_${idx}`).value) || 0; c.disc = fromBN(document.getElementById(`edInvDisc_${idx}`).value) || 0; c.finalAmt = c.rate - c.disc; newTotal += c.finalAmt; }); inv.total = newTotal; addLog(`ইনভয়েস আপডেট: ${toBN(inv.invNo)}`); save(); closeM(); renderInvoiceArchive(); showToast("সংরক্ষিত ইনভয়েস সফলভাবে আপডেট হয়েছে!", "var(--accent-green)"); }
     function viewSavedInvoice(id) { let inv = savedInvoices.find(i => i.id === id); if(inv) renderAndShowInvoice(inv); }
     function deleteInvoice(id) { openSheet('⚠️ ডিলিট ইনভয়েস', 'আপনি কি নিশ্চিত এই ইনভয়েসটি হিস্ট্রি থেকে মুছে ফেলতে চান?', 'মুছে ফেলুন', () => { savedInvoices = savedInvoices.filter(i => i.id !== id); save(); renderInvoiceArchive(); showToast("ইনভয়েস ডিলিট হয়েছে"); }); }
 
@@ -1380,8 +1425,7 @@
         document.getElementById('invBodyArea').innerHTML = htmlTable; 
         
         document.getElementById('invoiceModal').style.display = 'flex';
-        document.body.classList.add('print-inv');
-        applyLogos();
+        document.body.classList.add('print-inv'); applyLogos();
     }
 
     function closeInvoiceModal() { let modal = document.getElementById('invoiceModal'); let box = modal.querySelector('.modal-box'); box.classList.add('modal-leave'); setTimeout(() => { modal.style.display = 'none'; box.classList.remove('modal-leave'); document.body.classList.remove('print-inv'); }, 200); }
@@ -1389,7 +1433,19 @@
     
     function go(id) { 
         if(isNavigating) return;
-        if((id === 'emp' || id === 'set') && activeRole !== 'admin') return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+        let acc = empAccess(); let isFull = activeRole === 'admin' || acc.full;
+        
+        // Strict page access block
+        if(!isFull) {
+            if(id === 'dash' && !acc.p_dash) return showToast("আপনার ড্যাশবোর্ড দেখার অনুমতি নেই!", "var(--accent-red)");
+            if(id === 'add' && !acc.p_add) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+            if(id === 'act' && !acc.p_act) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+            if(id === 'io' && !acc.p_io) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+            if(id === 'invPage' && !acc.p_inv) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+            if(id === 'report' && !acc.p_rep) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+            if(id === 'emp' && !acc.p_emp) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+            if(id === 'set' && !acc.p_set) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+        }
         
         let activePage = document.querySelector('.page.active-page');
         if(activePage && activePage.id === id) return;
@@ -1406,20 +1462,9 @@
     }
     
     function openEditIO(idx) { curIOIdx = idx; let io = ios[idx]; document.getElementById('edION').value = io.n; document.getElementById('edIOS').value = io.s; document.getElementById('edIOSt').value = io.st || 'কর্মরত'; document.getElementById('editIOModal').style.display = 'flex'; }
-    
-    function updateIO() { 
-        if(isProcessing) return; isProcessing = true;
-        try {
-            let oldName = ios[curIOIdx].n; let newName = document.getElementById('edION').value;
-            if(!newName) { showToast("অফিসারের নাম দিন", "var(--accent-red)"); return; }
-            ios[curIOIdx].n = newName; ios[curIOIdx].s = document.getElementById('edIOS').value; ios[curIOIdx].st = document.getElementById('edIOSt').value; 
-            if(oldName !== newName) { db.forEach(c => { if(c.io === oldName) c.io = newName; }); }
-            addLog(`অফিসার আপডেট: ${newName}`); updateWorkplaceDropdown(); save(); closeM(); showToast("অফিসার তথ্য আপডেট হয়েছে"); 
-        } finally { setTimeout(() => { isProcessing = false; }, 400); }
-    }
-    
+    function updateIO() { if(isProcessing) return; isProcessing = true; try { let oldName = ios[curIOIdx].n; let newName = document.getElementById('edION').value; if(!newName) { showToast("অফিসারের নাম দিন", "var(--accent-red)"); return; } ios[curIOIdx].n = newName; ios[curIOIdx].s = document.getElementById('edIOS').value; ios[curIOIdx].st = document.getElementById('edIOSt').value; if(oldName !== newName) { db.forEach(c => { if(c.io === oldName) c.io = newName; }); } addLog(`অফিসার আপডেট: ${newName}`); updateWorkplaceDropdown(); save(); closeM(); showToast("অফিসার তথ্য আপডেট হয়েছে"); } finally { setTimeout(() => { isProcessing = false; }, 400); } }
     function openSheet(t, m, b, cb) { document.getElementById('sheetTitle').innerText = t; document.getElementById('sheetMsg').innerText = m; let btn = document.getElementById('sheetConfirmBtn'); btn.innerText = b; btn.onclick = () => { if(cb) cb(); closeM(); }; document.getElementById('sheetModal').style.display = 'flex'; }
-    function askPerm(type, id) { openSheet('⚠️ সতর্কতা', 'আপনি কি নিশ্চিত এটি স্থায়ীভাবে মুছে ফেলতে চান?', 'মুছে ফেলুন', () => { if(type==='delCase') { let c = db.find(x=>x.id==id); addLog(`মামলা ডিলিট: ${c?toBN(c.no):id}`); c.delTime = getToday(); recycleDb.push(c); db=db.filter(x=>x.id!=id); } else if(type==='delIO') { addLog(`অফিসার ডিলিট: ${ios[id].n}`); ios.splice(id, 1); updateWorkplaceDropdown(); } else if(type==='delEmp') { addLog(`কর্মচারী ডিলিট: ${emps[id].name}`); emps.splice(id, 1); renderEmp(); } processUIUpdate(); showToast("সফলভাবে মোছা হয়েছে"); }); }
+    function askPerm(type, id) { openSheet('⚠️ সতর্কতা', 'আপনি কি নিশ্চিত এটি স্থায়ীভাবে মুছে ফেলতে চান?', 'মুছে ফেলুন', () => { if(type==='delCase') { let c = db.find(x=>x.id==id); addLog(`মামলা ডিলিট: ${c?toBN(c.no):toBN(id)}`); c.delTime = getToday(); recycleDb.push(c); db=db.filter(x=>x.id!=id); } else if(type==='delIO') { addLog(`অফিসার ডিলিট: ${ios[id].n}`); ios.splice(id, 1); updateWorkplaceDropdown(); } else if(type==='delEmp') { addLog(`কর্মচারী ডিলিট: ${emps[id].name}`); emps.splice(id, 1); renderEmp(); } processUIUpdate(); showToast("সফলভাবে মোছা হয়েছে"); }); }
     function askResetSystem() { openSheet('⚠️ ডেঞ্জার জোন', 'সিস্টেমের সমস্ত ডাটা ডিলিট হয়ে যাবে। আপনি কি নিশ্চিত?', 'সব মুছে ফেলুন', () => { db = []; ios = []; emps = []; logs = []; savedInvoices = []; pendingDb = []; recycleDb = []; save(); localStorage.clear(); showToast("সিস্টেম সম্পূর্ণ রিসেট হয়েছে!", "var(--accent-red)"); setTimeout(() => location.reload(), 1500); }); }
     function askLogout() { openSheet('নিশ্চিত করুন', 'আপনি কি সিস্টেম থেকে বের হতে চান?', 'লগআউট করুন', logout); }
     function closeM() { document.querySelectorAll('.modal').forEach(m => { if(m.style.display !== 'none' && m.style.display !== '' && m.id !== 'invoiceModal') { let box = m.querySelector('.modal-box'); if(box) { box.classList.add('modal-leave'); setTimeout(() => { m.style.display = 'none'; box.classList.remove('modal-leave'); }, 200); } else { m.style.display = 'none'; } } }); }
@@ -1427,8 +1472,8 @@
     function updateSec() { let newU = document.getElementById('newUserId').value; let newP = document.getElementById('newPin').value; let newQ = document.getElementById('secQ').value; let newA = document.getElementById('secA').value; if(!newU && !newP && !newQ && !newA) { return showToast('কমপক্ষে একটি তথ্য দিন।', 'var(--accent-red)'); } uId = newU || uId; pin = newP || pin; sq = newQ || sq; sa = newA || sa; save(); document.getElementById('newUserId').value = ''; document.getElementById('newPin').value = ''; document.getElementById('secQ').value = ''; document.getElementById('secA').value = ''; showToast('নিরাপত্তা অনলাইনে আপডেট হয়েছে।'); }
     function recover() { if(document.getElementById('ansIn').value.trim() === sa) openSheet('উদ্ধার সফল', `অ্যাডমিন আইডি: ${uId} \n পাসওয়ার্ড: ${pin}`, 'লগইন করুন', () => toggleRec(false)); else showToast('সঠিক উত্তর দিন।', 'var(--accent-red)'); }
     function toggleRec(s) { document.getElementById('lForm').style.display=s?'none':'block'; document.getElementById('rForm').style.display=s?'block':'none'; document.getElementById('qDisp').innerText="প্রশ্ন: " + sq; document.getElementById('ansIn').value = ''; }
-    function exportData(isAuto = false) { let b = new Blob([JSON.stringify({db,ios,emps,logs,savedInvoices,uId,pin,sq,sa,thanaName,distName,adminName,recycleDb})],{type:'text/plain'}); let a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'ERP_Backup_' + dateBN(new Date().toISOString().split('T')[0]) + '.txt'; a.click(); if(!isAuto) showToast("ব্যাকআপ ফাইল ডাউনলোড হচ্ছে"); }
-    function importData(e) { let r = new FileReader(); r.onload = ev => { let d = JSON.parse(ev.target.result); db=d.db||[]; ios=d.ios||[]; emps=d.emps||[]; logs=d.logs||[]; savedInvoices=d.savedInvoices||[]; recycleDb=d.recycleDb||[]; uId=d.uId||"sakib"; pin=d.pin||"1234"; sq=d.sq||"প্রিয় রং?"; sa=d.sa||"নীল"; thanaName=d.thanaName||"সিরাজদিখান থানা"; distName=d.distName||"মুন্সীগঞ্জ"; adminName=d.adminName||"সাকিব আল হাসান"; sysLogo=""; save(); showToast("ডাটা রিস্টোর সফল হয়েছে!"); setTimeout(()=>location.reload(), 1000); }; r.readAsText(e.target.files[0]); }
+    function exportData(isAuto = false) { let b = new Blob([JSON.stringify({db,ios,emps,logs,savedInvoices,uId,pin,sq,sa,thanaName,distName,adminName,adminLockPin,officeTimeRestricted})],{type:'text/plain'}); let a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'ERP_Backup_' + dateBN(new Date().toISOString().split('T')[0]) + '.txt'; a.click(); if(!isAuto) showToast("ব্যাকআপ ফাইল ডাউনলোড হচ্ছে"); }
+    function importData(e) { let r = new FileReader(); r.onload = ev => { let d = JSON.parse(ev.target.result); db=d.db||[]; ios=d.ios||[]; emps=d.emps||[]; logs=d.logs||[]; savedInvoices=d.savedInvoices||[]; recycleDb=d.recycleDb||[]; uId=d.uId||"sakib"; pin=d.pin||"1234"; sq=d.sq||"প্রিয় রং?"; sa=d.sa||"নীল"; thanaName=d.thanaName||"সিরাজদিখান থানা"; distName=d.distName||"মুন্সীগঞ্জ"; adminName=d.adminName||"সাকিব আল হাসান"; adminLockPin=d.adminLockPin||""; officeTimeRestricted=d.officeTimeRestricted||false; sysLogo=""; save(); showToast("ডাটা রিস্টোর সফল হয়েছে!"); setTimeout(()=>location.reload(), 1000); }; r.readAsText(e.target.files[0]); }
     function processUIUpdate() { save(); closeM(); init(); if(document.getElementById('specList').classList.contains('active-page')) { openSpecList(currentSpecFilter); } }
 
     function openEmpPassModal() { document.getElementById('empOldPass').value = ''; document.getElementById('empNewPass').value = ''; document.getElementById('empPassModal').style.display = 'flex'; }
@@ -1436,8 +1481,33 @@
     function adminResetEmpPass(index) { let newPin = prompt(`${emps[index].name} এর জন্য নতুন পাসওয়ার্ড লিখুন:`); if(newPin && newPin.length >= 4) { emps[index].pin = newPin; addLog(`অ্যাডমিন ${emps[index].name} এর পাসওয়ার্ড রিসেট করেছেন`); save(); renderEmp(); showToast("পাসওয়ার্ড রিসেট সফল হয়েছে!"); } else if(newPin !== null) { showToast("পাসওয়ার্ড অন্তত ৪ অক্ষরের হতে হবে", "var(--accent-red)"); } }
 
     let curAccessEmpIdx = null;
-    function openAccessControl(index) { curAccessEmpIdx = index; let emp = emps[index]; document.getElementById('accEmpName').innerText = "কর্মচারী: " + emp.name; let acc = emp.access || { status: true, full: false, add: true, edit: false, pay: false, disp: false, inv: false }; document.getElementById('accStatus').checked = acc.status; document.getElementById('accFull').checked = acc.full; document.getElementById('accAdd').checked = acc.add; document.getElementById('accEdit').checked = acc.edit; document.getElementById('accPay').checked = acc.pay; document.getElementById('accDisp').checked = acc.disp; document.getElementById('accInv').checked = acc.inv; document.getElementById('accessModal').style.display = 'flex'; }
-    function saveAccessControl() { if(curAccessEmpIdx === null) return; emps[curAccessEmpIdx].access = { status: document.getElementById('accStatus').checked, full: document.getElementById('accFull').checked, add: document.getElementById('accAdd').checked, edit: document.getElementById('accEdit').checked, pay: document.getElementById('accPay').checked, disp: document.getElementById('accDisp').checked, inv: document.getElementById('accInv').checked }; addLog(`অ্যাডমিন ${emps[curAccessEmpIdx].name} এর পারমিশন আপডেট করেছেন`); save(); closeM(); renderEmp(); showToast("পারমিশন আপডেট হয়েছে!"); }
+    function openAccessControl(index) {
+        curAccessEmpIdx = index; let emp = emps[index]; document.getElementById('accEmpName').innerText = "কর্মচারী: " + emp.name;
+        let acc = emp.access || { status: true, full: false, p_dash: true, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false, b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false, payLimit: 0, requireBind: false };
+        
+        // Map old data if needed
+        if(acc.p_dash === undefined) { acc.p_dash = true; acc.p_add = acc.add||false; acc.p_act = acc.edit||false; acc.p_io = false; acc.p_inv = acc.inv||false; acc.p_rep = false; acc.p_set = false; acc.p_emp = false; acc.b_edit = acc.edit||false; acc.b_pay = acc.pay||false; acc.b_disp = acc.disp||false; acc.b_trans = acc.disp||false; acc.b_del = false; }
+
+        document.getElementById('accStatus').checked = acc.status; document.getElementById('accFull').checked = acc.full; 
+        
+        document.getElementById('acc_p_dash').checked = acc.p_dash; document.getElementById('acc_p_add').checked = acc.p_add; document.getElementById('acc_p_act').checked = acc.p_act; document.getElementById('acc_p_io').checked = acc.p_io; document.getElementById('acc_p_inv').checked = acc.p_inv; document.getElementById('acc_p_rep').checked = acc.p_rep; document.getElementById('acc_p_set').checked = acc.p_set; document.getElementById('acc_p_emp').checked = acc.p_emp;
+        document.getElementById('acc_b_edit').checked = acc.b_edit; document.getElementById('acc_b_pay').checked = acc.b_pay; document.getElementById('acc_b_disp').checked = acc.b_disp; document.getElementById('acc_b_trans').checked = acc.b_trans; document.getElementById('acc_b_del').checked = acc.b_del;
+
+        document.getElementById('accDeviceBind').checked = acc.requireBind || !!acc.deviceId; document.getElementById('accPayLimit').value = acc.payLimit || ''; document.getElementById('accessModal').style.display = 'flex';
+    }
+
+    function saveAccessControl() {
+        if(curAccessEmpIdx === null) return;
+        let currentDeviceId = emps[curAccessEmpIdx].access ? emps[curAccessEmpIdx].access.deviceId : null;
+        
+        emps[curAccessEmpIdx].access = {
+            status: document.getElementById('accStatus').checked, full: document.getElementById('accFull').checked, 
+            p_dash: document.getElementById('acc_p_dash').checked, p_add: document.getElementById('acc_p_add').checked, p_act: document.getElementById('acc_p_act').checked, p_io: document.getElementById('acc_p_io').checked, p_inv: document.getElementById('acc_p_inv').checked, p_rep: document.getElementById('acc_p_rep').checked, p_set: document.getElementById('acc_p_set').checked, p_emp: document.getElementById('acc_p_emp').checked,
+            b_edit: document.getElementById('acc_b_edit').checked, b_pay: document.getElementById('acc_b_pay').checked, b_disp: document.getElementById('acc_b_disp').checked, b_trans: document.getElementById('acc_b_trans').checked, b_del: document.getElementById('acc_b_del').checked,
+            requireBind: document.getElementById('accDeviceBind').checked, deviceId: document.getElementById('accDeviceBind').checked ? currentDeviceId : null, payLimit: parseFloat(document.getElementById('accPayLimit').value) || 0
+        };
+        addLog(`অ্যাডমিন ${emps[curAccessEmpIdx].name} এর পারমিশন আপডেট করেছেন`); save(); closeM(); renderEmp(); showToast("পারমিশন আপডেট হয়েছে!");
+    }
 
     syncFirebase();
 </script>
