@@ -83,7 +83,6 @@
             width: 20px; height: 20px; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid #fff;
         }
 
-        /* 🌟 NEW: PROFILE ONCLICK OPEN MODAL 🌟 */
         .nav-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 4px 12px; background: #fff; border-radius: 30px; border: 1px solid #e2e8f0; transition: 0.3s;}
         .nav-profile:hover { border-color: var(--accent-blue); background:#f8fafc; transform: scale(1.02); }
         .nav-profile img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
@@ -157,6 +156,10 @@
         input, select { width: 100%; padding: 16px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.8); border-radius: 14px; outline: none; background: rgba(255,255,255,0.7); color: #1e293b; font-size: 16px; transition: all 0.2s; font-weight: 600; }
         input:focus, select:focus { border-color: var(--accent-blue); background: #fff; box-shadow: 0 0 0 4px rgba(14,165,233,0.1); }
         
+        /* 🌟 EDITED PENDING ACTION INPUTS 🌟 */
+        .vp-input { padding: 10px; margin-bottom: 10px; width: 100%; border: 1px solid var(--accent-blue); border-radius: 8px; font-weight: 800; color: #1e293b; font-size: 15px; background: #fff; }
+        .vp-input:focus { box-shadow: 0 0 0 3px rgba(14,165,233,0.2); outline: none; }
+
         .btn-ios { background: #fff; color: var(--accent-blue); border: 1px solid var(--accent-blue); padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; width: 100%; transition: all 0.2s; }
         .btn-ios:hover { background: var(--accent-blue); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(14,165,233,0.2); }
         .btn-solid-blue { background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); color: #fff; border: none; box-shadow: 0 5px 15px rgba(139,92,246,0.3); }
@@ -342,7 +345,6 @@
             <span id="navAppBadge" class="badge-count">০</span>
         </div>
 
-        <!-- NEW: NO LOGOUT ON PROFILE CLICK -->
         <div class="nav-profile" onclick="openUserProfileModal()">
             <div>
                 <strong id="dashUserName">সাকিব আল হাসান</strong>
@@ -740,6 +742,17 @@
             <div style="margin-bottom:15px;">
                 <input type="text" id="setAdminName" placeholder="অ্যাডমিনের নাম" style="margin:0;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); saveOfficialInfo(); }">
             </div>
+            <div style="display:flex; gap:10px; margin-bottom:15px;">
+                <input type="text" id="setAdminRank" placeholder="আপনার পদবি (যেমন: ওসি / ইনচার্জ)" style="margin:0;">
+                <input type="text" id="setAdminPhone" placeholder="মোবাইল নম্বর" style="margin:0;">
+            </div>
+            <div style="display:flex; gap:10px; margin-bottom:15px;">
+                <input type="text" id="setAdminBlood" placeholder="ব্লাড গ্রুপ (যেমন: O+)" style="margin:0;">
+                <input type="text" id="setAdminJoinDate" placeholder="যোগদানের তারিখ" style="margin:0;">
+            </div>
+            <div style="margin-bottom:15px;">
+                <input type="text" id="setAdminAddress" placeholder="স্থায়ী ঠিকানা বা ইমার্জেন্সি কন্টাক্ট" style="margin:0;">
+            </div>
             <button type="button" class="btn-ios btn-solid-blue" onclick="saveOfficialInfo()">তথ্য সেভ করুন</button>
             <hr style="margin:30px 0; border:0; border-top:1px dashed rgba(255,255,255,0.6);">
 
@@ -784,16 +797,21 @@
 
 <div id="toast">✅ সম্পন্ন হয়েছে!</div>
 
-<!-- 🌟 NEW: PROFILE MODAL 🌟 -->
 <div class="modal no-print" id="userProfileModal">
     <div class="modal-box" style="max-width:400px; text-align:center; padding: 40px 20px;">
         <img id="profileModalAvatar" src="" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--accent-blue); box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 20px; object-fit:cover;">
         <h2 id="profileModalName" style="color:var(--text-main); font-size:24px; font-weight:900; margin-bottom:5px;"></h2>
         <p id="profileModalRole" style="color:var(--accent-blue); font-size:15px; font-weight:800; margin-bottom:20px;"></p>
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 20px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 20px; font-size: 14px;">
+            <div style="margin-bottom: 8px;"><b>পদবি:</b> <span id="profileModalRank"></span></div>
+            <div style="margin-bottom: 8px;"><b>মোবাইল:</b> <span id="profileModalPhone"></span></div>
+            <div style="margin-bottom: 8px;"><b>ব্লাড গ্রুপ:</b> <span id="profileModalBlood"></span></div>
+            <div style="margin-bottom: 8px;"><b>যোগদানের তারিখ:</b> <span id="profileModalJoin"></span></div>
+            <div style="margin-bottom: 8px;"><b>ঠিকানা:</b> <span id="profileModalAddress"></span></div>
+            <hr style="border:0; border-top:1px dashed #cbd5e1; margin:10px 0;">
             <div style="margin-bottom: 8px;"><b>থানা:</b> <span id="profileModalThana"></span></div>
             <div style="margin-bottom: 8px;"><b>জেলা:</b> <span id="profileModalDist"></span></div>
-            <div><b>স্ট্যাটাস:</b> <span class="badge bg-run">অ্যাক্টিভ</span></div>
+            <div style="margin-top: 15px; text-align:center;"><b>স্ট্যাটাস:</b> <span class="badge bg-run">অ্যাক্টিভ অ্যাকাউন্ট</span></div>
         </div>
         <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); border:none;" onclick="closeM()">বন্ধ করুন</button>
     </div>
@@ -812,15 +830,14 @@
     </div>
 </div>
 
-<!-- 🌟 NEW: VIEW PENDING ACTION MODAL 🌟 -->
 <div class="modal no-print" id="viewPendingModal">
     <div class="modal-box" style="max-width:500px;">
-        <h2 style="color:var(--accent-blue); margin-bottom:15px; font-size:20px; text-align:center;">👁️ বিস্তারিত ভিউ</h2>
+        <h2 style="color:var(--accent-blue); margin-bottom:15px; font-size:20px; text-align:center;">👁️ বিস্তারিত ভিউ ও এডিট</h2>
         <div id="viewPendingBody" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; font-size:15px; font-weight:600; color:var(--text-main); margin-bottom:20px; line-height:1.6;"></div>
         <div style="display:flex; gap:10px;">
-            <button type="button" class="btn-ios" style="flex:1; background:var(--accent-green); color:#fff; border:none;" id="viewApproveBtn">✅ অনুমোদন</button>
-            <button type="button" class="btn-ios" style="flex:1; background:var(--accent-red); color:#fff; border:none;" id="viewRejectBtn">❌ বাতিল</button>
+            <button type="button" class="btn-ios" style="flex:1; background:var(--accent-green); color:#fff; border:none;" id="viewApproveBtn">✅ পরিবর্তন করে অনুমোদন দিন</button>
         </div>
+        <button type="button" class="btn-ios" style="background:var(--accent-red); color:#fff; margin-top:10px; border:none;" id="viewRejectBtn">❌ বাতিল করুন</button>
         <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="document.getElementById('viewPendingModal').style.display='none'">বন্ধ করুন</button>
     </div>
 </div>
@@ -862,12 +879,13 @@
             <label class="perm-item"><span style="color:var(--accent-purple);">📝 দৈনিক আপডেট বাটন</span><input type="checkbox" id="acc_b_upd"></label>
         </div>
 
-        <div style="font-size:13px; font-weight:800; color:var(--text-muted); margin-top:15px; margin-bottom:8px;">অ্যাডভান্সড সিকিউরিটি লিমিট:</div>
+        <div style="font-size:13px; font-weight:800; color:var(--text-muted); margin-top:15px; margin-bottom:8px;">অ্যাডভান্সড লিমিট ও সময়সীমা:</div>
         <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid var(--accent-orange);">
             <span style="font-weight:700; color:var(--accent-orange);">💻 পিসি বাইন্ডিং (শুধু এই পিসিতে)</span>
             <input type="checkbox" id="accDeviceBind" style="width:20px; height:20px; cursor:pointer;">
         </label>
         <input type="text" id="accPayLimit" placeholder="টাকা জমার লিমিট (যেমন: ৫০০০)" style="margin-bottom:10px;">
+        <input type="number" id="accEditHours" placeholder="অ্যাকশন বাটনের মেয়াদ (ঘণ্টা) (খালি রাখলে আজীবন)" style="margin-bottom:10px;">
 
         <button type="button" class="btn-ios btn-solid-blue" style="margin-top:10px;" onclick="saveAccessControl()">পারমিশন আপডেট করুন</button>
         <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বন্ধ করুন</button>
@@ -877,7 +895,7 @@
 <div class="modal no-print" id="sheetModal">
     <div class="modal-box">
         <h2 id="sheetTitle" style="text-align:center; color:var(--accent-red); font-size:20px;"></h2>
-        <p id="sheetMsg" style="text-align:center; margin:15px 0; font-size:15px; color:var(--text-main); font-weight:600;"></p>
+        <div id="sheetMsg" style="text-align:center; margin:15px 0; font-size:15px; color:var(--text-main); font-weight:600;"></div>
         <button type="button" id="sheetConfirmBtn" class="btn-ios btn-solid-blue" style="margin-top:10px;"></button>
         <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px;" onclick="closeM()">বাতিল</button>
     </div>
@@ -885,7 +903,6 @@
 
 <div class="modal no-print" id="payModal"><div class="modal-box"><h2 style="margin-bottom:15px; text-align:center; font-size:20px; color:var(--accent-green);">💰 টাকা জমা</h2><input type="text" id="editPaidAmt" placeholder="জমা টাকার পরিমাণ" style="text-align:center; font-weight:800; font-size:18px;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); confirmPay(); }"> <button type="button" class="btn-ios" style="background:var(--accent-green); color:#fff; border:none;" onclick="confirmPay()">সেভ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বন্ধ</button></div></div>
 
-<!-- 🌟 NEW: CASE UPDATE MODAL (CD, MAP, WITNESS) 🌟 -->
 <div class="modal no-print" id="caseUpdateModal">
     <div class="modal-box" style="max-width:450px;">
         <h2 style="color:var(--accent-purple); margin-bottom:15px; text-align:center; font-size:20px;">📝 দৈনিক মামলার হালনাগাদ</h2>
@@ -1077,9 +1094,10 @@
 
     let db = [], ios = [], emps = [], logs = [], savedInvoices = [], pendingDb = [], recycleDb = []; 
     let uId = "sakib", pin = "1234", adminName = "সাকিব আল হাসান", sq = "প্রিয় রং?", sa = "নীল";
+    let adminRank = "ওসি / ইনচার্জ", adminPhone = "", adminBlood = "", adminJoinDate = "", adminAddress = "";
     let curAvatar = "", thanaName = "সিরাজদিখান থানা", distName = "মুন্সীগঞ্জ", autoLogoutEnabled = true, officeTimeRestricted = false, sysLogo = "", adminLockPin = "";
 
-    let curId = null, curIOIdx = null, curEditInvId = null, editingPendingId = null;
+    let curId = null, curIOIdx = null, curEditInvId = null, curEmpStIdx = null, editingPendingId = null;
     let currentPage = 1, rowsPerPage = 10, filteredData = [];
     let currentActFilter = 'সব', currentSpecFilter = '', currentIOTabFilter = 'কর্মরত';
     let logoutTimer, isNavigating = false, isProcessing = false;
@@ -1095,14 +1113,14 @@
     firebase.initializeApp(firebaseConfig); const fireDb = firebase.database();
 
     function loadFromLocal() {
-        db = JSON.parse(localStorage.getItem('ERP_db')) || []; ios = JSON.parse(localStorage.getItem('ERP_ios')) || []; emps = JSON.parse(localStorage.getItem('ERP_emps')) || []; logs = JSON.parse(localStorage.getItem('ERP_logs')) || []; savedInvoices = JSON.parse(localStorage.getItem('ERP_inv')) || []; pendingDb = JSON.parse(localStorage.getItem('ERP_pending')) || []; recycleDb = JSON.parse(localStorage.getItem('ERP_recycle')) || []; uId = localStorage.getItem('ERP_uId') || "sakib"; pin = localStorage.getItem('ERP_pin') || "1234"; sq = localStorage.getItem('ERP_sq') || "প্রিয় রং?"; sa = localStorage.getItem('ERP_sa') || "নীল"; adminName = localStorage.getItem('ERP_adminName') || "সাকিব আল হাসান"; thanaName = localStorage.getItem('ERP_thanaName') || "সিরাজদিখান থানা"; distName = localStorage.getItem('ERP_distName') || "মুন্সীগঞ্জ"; sysLogo = localStorage.getItem('ERP_sysLogo') || ""; curAvatar = localStorage.getItem('USER_IMG_SAKIB') || "";
+        db = JSON.parse(localStorage.getItem('ERP_db')) || []; ios = JSON.parse(localStorage.getItem('ERP_ios')) || []; emps = JSON.parse(localStorage.getItem('ERP_emps')) || []; logs = JSON.parse(localStorage.getItem('ERP_logs')) || []; savedInvoices = JSON.parse(localStorage.getItem('ERP_inv')) || []; pendingDb = JSON.parse(localStorage.getItem('ERP_pending')) || []; recycleDb = JSON.parse(localStorage.getItem('ERP_recycle')) || []; uId = localStorage.getItem('ERP_uId') || "sakib"; pin = localStorage.getItem('ERP_pin') || "1234"; sq = localStorage.getItem('ERP_sq') || "প্রিয় রং?"; sa = localStorage.getItem('ERP_sa') || "নীল"; adminName = localStorage.getItem('ERP_adminName') || "সাকিব আল হাসান"; adminRank = localStorage.getItem('ERP_adminRank') || "ওসি / ইনচার্জ"; adminPhone = localStorage.getItem('ERP_adminPhone') || ""; adminBlood = localStorage.getItem('ERP_adminBlood') || ""; adminJoinDate = localStorage.getItem('ERP_adminJoinDate') || ""; adminAddress = localStorage.getItem('ERP_adminAddress') || ""; thanaName = localStorage.getItem('ERP_thanaName') || "সিরাজদিখান থানা"; distName = localStorage.getItem('ERP_distName') || "মুন্সীগঞ্জ"; sysLogo = localStorage.getItem('ERP_sysLogo') || ""; curAvatar = localStorage.getItem('USER_IMG_SAKIB') || ""; officeTimeRestricted = localStorage.getItem('ERP_officeTime') === 'true'; adminLockPin = localStorage.getItem('ERP_adminLockPin') || "";
     }
 
     function localSaveOnly() {
-        localStorage.setItem('ERP_db', JSON.stringify(db)); localStorage.setItem('ERP_ios', JSON.stringify(ios)); localStorage.setItem('ERP_emps', JSON.stringify(emps)); localStorage.setItem('ERP_logs', JSON.stringify(logs)); localStorage.setItem('ERP_inv', JSON.stringify(savedInvoices)); localStorage.setItem('ERP_pending', JSON.stringify(pendingDb)); localStorage.setItem('ERP_recycle', JSON.stringify(recycleDb)); localStorage.setItem('ERP_uId', uId); localStorage.setItem('ERP_pin', pin); localStorage.setItem('ERP_sq', sq); localStorage.setItem('ERP_sa', sa); localStorage.setItem('ERP_adminName', adminName); localStorage.setItem('ERP_thanaName', thanaName); localStorage.setItem('ERP_distName', distName); localStorage.setItem('ERP_sysLogo', sysLogo);
+        localStorage.setItem('ERP_db', JSON.stringify(db)); localStorage.setItem('ERP_ios', JSON.stringify(ios)); localStorage.setItem('ERP_emps', JSON.stringify(emps)); localStorage.setItem('ERP_logs', JSON.stringify(logs)); localStorage.setItem('ERP_inv', JSON.stringify(savedInvoices)); localStorage.setItem('ERP_pending', JSON.stringify(pendingDb)); localStorage.setItem('ERP_recycle', JSON.stringify(recycleDb)); localStorage.setItem('ERP_uId', uId); localStorage.setItem('ERP_pin', pin); localStorage.setItem('ERP_sq', sq); localStorage.setItem('ERP_sa', sa); localStorage.setItem('ERP_adminName', adminName); localStorage.setItem('ERP_adminRank', adminRank); localStorage.setItem('ERP_adminPhone', adminPhone); localStorage.setItem('ERP_adminBlood', adminBlood); localStorage.setItem('ERP_adminJoinDate', adminJoinDate); localStorage.setItem('ERP_adminAddress', adminAddress); localStorage.setItem('ERP_thanaName', thanaName); localStorage.setItem('ERP_distName', distName); localStorage.setItem('ERP_sysLogo', sysLogo); localStorage.setItem('ERP_officeTime', officeTimeRestricted); localStorage.setItem('ERP_adminLockPin', adminLockPin);
     }
 
-    function save() { localSaveOnly(); if(typeof fireDb !== 'undefined') { fireDb.ref('ERP_DATA').set({ db, ios, emps, logs, savedInvoices, pendingDb, recycleDb, uId, pin, sq, sa, adminName, thanaName, distName, sysLogo, curAvatar }).catch(e => console.log("Cloud sync delayed")); } }
+    function save() { localSaveOnly(); if(typeof fireDb !== 'undefined') { fireDb.ref('ERP_DATA').set({ db, ios, emps, logs, savedInvoices, pendingDb, recycleDb, uId, pin, sq, sa, adminName, adminRank, adminPhone, adminBlood, adminJoinDate, adminAddress, thanaName, distName, sysLogo, curAvatar, officeTimeRestricted, adminLockPin }).catch(e => console.log("Cloud sync delayed")); } }
 
     function syncFirebase() {
         loadFromLocal(); 
@@ -1121,7 +1139,7 @@
             fireDb.ref('ERP_DATA').on('value', (snapshot) => {
                 const data = snapshot.val();
                 if (data) {
-                    db = data.db || db; ios = data.ios || ios; emps = data.emps || emps; logs = data.logs || logs; savedInvoices = data.savedInvoices || savedInvoices; pendingDb = data.pendingDb || []; recycleDb = data.recycleDb || []; uId = data.uId || uId; pin = data.pin || pin; sq = data.sq || sq; sa = data.sa || sa; adminName = data.adminName || adminName; thanaName = data.thanaName || thanaName; distName = data.distName || distName; sysLogo = data.sysLogo || sysLogo; curAvatar = data.curAvatar || curAvatar; 
+                    db = data.db || db; ios = data.ios || ios; emps = data.emps || emps; logs = data.logs || logs; savedInvoices = data.savedInvoices || savedInvoices; pendingDb = data.pendingDb || []; recycleDb = data.recycleDb || []; uId = data.uId || uId; pin = data.pin || pin; sq = data.sq || sq; sa = data.sa || sa; adminName = data.adminName || adminName; adminRank = data.adminRank || adminRank; adminPhone = data.adminPhone || adminPhone; adminBlood = data.adminBlood || adminBlood; adminJoinDate = data.adminJoinDate || adminJoinDate; adminAddress = data.adminAddress || adminAddress; thanaName = data.thanaName || thanaName; distName = data.distName || distName; sysLogo = data.sysLogo || sysLogo; curAvatar = data.curAvatar || curAvatar; officeTimeRestricted = data.officeTimeRestricted || false; adminLockPin = data.adminLockPin || ""; 
                     localSaveOnly(); init(); checkRemoteLogout();
                 } else if(db.length > 0) { save(); }
             });
@@ -1130,10 +1148,14 @@
 
     function empAccess() { 
         let e = emps.find(x => x.name === activeUserName); 
-        let def = { status: true, full: false, p_dash: true, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false, b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false, b_upd: true, deviceId: null, expiryTime: null, payLimit: 0 }; 
+        let def = { status: true, full: false, p_dash: true, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false, b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false, b_upd: true, deviceId: null, expiryTime: null, tempExpiry: null, payLimit: 0 }; 
         if(e && e.access) {
             let acc = e.access;
             if(acc.p_dash === undefined) { acc.p_dash = true; acc.p_add = acc.add || false; acc.p_act = acc.edit || false; acc.p_io = false; acc.p_inv = acc.inv || false; acc.p_rep = false; acc.p_set = false; acc.p_emp = false; acc.b_edit = acc.edit || false; acc.b_pay = acc.pay || false; acc.b_disp = acc.disp || false; acc.b_trans = acc.disp || false; acc.b_del = false; acc.b_upd = true;}
+            
+            if(acc.tempExpiry && Date.now() > acc.tempExpiry && !acc.full) {
+                acc.b_edit = false; acc.b_del = false; acc.b_upd = false; acc.b_disp = false; acc.b_trans = false; acc.b_pay = false;
+            }
             return acc;
         }
         return def;
@@ -1171,7 +1193,6 @@
             if(emp) { 
                 if(emp.emp_st && emp.emp_st !== 'নিয়োগপ্রাপ্ত') return showToast(`আপনার বর্তমান স্ট্যাটাস: ${emp.emp_st}। লগইন বন্ধ!`, "var(--accent-red)");
                 if(emp.access && emp.access.status === false) return showToast("আপনার অ্যাকাউন্টটি অ্যাডমিন কর্তৃক বন্ধ করা হয়েছে!", "var(--accent-red)");
-                if(emp.access && emp.access.expiryTime && new Date().getTime() > emp.access.expiryTime) return showToast("আপনার কাজের সময় শেষ হয়ে গেছে!", "var(--accent-red)");
                 if(emp.access && emp.access.deviceId && emp.access.deviceId !== deviceFingerprint) return showToast("আপনি শুধুমাত্র অনুমোদিত পিসি থেকে লগইন করতে পারবেন!", "var(--accent-red)");
                 if(officeTimeRestricted) { let hr = new Date().getHours(); if(hr < 9 || hr >= 17) return showToast("লগইন শুধুমাত্র সকাল ৯টা থেকে বিকাল ৫টা পর্যন্ত অনুমোদিত!", "var(--accent-red)"); }
                 if(emp.access && emp.access.requireBind && !emp.access.deviceId) { emp.access.deviceId = deviceFingerprint; emp.access.requireBind = false; save(); }
@@ -1197,7 +1218,7 @@
             if(isFull || acc.b_pay) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-green);" onclick="curId=${c.id}; document.getElementById('editPaidAmt').value=db.find(x=>x.id==${c.id}).p; document.getElementById('payModal').style.display='flex'">টাকা</button>`;
             if(isFull || acc.b_disp) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-blue);" onclick="curId=${c.id}; openDisp()">${c.st==='চলমান'?'নিষ্পত্তি':'এডিট'}</button>`;
             if(isFull || acc.b_edit) actHtml += `<button type="button" class="btn-action" style="background:#475569;" onclick="openEditCase(${c.id})">এডিট</button>`;
-            if(isFull || acc.b_del) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-red);" onclick="askPerm('delCase', ${c.id})">মুছুন</button>`;
+            if(isFull || acc.b_del) actHtml += `<button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delCase', ${c.id})">মুছুন</button>`;
 
             return `<tr><td style="font-weight:800; color:#475569;">${toBN(startIndex + idx + 1)}</td><td><span class="clickable" onclick="openTimeline(${c.id})">${toBN(c.no)}</span></td><td style="text-align:left; padding-left:15px;"><div style="background:rgba(14,165,233,0.1); color:var(--accent-blue); padding:4px 8px; border-radius:6px; display:inline-block; font-weight:800; font-size:12px; margin-bottom:4px;">${c.t}</div><div style="font-size:14px; font-weight:700; color:var(--text-main);">${c.cat ? c.cat : '<span style="color:#94a3b8">বিষয় উল্লেখ নেই</span>'}</div></td><td><span class="clickable" onclick="openIO('${c.io}')">${c.io} ${badliClass ? '(বদলী)' : ''}</span></td><td style="color:var(--accent-red); font-weight:800">৳${toBN(fromBN(c.r)-fromBN(c.p))}</td><td><span class="badge ${stBadge}">${c.st} ${c.dispNo ? toBN(c.dispNo) : ''}</span></td><td style="text-align:center; white-space:nowrap;" class="no-print">${actHtml}</td></tr>`;
         }).join('');
@@ -1228,8 +1249,8 @@
     function filterActTable() { let name = document.getElementById('searchIOSelect').value, stat = document.getElementById('filterIOStat').value, query = document.getElementById('searchGlobal').value.toLowerCase(); filteredData = db.filter(c => { let ioIsTransferred = isTransferred(c.io); let matchType = false; if(currentActFilter === 'বদলী_মামলা') { matchType = ioIsTransferred; } else { if(ioIsTransferred) return false; if(currentActFilter === 'সব') matchType = true; else if(currentActFilter === 'চলমান') matchType = (c.st === 'চলমান'); else if(currentActFilter === 'নিষ্পত্তি') matchType = (c.st !== 'চলমান'); else if(currentActFilter === 'বকেয়া') matchType = ((fromBN(c.r) - fromBN(c.p)) > 0); } let matchName = (name === "সব") || (c.io === name); let ioData = ios.find(i => i.n === c.io); let matchStat = (stat === "সব") || (ioData && (ioData.st || 'কর্মরত') === stat); let matchQuery = c.no.toLowerCase().includes(query) || c.io.toLowerCase().includes(query) || (c.cat && c.cat.toLowerCase().includes(query)); return matchType && matchName && matchStat && matchQuery; }).reverse(); let totalPages = Math.ceil(filteredData.length / rowsPerPage) || 1; if(currentPage > totalPages) currentPage = totalPages; document.getElementById('pageInfo').innerText = `পৃষ্ঠা ${toBN(currentPage)} / ${toBN(totalPages)}`; document.getElementById('prevBtn').disabled = currentPage === 1; document.getElementById('nextBtn').disabled = currentPage === totalPages; let start = (currentPage - 1) * rowsPerPage; document.querySelector('#actTable tbody').innerHTML = getTableRows(filteredData.slice(start, start + rowsPerPage), start); }
     function changePage(step) { currentPage += step; filterActTable(); }
 
-    function saveOfficialInfo() { thanaName = document.getElementById('setThanaName').value || thanaName; distName = document.getElementById('setDistName').value || distName; adminName = document.getElementById('setAdminName').value || adminName; if(activeRole==='admin') activeUserName = adminName; applyOfficialInfo(); save(); showToast("অফিসিয়াল তথ্য সেভ হয়েছে!"); }
-    function applyOfficialInfo() { let fullLoc = thanaName + ", " + distName; document.getElementById('loginThanaName').innerText = fullLoc; if(document.getElementById('navThanaName')) document.getElementById('navThanaName').innerText = fullLoc; document.getElementById('reportPrintThana').innerText = fullLoc; document.getElementById('pInvSub').innerText = fullLoc; if(document.getElementById('setThanaName')) document.getElementById('setThanaName').value = thanaName; if(document.getElementById('setDistName')) document.getElementById('setDistName').value = distName; if(document.getElementById('setAdminName')) document.getElementById('setAdminName').value = adminName; document.querySelectorAll('.sig-name-admin').forEach(el => el.innerText = adminName); applyLogos(); }
+    function saveOfficialInfo() { thanaName = document.getElementById('setThanaName').value || thanaName; distName = document.getElementById('setDistName').value || distName; adminName = document.getElementById('setAdminName').value || adminName; adminRank = document.getElementById('setAdminRank').value || adminRank; adminPhone = document.getElementById('setAdminPhone').value || adminPhone; adminBlood = document.getElementById('setAdminBlood').value || adminBlood; adminJoinDate = document.getElementById('setAdminJoinDate').value || adminJoinDate; adminAddress = document.getElementById('setAdminAddress').value || adminAddress; if(activeRole==='admin') activeUserName = adminName; applyOfficialInfo(); save(); showToast("অফিসিয়াল তথ্য সেভ হয়েছে!"); }
+    function applyOfficialInfo() { let fullLoc = thanaName + ", " + distName; document.getElementById('loginThanaName').innerText = fullLoc; if(document.getElementById('navThanaName')) document.getElementById('navThanaName').innerText = fullLoc; document.getElementById('reportPrintThana').innerText = fullLoc; document.getElementById('pInvSub').innerText = fullLoc; if(document.getElementById('setThanaName')) document.getElementById('setThanaName').value = thanaName; if(document.getElementById('setDistName')) document.getElementById('setDistName').value = distName; if(document.getElementById('setAdminName')) document.getElementById('setAdminName').value = adminName; if(document.getElementById('setAdminRank')) document.getElementById('setAdminRank').value = adminRank; if(document.getElementById('setAdminPhone')) document.getElementById('setAdminPhone').value = adminPhone; if(document.getElementById('setAdminBlood')) document.getElementById('setAdminBlood').value = adminBlood; if(document.getElementById('setAdminJoinDate')) document.getElementById('setAdminJoinDate').value = adminJoinDate; if(document.getElementById('setAdminAddress')) document.getElementById('setAdminAddress').value = adminAddress; document.querySelectorAll('.sig-name-admin').forEach(el => el.innerText = adminName); applyLogos(); }
 
     function updateDashCharts() { let activeCases = db.filter(c => !isTransferred(c.io)); let total = activeCases.length || 1; let run = activeCases.filter(c=>c.st==='চলমান').length; let fin = activeCases.filter(c=>c.st!=='চলমান' && !c.st.includes('হস্তান্তর')).length; let trans = activeCases.filter(c=>c.st.includes('হস্তান্তর')).length; document.getElementById('chtTotal').innerText = toBN(activeCases.length); let rP = Math.round((run/total)*100); let fP = Math.round((fin/total)*100); let tP = Math.round((trans/total)*100); document.getElementById('chtR').innerText = toBN(rP); document.getElementById('chtF').innerText = toBN(fP); document.getElementById('chtT').innerText = toBN(tP); document.getElementById('dashDonut').style.background = `conic-gradient(var(--accent-blue) 0% ${rP}%, var(--accent-green) ${rP}% ${rP+fP}%, var(--accent-orange) ${rP+fP}% 100%)`; let gr = activeCases.filter(c=>c.t==='জিআর').length; let cr = activeCases.filter(c=>c.t==='সিআর').length; let ud = activeCases.filter(c=>c.t==='ইউডি').length; let gd = activeCases.filter(c=>c.t==='জিডি').length; document.getElementById('pbGrV').innerText = toBN(gr); document.getElementById('pbGr').style.width = (gr/total)*100 + '%'; document.getElementById('pbCrV').innerText = toBN(cr); document.getElementById('pbCr').style.width = (cr/total)*100 + '%'; document.getElementById('pbUdV').innerText = toBN(ud); document.getElementById('pbUd').style.width = (ud/total)*100 + '%'; document.getElementById('pbGdV').innerText = toBN(gd); document.getElementById('pbGd').style.width = (gd/total)*100 + '%'; }
 
@@ -1237,13 +1258,28 @@
     function renderInvIOList() { let ioType = document.querySelector('input[name="invIoType"]:checked').value; let filteredIOs = ios.filter(i => (i.st || 'কর্মরত') === ioType); let html = `<label><input type="checkbox" id="invChkAll" onchange="toggleAllIO(this)" checked style="margin-right:8px;"><b>সব সিলেক্ট করুন</b></label><hr style="border:0; border-top:1px dashed #ccc; margin:10px 0;">`; html += filteredIOs.map(i => `<label><input type="checkbox" class="inv-io-chk" value="${i.n}" checked>${i.n}</label>`).join(''); if(document.getElementById('invIOListContainer')) document.getElementById('invIOListContainer').innerHTML = html; }
     function updateWorkplaceDropdown() { let workplaces = [...new Set(ios.map(i => i.s).filter(s => s))]; let opts = `<option value="সব">সকল কর্মস্থল</option>` + workplaces.map(w => `<option value="${w}">${w}</option>`).join(''); let sel = document.getElementById('ioWorkplaceFilter'); let curVal = sel ? sel.value : 'সব'; if(sel) { sel.innerHTML = opts; if(workplaces.includes(curVal)) sel.value = curVal; } }
     function filterIOs(status, el) { currentIOTabFilter = status; document.querySelectorAll('#ioFilterTabs .type-tab').forEach(t => t.classList.remove('active')); el.classList.add('active'); renderIOPageTable(); }
-    function renderIOPageTable() { let wpFilter = document.getElementById('ioWorkplaceFilter') ? document.getElementById('ioWorkplaceFilter').value : 'সব'; let filteredIOs = ios.filter(i => (i.st || 'কর্মরত') === currentIOTabFilter && (wpFilter === 'সব' || i.s === wpFilter)); document.querySelector('#ioTableBody').innerHTML = filteredIOs.map((i)=> { let actIdx = ios.indexOf(i); let acc = empAccess(); let isFull = activeRole === 'admin' || acc.full; let actHtml = ''; if(isFull || acc.b_edit) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-blue);" onclick="openEditIO(${actIdx})">এডিট</button>`; if(isFull || acc.b_del) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-red);" onclick="askPerm('delIO', ${actIdx})">মুছুন</button>`; return `<tr><td><span class="clickable" onclick="openIO('${i.n}')"><b>${i.n}</b></span></td><td>${i.s}</td><td><span class="badge ${currentIOTabFilter==='কর্মরত'?'bg-run':'bg-trans'}">${currentIOTabFilter}</span></td><td style="text-align:center; white-space:nowrap;" class="no-print">${actHtml}</td></tr>`; }).join(''); if(filteredIOs.length === 0) document.querySelector('#ioTableBody').innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--text-muted); padding:20px;">কোনো অফিসার নেই</td></tr>`; }
+    function renderIOPageTable() { let wpFilter = document.getElementById('ioWorkplaceFilter') ? document.getElementById('ioWorkplaceFilter').value : 'সব'; let filteredIOs = ios.filter(i => (i.st || 'কর্মরত') === currentIOTabFilter && (wpFilter === 'সব' || i.s === wpFilter)); document.querySelector('#ioTableBody').innerHTML = filteredIOs.map((i)=> { let actIdx = ios.indexOf(i); let acc = empAccess(); let isFull = activeRole === 'admin' || acc.full; let actHtml = ''; if(isFull || acc.b_edit) actHtml += `<button type="button" class="btn-action" style="background:var(--accent-blue);" onclick="openEditIO(${actIdx})">এডিট</button>`; if(isFull || acc.b_del) actHtml += `<button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delIO', ${actIdx})">মুছুন</button>`; return `<tr><td><span class="clickable" onclick="openIO('${i.n}')"><b>${i.n}</b></span></td><td>${i.s}</td><td><span class="badge ${currentIOTabFilter==='কর্মরত'?'bg-run':'bg-trans'}">${currentIOTabFilter}</span></td><td style="text-align:center; white-space:nowrap;" class="no-print">${actHtml}</td></tr>`; }).join(''); if(filteredIOs.length === 0) document.querySelector('#ioTableBody').innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--text-muted); padding:20px;">কোনো অফিসার নেই</td></tr>`; }
 
     function openUserProfileModal() {
         let avatarToUse = curAvatar && curAvatar.length > 10 ? curAvatar : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
         document.getElementById('profileModalAvatar').src = avatarToUse;
         document.getElementById('profileModalName').innerText = activeUserName;
         document.getElementById('profileModalRole').innerText = activeRole === 'admin' ? 'সিস্টেম অ্যাডমিন' : 'কর্মচারী';
+        
+        if(activeRole === 'admin') {
+            document.getElementById('profileModalRank').innerText = adminRank || 'ওসি / ইনচার্জ';
+            document.getElementById('profileModalPhone').innerText = adminPhone || '-';
+            document.getElementById('profileModalBlood').innerText = adminBlood || '-';
+            document.getElementById('profileModalJoin').innerText = adminJoinDate || '-';
+            document.getElementById('profileModalAddress').innerText = adminAddress || '-';
+        } else {
+            document.getElementById('profileModalRank').innerText = 'অফিস সহকারী';
+            document.getElementById('profileModalPhone').innerText = '-';
+            document.getElementById('profileModalBlood').innerText = '-';
+            document.getElementById('profileModalJoin').innerText = '-';
+            document.getElementById('profileModalAddress').innerText = '-';
+        }
+        
         document.getElementById('profileModalThana').innerText = thanaName;
         document.getElementById('profileModalDist').innerText = distName;
         document.getElementById('userProfileModal').style.display = 'flex';
@@ -1254,33 +1290,36 @@
             let st = e.emp_st || 'নিয়োগপ্রাপ্ত';
             let stBadge = '';
             if(st === 'নিয়োগপ্রাপ্ত') stBadge = '<span class="badge bg-run">নিয়োগপ্রাপ্ত (অ্যাক্টিভ)</span>';
-            else if(st === 'বদলী') stBadge = '<span class="badge bg-trans">বদলীকৃত (হোল্ড)</span>';
+            else if(st === 'বদলী') stBadge = `<span class="badge bg-trans">বদলীকৃত (${e.transfer_loc || 'অজানা'})</span>`;
             else if(st === 'চাকুরীচ্যূত') stBadge = '<span class="badge bg-fire">চাকুরীচ্যূত (বাতিল)</span>';
+            else if(st === 'অপেক্ষমান') stBadge = '<span class="badge bg-badli">অপেক্ষমান (নিয়োগ দিন)</span>';
 
             let devBadge = (e.access && e.access.deviceId) ? '<br><small style="color:var(--accent-orange)">পিসি লক করা</small><button onclick="clearDeviceBind('+idx+')" style="border:none; background:transparent; color:red; cursor:pointer; font-size:10px;">(খুলুন)</button>' : ''; 
-            return `<tr><td><b>${e.name}</b> <br> ${stBadge}</td><td>${e.id} ${devBadge}</td><td>*** <br><small class="clickable" onclick="adminResetEmpPass(${idx})" style="color:var(--accent-red); font-size:11px;">রিসেট</small></td><td style="text-align:center;" class="no-print"><button type="button" class="btn-action admin-only" style="background:#64748b;" onclick="openChangeEmpSt(${idx})">অবস্থা পরিবর্তন</button><button type="button" class="btn-action admin-only" style="background:var(--accent-purple);" onclick="openAccessControl(${idx})">পারমিশন</button><button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delEmp', ${idx})">মুছুন</button></td></tr>`; 
+            
+            let actHtml = '';
+            if(st === 'অপেক্ষমান') {
+                actHtml = `<button type="button" class="btn-action admin-only" style="background:var(--accent-green);" onclick="hireEmp(${idx})">✅ নিয়োগ দিন</button><button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delEmp', ${idx})">মুছুন</button>`;
+            } else {
+                actHtml = `<button type="button" class="btn-action admin-only" style="background:#64748b;" onclick="openChangeEmpSt(${idx})">অবস্থা পরিবর্তন</button><button type="button" class="btn-action admin-only" style="background:var(--accent-purple);" onclick="openAccessControl(${idx})">পারমিশন</button><button type="button" class="btn-action admin-only" style="background:var(--accent-red);" onclick="askPerm('delEmp', ${idx})">মুছুন</button>`;
+            }
+
+            return `<tr><td><b>${e.name}</b> <br> ${stBadge}</td><td>${e.id} ${devBadge}</td><td>*** <br><small class="clickable" onclick="adminResetEmpPass(${idx})" style="color:var(--accent-red); font-size:11px;">রিসেট</small></td><td style="text-align:center;" class="no-print">${actHtml}</td></tr>`; 
         }).join('');
         if(emps.length === 0) tbody = `<tr><td colspan="4" style="text-align:center; color:var(--text-muted);">কোনো কর্মচারী নেই</td></tr>`; if(document.querySelector('#empTable tbody')) document.querySelector('#empTable tbody').innerHTML = tbody; document.querySelectorAll('#empTable .admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; });
     }
 
-    function addEmp() { let name = document.getElementById('newEmpName').value; let id = document.getElementById('newEmpId').value.trim(); let pin = document.getElementById('newEmpPin').value; if(!name || !id || !pin) return showToast("সব তথ্য দিন", "var(--accent-red)"); if(emps.find(e => e.id === id) || uId === id) return showToast("এই লগইন আইডি আগে থেকেই আছে", "var(--accent-red)"); emps.push({name, id, pin, emp_st: 'নিয়োগপ্রাপ্ত', access: { status: true, full: false, p_dash: true, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false, b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false, b_upd: true }}); save(); document.getElementById('newEmpName').value=''; document.getElementById('newEmpId').value=''; document.getElementById('newEmpPin').value=''; showToast("কর্মচারী নিয়োগ দেওয়া হয়েছে!"); renderEmp(); }
+    function addEmp() { let name = document.getElementById('newEmpName').value; let id = document.getElementById('newEmpId').value.trim(); let pin = document.getElementById('newEmpPin').value; if(!name || !id || !pin) return showToast("সব তথ্য দিন", "var(--accent-red)"); if(emps.find(e => e.id === id) || uId === id) return showToast("এই লগইন আইডি আগে থেকেই আছে", "var(--accent-red)"); emps.push({name, id, pin, emp_st: 'অপেক্ষমান', access: { status: true, full: false, p_dash: false, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false, b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false, b_upd: false }}); save(); document.getElementById('newEmpName').value=''; document.getElementById('newEmpId').value=''; document.getElementById('newEmpPin').value=''; showToast("কর্মচারী অপেক্ষমান তালিকায় যুক্ত হয়েছে!"); renderEmp(); }
     
-    let curEmpStIdx = null;
+    function hireEmp(idx) { emps[idx].emp_st = 'নিয়োগপ্রাপ্ত'; save(); renderEmp(); showToast("নিয়োগ প্রদান সফল হয়েছে! এবার পারমিশন সেট করুন।", "var(--accent-green)"); openAccessControl(idx); }
+
     function openChangeEmpSt(idx) {
-        curEmpStIdx = idx;
-        let e = emps[idx];
-        let selectHtml = `<select id="tempEmpSt" style="margin-bottom:15px;"><option value="নিয়োগপ্রাপ্ত" ${e.emp_st==='নিয়োগপ্রাপ্ত'?'selected':''}>নিয়োগপ্রাপ্ত</option><option value="বদলী" ${e.emp_st==='বদলী'?'selected':''}>বদলী</option><option value="চাকুরীচ্যূত" ${e.emp_st==='চাকুরীচ্যূত'?'selected':''}>চাকুরীচ্যূত</option></select>`;
+        curEmpStIdx = idx; let e = emps[idx];
+        let selectHtml = `<select id="tempEmpSt" onchange="document.getElementById('transLocDiv').style.display=this.value==='বদলী'?'block':'none'" style="margin-bottom:15px; font-weight:bold; font-size:16px; padding:10px; width:100%; border-radius:10px;"><option value="নিয়োগপ্রাপ্ত" ${e.emp_st==='নিয়োগপ্রাপ্ত'?'selected':''}>নিয়োগপ্রাপ্ত</option><option value="বদলী" ${e.emp_st==='বদলী'?'selected':''}>বদলী</option><option value="চাকুরীচ্যূত" ${e.emp_st==='চাকুরীচ্যূত'?'selected':''}>চাকুরীচ্যূত</option></select><div id="transLocDiv" style="display:${e.emp_st==='বদলী'?'block':'none'}"><input type="text" id="tempEmpLoc" placeholder="কোথায় বদলী করা হয়েছে? (যেমন: ঢাকা)" value="${e.transfer_loc || ''}" style="margin-bottom:10px; width:100%; padding:10px; border-radius:10px; border:1px solid var(--accent-blue); font-weight:bold;"></div>`;
         openSheet('কর্মচারীর অবস্থা পরিবর্তন', selectHtml, 'আপডেট করুন', () => {
-            let newSt = document.getElementById('tempEmpSt').value;
-            emps[curEmpStIdx].emp_st = newSt;
-            addLog(`কর্মচারী স্ট্যাটাস পরিবর্তন: ${e.name} (${newSt})`);
-            if(newSt !== 'নিয়োগপ্রাপ্ত') { emps[curEmpStIdx].forceLogout = true; }
-            save(); renderEmp(); showToast("স্ট্যাটাস আপডেট হয়েছে!");
+            let newSt = document.getElementById('tempEmpSt').value; emps[curEmpStIdx].emp_st = newSt; emps[curEmpStIdx].transfer_loc = document.getElementById('tempEmpLoc') ? document.getElementById('tempEmpLoc').value : ''; addLog(`কর্মচারী স্ট্যাটাস পরিবর্তন: ${e.name} (${newSt})`); if(newSt !== 'নিয়োগপ্রাপ্ত') { emps[curEmpStIdx].forceLogout = true; } save(); renderEmp(); showToast("স্ট্যাটাস আপডেট হয়েছে!");
         });
-        document.getElementById('sheetMsg').innerHTML = selectHtml; // inject dynamic select
     }
 
-    function forceLogoutEmp(idx) { emps[idx].forceLogout = true; save(); showToast("রিমোট লগআউট সিগন্যাল পাঠানো হয়েছে!", "var(--accent-orange)"); }
     function clearDeviceBind(idx) { emps[idx].access.deviceId = null; emps[idx].access.requireBind = false; save(); renderEmp(); showToast("পিসি লক খুলে দেওয়া হয়েছে!"); }
 
     function renderRecycleBin() { let html = recycleDb.map(c => `<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(239,68,68,0.2); padding:8px 0;"><span style="font-size:14px; color:var(--text-main);"><b>${toBN(c.no)}</b> (${c.cat}) - মুছে ফেলার সময়: ${toBN(c.delTime)}</span><button onclick="restoreCase(${c.id})" class="btn-action" style="background:var(--accent-green);">রিস্টোর</button></div>`).join(''); if(recycleDb.length === 0) html = `<div style="text-align:center; color:var(--text-muted); font-size:13px;">রিসাইকেল বিনে কিছু নেই</div>`; if(document.getElementById('recycleContainer')) document.getElementById('recycleContainer').innerHTML = html; }
@@ -1297,7 +1336,6 @@
         document.querySelectorAll('.admin-only.nav-item, .admin-only.mobile-nav-item').forEach(el => { el.style.display = isFull ? 'flex' : 'none'; }); 
         document.getElementById('autoLogoutSwitch').checked = autoLogoutEnabled; if(document.getElementById('officeTimeSwitch')) document.getElementById('officeTimeSwitch').checked = officeTimeRestricted;
         
-        // 🌟 STRICT MENU HIDING BASED ON PERMISSIONS 🌟
         document.getElementById('nav-dash').style.display = (isFull || acc.p_dash) ? 'flex' : 'none';
         document.getElementById('nav-add').style.display = (isFull || acc.p_add) ? 'flex' : 'none';
         document.getElementById('nav-act').style.display = (isFull || acc.p_act) ? 'flex' : 'none';
@@ -1343,13 +1381,11 @@
         if(isProcessing) return; isProcessing = true;
         try {
             let noVal = document.getElementById('mNo').value; let catVal = document.getElementById('mCat').value; let mDateVal = document.getElementById('mDate').value || new Date().toISOString().split('T')[0]; let newCase = {id:Date.now(), t:document.getElementById('mType').value, no:noVal, cat:catVal, d:mDateVal, io:document.getElementById('mIOList').value, r:document.getElementById('mRate').value||0, p:document.getElementById('mPaid').value||0, st:'চলমান'};
-            if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data = newCase; approveAction(editingPendingId); editingPendingId = null; document.getElementById('mNo').value=''; document.getElementById('mCat').value=''; document.getElementById('mRate').value=''; document.getElementById('mPaid').value=''; filterIOSelect('m'); closeM(); return; }
             if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'ADD', data: newCase, by: activeUserName, time: getToday(), pid: Date.now(), msg: `নতুন মামলা এন্ট্রি: ${toBN(noVal)}` }); addLog(`নতুন এন্ট্রির অনুরোধ: ${toBN(noVal)}`); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); } else { newCase.h = [{time: getToday(), text: `মামলা রুজু হয়েছে (${document.getElementById('mIOList').value}) - By ${activeUserName}`}]; db.push(newCase); addLog(`নতুন এন্ট্রি: ${toBN(noVal)} (${catVal || '-'})`); showToast("মামলা এন্ট্রি হয়েছে!"); }
             document.getElementById('mNo').value=''; document.getElementById('mCat').value=''; document.getElementById('mRate').value=''; document.getElementById('mPaid').value=''; document.getElementById('mIOSearch').value=''; filterIOSelect('m'); document.getElementById('mDate').value=''; document.getElementById('mDate_disp').innerHTML='📅 এন্ট্রির তারিখ নির্বাচন করুন'; document.getElementById('mDate_disp').style.background=''; save(); init();
         } finally { setTimeout(() => { isProcessing = false; }, 400); }
     }
 
-    // 🌟 NEW: CASE DAILY UPDATE (CD, MAP, WITNESS) 🌟
     function openCaseUpdate(id) {
         if(activeRole === 'emp' && !empAccess().b_upd && !empAccess().full) return showToast("আপনার দৈনিক আপডেট করার অনুমতি নেই!", "var(--accent-red)");
         curId = id; document.getElementById('updDate').value = ""; document.getElementById('updDate_disp').innerHTML = "📅 তারিখ নির্বাচন করুন"; document.getElementById('updDate_disp').style.borderColor=''; document.getElementById('updCD').value = ''; document.getElementById('updMap').value = 'না'; document.getElementById('updWit').value = ''; document.getElementById('caseUpdateModal').style.display = 'flex';
@@ -1359,22 +1395,9 @@
         if(activeRole === 'emp' && !empAccess().b_upd && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
         if(isProcessing) return; isProcessing = true;
         try {
-            let uDate = document.getElementById('updDate').value || new Date().toISOString().split('T')[0];
-            let uCd = parseInt(document.getElementById('updCD').value) || 0;
-            let uMap = document.getElementById('updMap').value;
-            let uWit = parseInt(document.getElementById('updWit').value) || 0;
-            let c = db.find(x => x.id == curId);
-
-            let updateData = { date: uDate, cd: uCd, map: uMap, wit: uWit, by: activeUserName };
-
-            if(activeRole === 'emp' && !empAccess().full) { 
-                pendingDb.push({ type: 'UPDATE', data: { cId: curId, updData: updateData }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `দৈনিক হালনাগাদ (CD/Map): ${toBN(c.no)}` }); 
-                addLog(`হালনাগাদ অনুরোধ: ${toBN(c.no)}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; 
-            }
-
-            if(!c.h) c.h = []; 
-            c.h.push({ time: getToday(), type: 'UPDATE', date: uDate, cd: uCd, map: uMap, wit: uWit, text: 'দৈনিক আপডেট', by: activeUserName });
-            addLog(`দৈনিক হালনাগাদ: ${toBN(c.no)}`); processUIUpdate(); showToast("দৈনিক আপডেট সেভ হয়েছে!", "var(--accent-green)");
+            let uDate = document.getElementById('updDate').value || new Date().toISOString().split('T')[0]; let uCd = parseInt(document.getElementById('updCD').value) || 0; let uMap = document.getElementById('updMap').value; let uWit = parseInt(document.getElementById('updWit').value) || 0; let c = db.find(x => x.id == curId); let updateData = { date: uDate, cd: uCd, map: uMap, wit: uWit, by: activeUserName };
+            if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'UPDATE', data: { cId: curId, updData: updateData }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `দৈনিক হালনাগাদ (CD/Map): ${toBN(c.no)}` }); addLog(`হালনাগাদ অনুরোধ: ${toBN(c.no)}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
+            if(!c.h) c.h = []; c.h.push({ time: getToday(), type: 'UPDATE', date: uDate, cd: uCd, map: uMap, wit: uWit, text: 'দৈনিক আপডেট', by: activeUserName }); addLog(`দৈনিক হালনাগাদ: ${toBN(c.no)}`); processUIUpdate(); showToast("দৈনিক আপডেট সেভ হয়েছে!", "var(--accent-green)");
         } finally { setTimeout(() => { isProcessing = false; }, 400); }
     }
 
@@ -1398,7 +1421,6 @@
         if(isProcessing) return; isProcessing = true;
         try {
             let amt = document.getElementById('editPaidAmt').value; let c = db.find(x=>x.id==curId); 
-            if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data.amt = amt; approveAction(editingPendingId); editingPendingId = null; closeM(); return; }
             let payLimit = empAccess().payLimit;
             if(activeRole === 'emp' && !empAccess().full) { 
                 if(payLimit > 0 && parseFloat(amt) > payLimit) {
@@ -1420,7 +1442,6 @@
         try {
             let dispDate = document.getElementById('dispD').value || new Date().toISOString().split('T')[0]; let c = db.find(x => x.id == curId); if(!c) return; let t = c.t ? c.t.trim() : ''; let dNo = ""; let st = "নিষ্পত্তি";
             if(t === 'জিআর') { st = document.getElementById('grSt').value || 'চার্জশিট'; dNo = document.getElementById('dispNo').value.trim(); } else if(t === 'সিআর') { st = 'প্রতিবেদন দাখিল'; } else if(t === 'ইউডি') { st = 'চূড়ান্ত রিপোর্ট দাখিল'; } else if(t === 'জিডি') { st = 'নিষ্পত্তি প্রসিকিউশন'; dNo = document.getElementById('proNo').value.trim(); }
-            if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data = { cId: curId, st: st, dispNo: dNo, dispD: dispDate }; approveAction(editingPendingId); editingPendingId = null; closeM(); return; }
             if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'DISP', data: { cId: curId, st: st, dispNo: dNo, dispD: dispDate }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `মামলা নিষ্পত্তি (${st}): ${toBN(c.no)}` }); addLog(`নিষ্পত্তি অনুরোধ: ${toBN(c.no)}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
             c.st = st; c.dispNo = dNo; c.dispD = dispDate; if(!Array.isArray(c.h)) c.h = []; c.h.push({time: getToday(), text: `নিষ্পত্তি: ${c.st} ${dNo ? toBN(dNo) : ''} - By ${activeUserName}`}); addLog(`নিষ্পত্তি (${c.st}): ${toBN(c.no)}`); document.getElementById('dispNo').value = ''; document.getElementById('proNo').value = ''; processUIUpdate(); showToast("মামলা নিষ্পত্তি হয়েছে!", "var(--accent-green)"); 
         } catch (err) { alert("সমস্যা হয়েছে: " + err.message); } finally { setTimeout(() => { isProcessing = false; }, 400); }
@@ -1433,7 +1454,6 @@
         if(isProcessing) return; isProcessing = true;
         try {
             let c = db.find(x => x.id == curId); let tD = document.getElementById('transDate').value || new Date().toISOString().split('T')[0]; let tN = document.getElementById('transNote').value.trim(); 
-            if(editingPendingId) { let p = pendingDb.find(x => x.pid === editingPendingId); p.data = { cId: curId, dispD: tD, dispNo: tN }; approveAction(editingPendingId); editingPendingId = null; closeM(); return; }
             if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'TRANS', data: { cId: curId, dispD: tD, dispNo: tN }, by: activeUserName, time: getToday(), pid: Date.now(), msg: `মামলা হস্তান্তর: ${toBN(c.no)}` }); addLog(`হস্তান্তর অনুরোধ: ${toBN(c.no)}`); closeM(); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); save(); init(); return; }
             c.st = 'হস্তান্তর'; c.dispD = tD; c.dispNo = tN; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `মামলা হস্তান্তর করা হয়েছে - By ${activeUserName}`}); addLog(`মামলা হস্তান্তর: ${toBN(c.no)}`); document.getElementById('transNote').value = ''; processUIUpdate(); showToast("মামলা হস্তান্তর করা হয়েছে!"); 
         } finally { setTimeout(() => { isProcessing = false; }, 400); }
@@ -1447,25 +1467,46 @@
     }
 
     function openApprovals() { renderApprovals(); document.getElementById('approvalModal').style.display = 'flex'; }
-    function renderApprovals() { let tbody = pendingDb.map(p => `<tr><td style="font-weight:bold; color:var(--accent-blue);">${p.by}</td><td style="font-size:14px; font-weight:600;">${toBN(p.msg)}</td><td style="font-size:12px; color:var(--text-muted);">${toBN(p.time)}</td><td style="text-align:center; white-space:nowrap;"><button class="btn-action" style="background:#475569;" onclick="viewPendingAction(${p.pid})">👁️ ভিউ</button></td></tr>`).join(''); if(pendingDb.length === 0) tbody = `<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-muted);">কোনো পেন্ডিং কাজ নেই</td></tr>`; let el = document.getElementById('approvalBody'); if(el) el.innerHTML = tbody; }
+    function renderApprovals() { let tbody = pendingDb.map(p => `<tr><td style="font-weight:bold; color:var(--accent-blue);">${p.by}</td><td style="font-size:14px; font-weight:600;">${toBN(p.msg)}</td><td style="font-size:12px; color:var(--text-muted);">${toBN(p.time)}</td><td style="text-align:center; white-space:nowrap;"><button class="btn-action" style="background:#475569;" onclick="viewPendingAction(${p.pid})">👁️ ভিউ ও এডিট</button></td></tr>`).join(''); if(pendingDb.length === 0) tbody = `<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-muted);">কোনো পেন্ডিং কাজ নেই</td></tr>`; let el = document.getElementById('approvalBody'); if(el) el.innerHTML = tbody; }
     
-    // 🌟 NEW: VIEW PENDING ACTION (DETAILS) 🌟
+    // 🌟 VIEW & EDIT PENDING ACTIONS DIRECTLY 🌟
     function viewPendingAction(pid) {
         let p = pendingDb.find(x => x.pid === pid); if (!p) return;
         let html = `<div style="font-size:16px; margin-bottom:10px; color:var(--accent-purple); font-weight:800;">${toBN(p.msg)}</div><hr style="border:0; border-top:1px dashed #cbd5e1; margin-bottom:15px;">`;
-        html += `<b>অনুরোধকারী:</b> ${p.by}<br><b>সময়:</b> ${toBN(p.time)}<br><br>`;
+        html += `<div style="font-size:13px; color:var(--text-muted); margin-bottom:15px;"><b>অনুরোধকারী:</b> ${p.by} | <b>সময়:</b> ${toBN(p.time)}</div>`;
         
-        if(p.type === 'ADD') { html += `<b>মামলা নং:</b> ${toBN(p.data.no)}<br><b>ধরণ ও ধারা:</b> ${p.data.t} - ${p.data.cat}<br><b>অফিসার:</b> ${p.data.io}<br><b>তারিখ:</b> ${dateBN(p.data.d)}<br><b>বিল:</b> ৳${toBN(p.data.r)} (জমা: ৳${toBN(p.data.p)})`; }
-        else if(p.type === 'EDIT') { html += `<b>নতুন এডিট তথ্য:</b><br>মামলা নং: ${toBN(p.data.no)}<br>অফিসার: ${p.data.io}<br>বিল: ৳${toBN(p.data.r)}<br>জমা: ৳${toBN(p.data.p)}`; }
-        else if(p.type === 'UPDATE') { html += `<b>হালনাগাদ তারিখ:</b> ${dateBN(p.data.updData.date)}<br><b>সিডি (CD) লেখা হয়েছে:</b> ${toBN(p.data.updData.cd)} টি<br><b>ম্যাপ তৈরি:</b> ${p.data.updData.map}<br><b>সাক্ষী:</b> ${toBN(p.data.updData.wit)} জন`; }
-        else if(p.type === 'PAY') { html += `<b>নতুন টাকা জমা:</b> ৳${toBN(p.data.amt)}`; }
-        else if(p.type === 'DISP') { html += `<b>নিষ্পত্তির ধরণ:</b> ${p.data.st} <br><b>স্মারক/প্রসিকিউশন:</b> ${toBN(p.data.dispNo)}<br><b>তারিখ:</b> ${dateBN(p.data.dispD)}`; }
-        else if(p.type === 'TRANS') { html += `<b>হস্তান্তরের তারিখ:</b> ${dateBN(p.data.dispD)}<br><b>নোট:</b> ${toBN(p.data.dispNo)}`; }
+        if(p.type === 'ADD' || p.type === 'EDIT') {
+            html += `<label style="font-size:12px; font-weight:bold;">মামলা নং:</label><input type="text" class="vp-input" id="vp_no" value="${p.data.no}">`;
+            html += `<label style="font-size:12px; font-weight:bold;">ধরণ ও ধারা:</label><input type="text" class="vp-input" id="vp_cat" value="${p.data.cat}">`;
+            html += `<label style="font-size:12px; font-weight:bold;">অফিসার:</label><input type="text" class="vp-input" id="vp_io" value="${p.data.io}">`;
+            html += `<label style="font-size:12px; font-weight:bold;">মোট বিল:</label><input type="text" class="vp-input" id="vp_r" value="${p.data.r}">`;
+            html += `<label style="font-size:12px; font-weight:bold;">জমা:</label><input type="text" class="vp-input" id="vp_p" value="${p.data.p}">`;
+        } else if(p.type === 'PAY') {
+            html += `<label style="font-size:12px; font-weight:bold;">জমা টাকার পরিমাণ:</label><input type="text" class="vp-input" id="vp_amt" value="${p.data.amt}">`;
+        } else if(p.type === 'UPDATE') {
+            html += `<label style="font-size:12px; font-weight:bold;">সিডি লেখা হয়েছে:</label><input type="number" class="vp-input" id="vp_cd" value="${p.data.updData.cd}">`;
+            html += `<label style="font-size:12px; font-weight:bold;">ম্যাপ তৈরি:</label><select class="vp-input" id="vp_map"><option value="হ্যাঁ" ${p.data.updData.map==='হ্যাঁ'?'selected':''}>হ্যাঁ</option><option value="না" ${p.data.updData.map==='না'?'selected':''}>না</option></select>`;
+            html += `<label style="font-size:12px; font-weight:bold;">সাক্ষী সংখ্যা:</label><input type="number" class="vp-input" id="vp_wit" value="${p.data.updData.wit}">`;
+        } else if(p.type === 'DISP') {
+            html += `<label style="font-size:12px; font-weight:bold;">নিষ্পত্তির ধরণ:</label><input type="text" class="vp-input" id="vp_st" value="${p.data.st}">`;
+            html += `<label style="font-size:12px; font-weight:bold;">স্মারক/প্রসিকিউশন:</label><input type="text" class="vp-input" id="vp_dispNo" value="${p.data.dispNo}">`;
+        } else if(p.type === 'TRANS') {
+            html += `<label style="font-size:12px; font-weight:bold;">হস্তান্তরের নোট:</label><input type="text" class="vp-input" id="vp_dispNo" value="${p.data.dispNo}">`;
+        }
 
         document.getElementById('viewPendingBody').innerHTML = html;
-        document.getElementById('viewApproveBtn').onclick = () => { approveAction(pid); document.getElementById('viewPendingModal').style.display='none'; };
+        document.getElementById('viewApproveBtn').onclick = () => { approveFromView(pid); };
         document.getElementById('viewRejectBtn').onclick = () => { rejectAction(pid); document.getElementById('viewPendingModal').style.display='none'; };
         document.getElementById('viewPendingModal').style.display = 'flex';
+    }
+
+    function approveFromView(pid) {
+        let p = pendingDb.find(x => x.pid === pid); if (!p) return;
+        if(p.type === 'ADD' || p.type === 'EDIT') { p.data.no = document.getElementById('vp_no').value; p.data.cat = document.getElementById('vp_cat').value; p.data.io = document.getElementById('vp_io').value; p.data.r = document.getElementById('vp_r').value; p.data.p = document.getElementById('vp_p').value; } 
+        else if(p.type === 'PAY') { p.data.amt = document.getElementById('vp_amt').value; } 
+        else if(p.type === 'UPDATE') { p.data.updData.cd = document.getElementById('vp_cd').value; p.data.updData.map = document.getElementById('vp_map').value; p.data.updData.wit = document.getElementById('vp_wit').value; } 
+        else if(p.type === 'DISP' || p.type === 'TRANS') { if(document.getElementById('vp_st')) p.data.st = document.getElementById('vp_st').value; if(document.getElementById('vp_dispNo')) p.data.dispNo = document.getElementById('vp_dispNo').value; }
+        approveAction(pid); document.getElementById('viewPendingModal').style.display='none';
     }
 
     function approveAction(pid) { 
@@ -1556,8 +1597,8 @@
     function updateSec() { let newU = document.getElementById('newUserId').value; let newP = document.getElementById('newPin').value; let newQ = document.getElementById('secQ').value; let newA = document.getElementById('secA').value; if(!newU && !newP && !newQ && !newA) { return showToast('কমপক্ষে একটি তথ্য দিন।', 'var(--accent-red)'); } uId = newU || uId; pin = newP || pin; sq = newQ || sq; sa = newA || sa; save(); document.getElementById('newUserId').value = ''; document.getElementById('newPin').value = ''; document.getElementById('secQ').value = ''; document.getElementById('secA').value = ''; showToast('নিরাপত্তা অনলাইনে আপডেট হয়েছে।'); }
     function recover() { if(document.getElementById('ansIn').value.trim() === sa) openSheet('উদ্ধার সফল', `অ্যাডমিন আইডি: ${uId} \n পাসওয়ার্ড: ${pin}`, 'লগইন করুন', () => toggleRec(false)); else showToast('সঠিক উত্তর দিন।', 'var(--accent-red)'); }
     function toggleRec(s) { document.getElementById('lForm').style.display=s?'none':'block'; document.getElementById('rForm').style.display=s?'block':'none'; document.getElementById('qDisp').innerText="প্রশ্ন: " + sq; document.getElementById('ansIn').value = ''; }
-    function exportData(isAuto = false) { let b = new Blob([JSON.stringify({db,ios,emps,logs,savedInvoices,uId,pin,sq,sa,thanaName,distName,adminName,adminLockPin,officeTimeRestricted})],{type:'text/plain'}); let a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'ERP_Backup_' + dateBN(new Date().toISOString().split('T')[0]) + '.txt'; a.click(); if(!isAuto) showToast("ব্যাকআপ ফাইল ডাউনলোড হচ্ছে"); }
-    function importData(e) { let r = new FileReader(); r.onload = ev => { let d = JSON.parse(ev.target.result); db=d.db||[]; ios=d.ios||[]; emps=d.emps||[]; logs=d.logs||[]; savedInvoices=d.savedInvoices||[]; recycleDb=d.recycleDb||[]; uId=d.uId||"sakib"; pin=d.pin||"1234"; sq=d.sq||"প্রিয় রং?"; sa=d.sa||"নীল"; thanaName=d.thanaName||"সিরাজদিখান থানা"; distName=d.distName||"মুন্সীগঞ্জ"; adminName=d.adminName||"সাকিব আল হাসান"; adminLockPin=d.adminLockPin||""; officeTimeRestricted=d.officeTimeRestricted||false; sysLogo=""; save(); showToast("ডাটা রিস্টোর সফল হয়েছে!"); setTimeout(()=>location.reload(), 1000); }; r.readAsText(e.target.files[0]); }
+    function exportData(isAuto = false) { let b = new Blob([JSON.stringify({db,ios,emps,logs,savedInvoices,uId,pin,sq,sa,thanaName,distName,adminName,adminRank,adminPhone,adminBlood,adminJoinDate,adminAddress,adminLockPin,officeTimeRestricted})],{type:'text/plain'}); let a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'ERP_Backup_' + dateBN(new Date().toISOString().split('T')[0]) + '.txt'; a.click(); if(!isAuto) showToast("ব্যাকআপ ফাইল ডাউনলোড হচ্ছে"); }
+    function importData(e) { let r = new FileReader(); r.onload = ev => { let d = JSON.parse(ev.target.result); db=d.db||[]; ios=d.ios||[]; emps=d.emps||[]; logs=d.logs||[]; savedInvoices=d.savedInvoices||[]; recycleDb=d.recycleDb||[]; uId=d.uId||"sakib"; pin=d.pin||"1234"; sq=d.sq||"প্রিয় রং?"; sa=d.sa||"নীল"; thanaName=d.thanaName||"সিরাজদিখান থানা"; distName=d.distName||"মুন্সীগঞ্জ"; adminName=d.adminName||"সাকিব আল হাসান"; adminRank=d.adminRank||"ওসি / ইনচার্জ"; adminPhone=d.adminPhone||""; adminBlood=d.adminBlood||""; adminJoinDate=d.adminJoinDate||""; adminAddress=d.adminAddress||""; adminLockPin=d.adminLockPin||""; officeTimeRestricted=d.officeTimeRestricted||false; sysLogo=""; save(); showToast("ডাটা রিস্টোর সফল হয়েছে!"); setTimeout(()=>location.reload(), 1000); }; r.readAsText(e.target.files[0]); }
     function processUIUpdate() { save(); closeM(); init(); if(document.getElementById('specList').classList.contains('active-page')) { openSpecList(currentSpecFilter); } }
 
     function openEmpPassModal() { document.getElementById('empOldPass').value = ''; document.getElementById('empNewPass').value = ''; document.getElementById('empPassModal').style.display = 'flex'; }
@@ -1567,23 +1608,26 @@
     function openAccessControl(index) {
         curAccessEmpIdx = index; let emp = emps[index]; document.getElementById('accEmpName').innerText = "কর্মচারী: " + emp.name;
         let acc = emp.access || { status: true, full: false, p_dash: true, p_add: false, p_act: false, p_io: false, p_inv: false, p_rep: false, p_set: false, p_emp: false, b_edit: false, b_pay: false, b_disp: false, b_trans: false, b_del: false, b_upd: true, payLimit: 0, requireBind: false };
-        
         if(acc.p_dash === undefined) { acc.p_dash = true; acc.p_add = acc.add||false; acc.p_act = acc.edit||false; acc.p_io = false; acc.p_inv = acc.inv||false; acc.p_rep = false; acc.p_set = false; acc.p_emp = false; acc.b_edit = acc.edit||false; acc.b_pay = acc.pay||false; acc.b_disp = acc.disp||false; acc.b_trans = acc.disp||false; acc.b_del = false; acc.b_upd = true; }
 
         document.getElementById('accStatus').checked = acc.status; document.getElementById('accFull').checked = acc.full; 
         document.getElementById('acc_p_dash').checked = acc.p_dash; document.getElementById('acc_p_add').checked = acc.p_add; document.getElementById('acc_p_act').checked = acc.p_act; document.getElementById('acc_p_io').checked = acc.p_io; document.getElementById('acc_p_inv').checked = acc.p_inv; document.getElementById('acc_p_rep').checked = acc.p_rep; document.getElementById('acc_p_set').checked = acc.p_set; document.getElementById('acc_p_emp').checked = acc.p_emp;
         document.getElementById('acc_b_edit').checked = acc.b_edit; document.getElementById('acc_b_pay').checked = acc.b_pay; document.getElementById('acc_b_disp').checked = acc.b_disp; document.getElementById('acc_b_trans').checked = acc.b_trans; document.getElementById('acc_b_del').checked = acc.b_del; document.getElementById('acc_b_upd').checked = acc.b_upd;
-        document.getElementById('accDeviceBind').checked = acc.requireBind || !!acc.deviceId; document.getElementById('accPayLimit').value = acc.payLimit || ''; document.getElementById('accessModal').style.display = 'flex';
+        
+        let remH = ''; if(acc.tempExpiry && acc.tempExpiry > Date.now()) { remH = ((acc.tempExpiry - Date.now()) / (1000 * 60 * 60)).toFixed(1); }
+        
+        document.getElementById('accDeviceBind').checked = acc.requireBind || !!acc.deviceId; document.getElementById('accPayLimit').value = acc.payLimit || ''; document.getElementById('accEditHours').value = remH; document.getElementById('accessModal').style.display = 'flex';
     }
 
     function saveAccessControl() {
         if(curAccessEmpIdx === null) return;
+        let hours = document.getElementById('accEditHours').value; let tempExpiry = null; if(hours && hours > 0) tempExpiry = new Date().getTime() + (hours * 60 * 60 * 1000);
         let currentDeviceId = emps[curAccessEmpIdx].access ? emps[curAccessEmpIdx].access.deviceId : null;
         emps[curAccessEmpIdx].access = {
             status: document.getElementById('accStatus').checked, full: document.getElementById('accFull').checked, 
             p_dash: document.getElementById('acc_p_dash').checked, p_add: document.getElementById('acc_p_add').checked, p_act: document.getElementById('acc_p_act').checked, p_io: document.getElementById('acc_p_io').checked, p_inv: document.getElementById('acc_p_inv').checked, p_rep: document.getElementById('acc_p_rep').checked, p_set: document.getElementById('acc_p_set').checked, p_emp: document.getElementById('acc_p_emp').checked,
             b_edit: document.getElementById('acc_b_edit').checked, b_pay: document.getElementById('acc_b_pay').checked, b_disp: document.getElementById('acc_b_disp').checked, b_trans: document.getElementById('acc_b_trans').checked, b_del: document.getElementById('acc_b_del').checked, b_upd: document.getElementById('acc_b_upd').checked,
-            requireBind: document.getElementById('accDeviceBind').checked, deviceId: document.getElementById('accDeviceBind').checked ? currentDeviceId : null, payLimit: parseFloat(document.getElementById('accPayLimit').value) || 0
+            requireBind: document.getElementById('accDeviceBind').checked, deviceId: document.getElementById('accDeviceBind').checked ? currentDeviceId : null, payLimit: parseFloat(document.getElementById('accPayLimit').value) || 0, tempExpiry: tempExpiry
         };
         addLog(`অ্যাডমিন ${emps[curAccessEmpIdx].name} এর পারমিশন আপডেট করেছেন`); save(); closeM(); renderEmp(); showToast("পারমিশন আপডেট হয়েছে!");
     }
