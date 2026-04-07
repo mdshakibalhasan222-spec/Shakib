@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* 🌟 NEW SIDEBAR & MENU CSS 🌟 */
+        /* 🌟 NEW TOP NAVBAR & SLIDING SIDEBAR 🌟 */
         .top-navbar {
             display: flex; justify-content: space-between; align-items: center; 
             padding: 10px 20px; z-index: 1000; height: 80px;
@@ -42,24 +42,24 @@
         }
 
         .menu-toggle-btn {
-            font-size: 18px; font-weight: 800; color: var(--accent-blue);
-            background: #f0f9ff; padding: 10px 20px; border-radius: 12px;
+            font-size: 16px; font-weight: 800; color: var(--accent-blue);
+            background: #f0f9ff; padding: 10px 18px; border-radius: 12px;
             border: 1px solid var(--accent-blue); cursor: pointer;
             display: flex; align-items: center; gap: 8px; transition: 0.2s;
         }
-        .menu-toggle-btn:hover { background: var(--accent-blue); color: #fff; transform: scale(1.02); }
+        .menu-toggle-btn:hover { background: var(--accent-blue); color: #fff; transform: scale(1.05); }
 
         .sidebar-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(3px);
+            background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(3px);
             z-index: 1001; display: none; opacity: 0; transition: opacity 0.3s;
         }
         .sidebar-overlay.show { display: block; opacity: 1; }
 
         .sidebar {
-            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
-            box-shadow: 5px 0 25px rgba(0,0,0,0.1); z-index: 1002;
+            position: fixed; top: 0; left: -320px; width: 300px; height: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(25px);
+            box-shadow: 5px 0 30px rgba(0,0,0,0.1); z-index: 1002;
             transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto; display: flex; flex-direction: column;
         }
@@ -68,34 +68,41 @@
         .sidebar-header {
             padding: 25px 20px; border-bottom: 1px solid #e2e8f0;
             display: flex; justify-content: space-between; align-items: center;
+            background: #f8fafc;
         }
-        .sidebar-close { font-size: 24px; color: var(--accent-red); cursor: pointer; font-weight: 900; }
+        .sidebar-close { font-size: 20px; color: var(--accent-red); background: rgba(239, 68, 68, 0.1); padding: 5px 12px; border-radius: 8px; cursor: pointer; font-weight: 900; transition: 0.2s; }
+        .sidebar-close:hover { background: var(--accent-red); color: #fff; }
 
-        /* Accordion Menu CSS */
-        .side-menu-container { padding: 15px 0; }
+        /* 🌟 ACCORDION MENU CSS 🌟 */
+        .side-menu-container { padding: 10px 0; }
         .side-item-group { border-bottom: 1px solid #f1f5f9; }
         .side-item-main {
-            padding: 16px 20px; font-size: 16px; font-weight: 800; color: var(--text-main);
+            padding: 16px 25px; font-size: 16px; font-weight: 800; color: var(--text-main);
             cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-            transition: 0.2s;
+            transition: 0.2s; border-left: 4px solid transparent;
         }
         .side-item-main:hover { background: #f8fafc; color: var(--accent-blue); }
-        .side-item-main.active { color: var(--accent-blue); border-left: 4px solid var(--accent-blue); background: #f0f9ff; }
+        .side-item-main.active { color: var(--accent-blue); border-left-color: var(--accent-blue); background: #f0f9ff; }
+        .side-item-main .arrow { transition: transform 0.3s ease; font-size: 12px; }
+        .side-item-main.open .arrow { transform: rotate(180deg); }
         
-        .side-sub-menu { display: none; background: #f8fafc; overflow: hidden; }
+        .side-sub-menu { display: none; background: #f8fafc; overflow: hidden; padding-bottom: 10px; }
         .side-sub-item {
-            padding: 12px 20px 12px 40px; font-size: 15px; font-weight: 700;
+            padding: 12px 20px 12px 50px; font-size: 15px; font-weight: 700;
             color: var(--text-muted); cursor: pointer; transition: 0.2s;
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; gap: 8px;
         }
-        .side-sub-item:hover { color: var(--accent-purple); transform: translateX(5px); }
-        .side-sub-item.active { background: var(--accent-blue); color: #fff; border-radius: 0 20px 20px 0; margin-right: 15px; }
+        .side-sub-item:hover { color: var(--accent-purple); transform: translateX(8px); }
+        .side-sub-item.active { background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); color: #fff; border-radius: 0 20px 20px 0; margin-right: 20px; }
 
-        /* 🌟 NEW ENTRY FORM GRID CSS 🌟 */
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        /* 🌟 FORM GRID CSS FOR ADD ENTRY 🌟 */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
         .form-full { grid-column: 1 / -1; }
+        .form-label { font-size: 13px; font-weight: 800; color: var(--text-muted); margin-bottom: 6px; display: block; text-transform: uppercase; }
 
-        /* Existing Core CSS */
+        .app-layout { display: flex; flex: 1; overflow: hidden; width: 100%; position: relative; }
+
+        /* Core CSS */
         .bg-fluid { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: linear-gradient(-45deg, #e0f2fe, #bae6fd, #e9d5ff, #fbcfe8, #d8b4fe); background-size: 400% 400%; animation: premiumFluid 15s ease infinite; }
         @keyframes premiumFluid { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         @keyframes quickPop { 0% { opacity: 0; transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
@@ -107,24 +114,24 @@
 
         .glass-panel { background: var(--glass-bg); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
 
-        .nav-brand { display: flex; align-items: center; gap: 12px; min-width: max-content; }
+        .nav-brand { display: flex; align-items: center; gap: 15px; }
         .nav-brand img { width: 45px; height: 45px; object-fit: contain; padding: 2px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;}
-        .nav-brand h2 { font-size: 16px; font-weight: 800; color: #1e293b; line-height: 1.1; margin:0;}
-        .nav-brand span { font-size: 11px; color: var(--accent-blue); font-weight: 700; display: block; margin-top:2px;}
+        .nav-brand h2 { font-size: 18px; font-weight: 800; color: #1e293b; line-height: 1.1; margin:0;}
+        .nav-brand span { font-size: 12px; color: var(--accent-blue); font-weight: 700; display: block; margin-top:2px;}
         
-        .nav-right-area { display: flex; align-items: center; gap: 10px; min-width: max-content; }
-        .nav-bell { position: relative; cursor: pointer; background: #f8fafc; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; transition: 0.2s; }
+        .nav-right-area { display: flex; align-items: center; gap: 12px; min-width: max-content; }
+        .nav-bell { position: relative; cursor: pointer; background: #f8fafc; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; transition: 0.2s; }
         .nav-bell:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-color: var(--accent-orange); }
-        .nav-bell .badge-count { position: absolute; top: -4px; right: -4px; background: var(--accent-red); color: #fff; border-radius: 50%; width: 20px; height: 20px; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+        .nav-bell .badge-count { position: absolute; top: -5px; right: -5px; background: var(--accent-red); color: #fff; border-radius: 50%; width: 22px; height: 22px; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
 
-        .nav-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 4px 12px; background: #fff; border-radius: 30px; border: 1px solid #e2e8f0; transition: 0.3s;}
-        .nav-profile:hover { border-color: var(--accent-blue); background:#f8fafc; transform: scale(1.02); }
-        .nav-profile img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+        .nav-profile { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 5px 15px; background: #fff; border-radius: 30px; border: 1px solid #e2e8f0; transition: 0.3s;}
+        .nav-profile:hover { border-color: var(--accent-blue); background:#f0f9ff; transform: scale(1.02); box-shadow: 0 4px 10px rgba(14,165,233,0.1); }
+        .nav-profile img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
         .nav-profile div { display: flex; flex-direction: column; text-align: right; }
-        .nav-profile strong { font-size: 13px; color: #1e293b; font-weight: 800; line-height: 1.2;}
-        .nav-profile span { font-size: 10px; color: var(--accent-red); font-weight: 800; }
+        .nav-profile strong { font-size: 14px; color: #1e293b; font-weight: 800; line-height: 1.2;}
+        .nav-profile span { font-size: 11px; color: var(--accent-red); font-weight: 800; }
 
-        .logout-btn-ui { background: #ef4444; color: #fff; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 16px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(239,68,68,0.2); }
+        .logout-btn-ui { background: #ef4444; color: #fff; font-weight: 800; font-size: 14px; padding: 10px 18px; border-radius: 12px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(239,68,68,0.2); }
         .logout-btn-ui:hover { background: #dc2626; transform: scale(1.05); }
 
         .main { flex: 1; padding: 30px; overflow-y: auto; position: relative; scroll-behavior: smooth; overflow-x: hidden;}
@@ -146,6 +153,13 @@
         .login-btn { background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); color: #fff; border: none; padding: 18px; border-radius: 16px; font-size: 18px; font-weight: 800; cursor: pointer; width: 100%; transition: all 0.2s ease; box-shadow: 0 8px 15px rgba(14,165,233,0.3); margin-top: 10px; min-height:60px;}
         .login-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 20px rgba(139,92,246,0.4); }
 
+        @media(max-width: 1024px) { 
+            .main { padding-top: 20px; padding-bottom: 90px; } 
+            .stat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; } 
+            .chart-grid { grid-template-columns: 1fr !important; } 
+            .nav-profile strong, .nav-profile span, .nav-brand h2, .nav-brand span { display: none; }
+        }
+
         .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 25px; }
         .card { padding: 25px; border-radius: 20px; text-align: center; color: white; cursor: pointer; transition: all 0.2s ease; position: relative; border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         .card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
@@ -157,7 +171,7 @@
         .c-red { background: linear-gradient(135deg, var(--accent-red), #f87171); }
 
         .box { padding: 30px; border-radius: 20px; margin-bottom: 25px; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
-        .box-title { font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed rgba(255,255,255,0.6); padding-bottom: 10px; }
+        .box-title { font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed rgba(14,165,233,0.3); padding-bottom: 10px; }
 
         .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
         .chart-box { background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 8px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -178,33 +192,30 @@
 
         table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
         th { text-align: left; padding: 15px 20px; color: #475569; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
-        td { padding: 18px 20px; font-size: 16px; color: #1e293b; background: rgba(255,255,255,0.7) !important; border-top: 1px solid rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.8); font-weight: 600; white-space: nowrap; }
+        td { padding: 18px 20px; font-size: 15px; color: #1e293b; background: rgba(255,255,255,0.7) !important; border-top: 1px solid rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.8); font-weight: 600; white-space: nowrap; }
         tr td:first-child { border-left: 1px solid rgba(255,255,255,0.8); border-radius: 16px 0 0 16px; }
         tr td:last-child { border-right: 1px solid rgba(255,255,255,0.8); border-radius: 0 16px 16px 0; }
         tbody tr:hover td { background: #fff !important; transform: scale(1.01); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-        input, select { width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.8); border-radius: 12px; outline: none; background: rgba(255,255,255,0.7); color: #1e293b; font-size: 15px; transition: all 0.2s; font-weight: 600; }
-        input:focus, select:focus { border-color: var(--accent-blue); background: #fff; box-shadow: 0 0 0 4px rgba(14,165,233,0.1); }
+        input, select { width: 100%; padding: 14px 16px; margin-bottom: 0; border: 1px solid rgba(255,255,255,0.9); border-radius: 12px; outline: none; background: rgba(255,255,255,0.8); color: #1e293b; font-size: 15px; transition: all 0.2s; font-weight: 700; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
+        input:focus, select:focus { border-color: var(--accent-blue); background: #fff; box-shadow: 0 0 0 4px rgba(14,165,233,0.15); transform: translateY(-2px); }
         
         .vp-input { padding: 10px; margin-bottom: 10px; width: 100%; border: 1px solid var(--accent-blue); border-radius: 8px; font-weight: 800; color: #1e293b; font-size: 15px; background: #fff; }
         .vp-input:focus { box-shadow: 0 0 0 3px rgba(14,165,233,0.2); outline: none; }
 
-        .btn-ios { background: #fff; color: var(--accent-blue); border: 1px solid var(--accent-blue); padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; width: 100%; transition: all 0.2s; }
+        .btn-ios { background: #fff; color: var(--accent-blue); border: 1px solid var(--accent-blue); padding: 14px 20px; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; width: 100%; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap:8px;}
         .btn-ios:hover { background: var(--accent-blue); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(14,165,233,0.2); }
         .btn-solid-blue { background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); color: #fff; border: none; box-shadow: 0 5px 15px rgba(139,92,246,0.3); }
         .btn-solid-blue:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.4); color: #fff; }
 
         .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px; padding-bottom: 15px; border-bottom: 2px dashed rgba(255,255,255,0.5); }
         .page-header-left { display: flex; align-items: center; gap: 15px; flex-wrap: wrap;}
-        .page-header-right { display: flex; align-items: center; gap: 10px; }
-        .btn-back { background: #fff; color: #1e293b; padding: 10px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.8); font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); width: max-content; }
-        .btn-back:hover { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; transform: scale(1.05); }
         
-        .btn-action { padding: 8px 16px; border-radius: 10px; border: none; color: white; font-size: 13px; cursor: pointer; font-weight: 700; margin: 3px; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn-action { padding: 8px 16px; border-radius: 8px; border: none; color: white; font-size: 13px; cursor: pointer; font-weight: 700; margin: 3px; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0,0,0,0.2); filter: brightness(1.1); }
         
         .pagination { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; }
-        .pagination button { padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.8); background: rgba(255,255,255,0.6); color: #1e293b; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.2s; }
+        .pagination button { padding: 10px 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.8); background: rgba(255,255,255,0.6); color: #1e293b; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.2s; width: auto;}
         .pagination button:hover:not(:disabled) { border-color: var(--accent-blue); background: #fff; color: var(--accent-blue); }
 
         #toast { visibility: hidden; min-width: 280px; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); color: #000; text-align: center; border-radius: 16px; padding: 18px; position: fixed; z-index: 10000; left: 50%; bottom: 30px; transform: translateX(-50%) translateY(20px); font-weight: 800; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; font-size: 16px; border: 1px solid rgba(255,255,255,0.5); }
@@ -229,7 +240,7 @@
         .timeline-date { font-size: 13px; color: var(--text-muted); font-weight: 800; margin-bottom: 3px; }
         .timeline-text { font-size: 15px; color: #1e293b; font-weight: 700; background: rgba(255,255,255,0.5); padding: 10px 12px; border-radius: 8px; display: inline-block; border: 1px solid rgba(255,255,255,0.8); }
 
-        .date-picker-box { width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.8); border-radius: 12px; background: #fff; color: var(--accent-blue); font-size: 15px; font-weight: 800; text-align: center; cursor: pointer; transition: all 0.2s; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
+        .date-picker-box { width: 100%; padding: 14px; margin-bottom: 0; border: 1px solid rgba(255,255,255,0.8); border-radius: 12px; background: #fff; color: var(--accent-blue); font-size: 15px; font-weight: 800; text-align: center; cursor: pointer; transition: all 0.2s; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); display:flex; align-items:center; justify-content:center;}
         .date-picker-box:hover { border-color: var(--accent-blue); box-shadow: 0 5px 15px rgba(14,165,233,0.1); transform: translateY(-2px); }
         .dp-select { width: 100%; padding: 12px 5px; font-size: 16px; font-weight: 800; color: var(--text-main); background: rgba(255,255,255,0.9); border: 2px solid rgba(14, 165, 233, 0.3); border-radius: 12px; text-align: center; cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
         .dp-select:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 4px rgba(14,165,233,0.15); }
@@ -304,6 +315,7 @@
     </style>
 </head>
 <body>
+
 <div class="bg-fluid no-print"></div>
 
 <div id="loginWall">
@@ -341,22 +353,14 @@
 
 <div class="top-navbar no-print">
     <div class="nav-brand">
-        <img id="navLogo" style="display:none;">
+        <div class="menu-toggle-btn" onclick="toggleSidebar()">
+            <span id="menuIcon">☰</span> মেনু
+        </div>
+        <img id="navLogo" style="display:none; margin-left:10px;">
         <div>
             <h2>বাংলাদেশ পুলিশ</h2>
             <span id="navThanaName">সিরাজদিখান থানা, মুন্সীগঞ্জ</span>
         </div>
-    </div>
-    
-    <div class="nav-menu">
-        <div class="nav-item active" id="nav-dash" onclick="go('dash')"><span>📊</span> ড্যাশবোর্ড</div>
-        <div class="nav-item" id="nav-add" onclick="go('add')"><span>📝</span> নতুন এন্ট্রি</div>
-        <div class="nav-item" id="nav-act" onclick="gotoAct('সব')"><span>⚖️</span> এডিট/তালিকা</div>
-        <div class="nav-item" id="nav-io" onclick="go('io')"><span>👮</span> আই.ও.</div>
-        <div class="nav-item" id="nav-invPage" onclick="go('invPage')"><span>🧾</span> ইনভয়েস</div>
-        <div class="nav-item" id="nav-report" onclick="go('report')"><span>📈</span> রিপোর্ট</div>
-        <div class="nav-item" id="nav-emp" onclick="go('emp')"><span>👥</span> লগ ও সিকিউরিটি</div>
-        <div class="nav-item" id="nav-set" onclick="checkAdminPinForPage('set')"><span>⚙️</span> সেটিংস</div>
     </div>
 
     <div class="nav-right-area">
@@ -377,19 +381,89 @@
     </div>
 </div>
 
-<div class="bottom-nav no-print">
-    <div class="mobile-nav-item active" id="mob-dash" onclick="go('dash')"><span>📊</span>ড্যাশ</div>
-    <div class="mobile-nav-item" id="mob-add" onclick="go('add')"><span>📝</span>এন্ট্রি</div>
-    <div class="mobile-nav-item" id="mob-act" onclick="gotoAct('সব')"><span>⚖️</span>লিস্ট</div>
-    <div class="mobile-nav-item" id="mob-invPage" onclick="go('invPage')"><span>🧾</span>বিল</div>
-    <div class="mobile-nav-item admin-only" id="mob-set" onclick="checkAdminPinForPage('set')"><span>⚙️</span>সেটিংস</div>
-    <div class="mobile-nav-item" onclick="askLogout()"><span>🚪</span>লগআউট</div>
+<div class="sidebar-overlay no-print" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar no-print" id="sidebar">
+    <div class="sidebar-header">
+        <h3 style="color:var(--text-main); font-weight:900; margin:0;">মেনু অপশন</h3>
+        <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
+    </div>
+    
+    <div class="side-menu-container">
+        
+        <div class="side-item-group">
+            <div class="side-item-main active" id="menu-dash" onclick="go('dash'); toggleSidebar()">
+                <span>📊 ড্যাশবোর্ড</span>
+            </div>
+        </div>
+
+        <div class="side-item-group">
+            <div class="side-item-main" id="menu-add" onclick="toggleSubMenu('sub-add', this)">
+                <span>📝 নতুন এন্ট্রি</span><span class="arrow">▼</span>
+            </div>
+            <div class="side-sub-menu" id="sub-add">
+                <div class="side-sub-item active" onclick="setMType('জিআর', this); go('add'); toggleSidebar()">📁 জিআর মামলা</div>
+                <div class="side-sub-item" onclick="setMType('সিআর', this); go('add'); toggleSidebar()">📁 সিআর মামলা</div>
+                <div class="side-sub-item" onclick="setMType('ইউডি', this); go('add'); toggleSidebar()">📁 ইউডি মামলা</div>
+                <div class="side-sub-item" onclick="setMType('জিডি', this); go('add'); toggleSidebar()">📁 জিডি এন্ট্রি</div>
+            </div>
+        </div>
+
+        <div class="side-item-group">
+            <div class="side-item-main" id="menu-act" onclick="toggleSubMenu('sub-act', this)">
+                <span>⚖️ এডিট/তালিকা</span><span class="arrow">▼</span>
+            </div>
+            <div class="side-sub-menu" id="sub-act">
+                <div class="side-sub-item active" onclick="gotoAct('সব', this); toggleSidebar()">📋 সকল তালিকা</div>
+                <div class="side-sub-item" onclick="gotoAct('চলমান', this); toggleSidebar()">⏳ চলমান মামলা</div>
+                <div class="side-sub-item" onclick="gotoAct('নিষ্পত্তি', this); toggleSidebar()">✅ নিষ্পত্তিকৃত</div>
+                <div class="side-sub-item" onclick="gotoAct('বকেয়া', this); toggleSidebar()">💰 বকেয়া তালিকা</div>
+                <div class="side-sub-item" onclick="gotoAct('বদলী_মামলা', this); toggleSidebar()" style="color:#64748b;">🔄 বদলীকৃত আই.ও কাজ</div>
+            </div>
+        </div>
+
+        <div class="side-item-group">
+            <div class="side-item-main" id="menu-io" onclick="toggleSubMenu('sub-io', this)">
+                <span>👮 আই.ও. ডাটাবেজ</span><span class="arrow">▼</span>
+            </div>
+            <div class="side-sub-menu" id="sub-io">
+                <div class="side-sub-item active" onclick="filterIOs('কর্মরত', this); go('io'); toggleSidebar()">👮 কর্মরত অফিসার</div>
+                <div class="side-sub-item" onclick="filterIOs('বদলী', this); go('io'); toggleSidebar()">🔄 বদলী অফিসার</div>
+            </div>
+        </div>
+
+        <div class="side-item-group">
+            <div class="side-item-main" id="menu-invPage" onclick="toggleSubMenu('sub-inv', this)">
+                <span>🧾 ইনভয়েস</span><span class="arrow">▼</span>
+            </div>
+            <div class="side-sub-menu" id="sub-inv">
+                <div class="side-sub-item active" onclick="switchInvTab('new', this); go('invPage'); toggleSidebar()">➕ নতুন তৈরি</div>
+                <div class="side-sub-item" onclick="switchInvTab('archive', this); go('invPage'); toggleSidebar()">🗂️ আর্কাইভ (হিস্ট্রি)</div>
+            </div>
+        </div>
+
+        <div class="side-item-group">
+            <div class="side-item-main" id="menu-report" onclick="go('report'); toggleSidebar()">
+                <span>📈 মাসিক রিপোর্ট</span>
+            </div>
+        </div>
+
+        <div class="side-item-group">
+            <div class="side-item-main" id="menu-emp" onclick="go('emp'); toggleSidebar()">
+                <span>👥 লগ ও সিকিউরিটি</span>
+            </div>
+        </div>
+
+        <div class="side-item-group admin-only">
+            <div class="side-item-main" id="menu-set" onclick="checkAdminPinForPage('set'); toggleSidebar()">
+                <span>⚙️ সেটিংস</span>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="app-layout">
-    <div class="sidebar no-print" id="sidebar" style="display:none;"></div>
-
     <div class="main">
+        
         <div id="dash" class="page active-page">
             <div class="page-header">
                 <div class="page-header-left">
@@ -400,6 +474,14 @@
                     <button type="button" class="btn-ios no-print" style="width:auto; padding:8px 15px;" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
                 </div>
             </div>
+            
+            <div class="box glass-panel no-print" style="margin-bottom:20px; padding:15px; display:flex; gap:15px; align-items:center;">
+                <b style="color:var(--accent-blue);">তারিখ ফিল্টার:</b>
+                <input type="date" id="dashStart" onchange="init()" style="margin:0; padding:10px;">
+                <b>থেকে</b>
+                <input type="date" id="dashEnd" onchange="init()" style="margin:0; padding:10px;">
+            </div>
+
             <div class="stat-grid">
                 <div class="card c-blue" onclick="gotoAct('চলমান')"><p id="stRun">০</p><h3>চলমান</h3></div>
                 <div class="card c-green" onclick="gotoAct('নিষ্পত্তি')"><p id="stFin">০</p><h3>নিষ্পত্তিকৃত</h3></div>
@@ -476,9 +558,6 @@
                 <button type="button" class="btn-ios no-print" style="width:auto; padding:8px 15px;" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
             </div>
             
-            <div class="type-tabs glass-panel no-print" id="actFilterTabs" style="display:none;">
-                </div>
-
             <div class="box no-print search-bar glass-panel" style="display:flex; gap:10px;">
                 <input type="text" id="searchGlobal" placeholder="মামলা নম্বর বা অফিসারের নাম খুঁজুন..." style="flex: 2; margin-bottom:0;" onkeyup="currentPage=1; filterActTable()">
                 <select id="searchIOSelect" onchange="currentPage=1; filterActTable()" style="flex:1; margin-bottom:0;"><option value="সব">সকল আই.ও.</option></select>
@@ -502,29 +581,44 @@
                     <h1 style="color:var(--text-main); font-weight:800; font-size:22px; margin:0;">নতুন মামলা এন্ট্রি</h1>
                 </div>
             </div>
-            <div class="box glass-panel" style="max-width:550px; margin:0 auto;">
-                <div class="type-tabs" id="mTypeTabs" style="display:none;"></div>
+            <div class="box glass-panel" style="max-width:650px; margin:0 auto; padding:40px;">
                 <input type="hidden" id="mType" value="জিআর">
                 
-                <div style="display:flex; gap:10px;">
-                    <input type="text" id="mNo" style="flex:1;" placeholder="মামলা নং" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mCat').focus(); }">
-                    <input type="text" id="mCat" style="flex:2;" placeholder="বিষয়/ধারা (যেমন: দস্যুতা, মাদক)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mIOSearch').focus(); }">
+                <h3 id="addFormTitle" style="text-align:center; color:var(--accent-blue); margin-bottom:25px; font-weight:800;">জিআর মামলা এন্ট্রি</h3>
+
+                <div class="form-grid">
+                    <div>
+                        <label class="form-label">মামলা/জিডি নং</label>
+                        <input type="text" id="mNo" placeholder="যেমন: ১২/২০২৪" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mCat').focus(); }">
+                    </div>
+                    <div>
+                        <label class="form-label">বিষয়/ধারা</label>
+                        <input type="text" id="mCat" placeholder="যেমন: দস্যুতা, চুরি" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mIOSearch').focus(); }">
+                    </div>
+                    
+                    <div class="form-full">
+                        <label class="form-label">এন্ট্রির তারিখ</label>
+                        <div class="date-picker-box" id="mDate_disp" onclick="openDP('mDate')">📅 তারিখ নির্বাচন করুন (DD-MM-YYYY)</div>
+                        <input type="hidden" id="mDate">
+                    </div>
+
+                    <div class="form-full" style="background:#f8fafc; padding:15px; border-radius:12px; border:1px solid var(--glass-border);">
+                        <label class="form-label" style="color:var(--accent-purple);">👮 অফিসার নির্বাচন করুন</label>
+                        <input type="text" id="mIOSearch" placeholder="🔍 অফিসারের নাম লিখে খুঁজুন..." onkeyup="filterIOSelect('m')" style="border-radius: 10px; margin-bottom: 10px; border-color: var(--accent-purple);" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mIOList').focus(); }">
+                        <select id="mIOList" size="4" style="border-radius: 10px; height: 120px; background: #fff; border-color: var(--accent-blue);" onchange="document.getElementById('mRate').focus()" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mRate').focus(); }"></select>
+                    </div>
+
+                    <div>
+                        <label class="form-label">মোট রেট/বিল (৳)</label>
+                        <input type="number" id="mRate" placeholder="৳ ০" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mPaid').focus(); }">
+                    </div>
+                    <div>
+                        <label class="form-label">জমা (৳)</label>
+                        <input type="number" id="mPaid" placeholder="৳ ০" onkeypress="if(event.key === 'Enter') { event.preventDefault(); askSaveCase(); }">
+                    </div>
                 </div>
                 
-                <div class="date-picker-box" id="mDate_disp" onclick="openDP('mDate')">📅 এন্ট্রির তারিখ নির্বাচন করুন</div>
-                <input type="hidden" id="mDate">
-
-                <div style="margin-bottom: 15px;">
-                    <div style="font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">👮 অফিসার নির্বাচন করুন (সার্চ করুন)</div>
-                    <input type="text" id="mIOSearch" placeholder="🔍 অফিসারের নাম লিখুন..." onkeyup="filterIOSelect('m')" style="border-radius: 14px 14px 0 0; margin-bottom: 0; border-bottom: none; border-color: var(--accent-blue);" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mIOList').focus(); }">
-                    <select id="mIOList" size="4" style="border-radius: 0 0 14px 14px; height: 120px; background: #fff; border-color: var(--accent-blue);" onchange="document.getElementById('mRate').focus()" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mRate').focus(); }"></select>
-                </div>
-
-                <div style="display:flex; gap:10px">
-                    <input type="number" id="mRate" placeholder="মোট রেট/বিল (৳)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('mPaid').focus(); }">
-                    <input type="number" id="mPaid" placeholder="জমা দেওয়া হয়েছে (৳)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); askSaveCase(); }">
-                </div>
-                <button type="button" class="btn-ios btn-solid-blue" style="margin-top:15px;" onclick="askSaveCase()">সিস্টেমে সেভ করুন</button>
+                <button type="button" class="btn-ios btn-solid-blue" style="margin-top:10px; padding:16px; font-size:18px;" onclick="askSaveCase()">সিস্টেমে সেভ করুন</button>
             </div>
         </div>
 
@@ -605,8 +699,6 @@
                 </div>
             </div>
 
-            <div class="type-tabs glass-panel no-print" id="ioFilterTabs" style="display:none;"></div>
-
             <div class="box glass-panel no-print" style="padding: 15px; margin-bottom: 15px; display:flex; gap:10px; align-items:center;">
                 <div style="font-weight:800; color:var(--accent-blue);">কর্মস্থল অনুযায়ী ফিল্টার:</div>
                 <select id="ioWorkplaceFilter" style="flex:1; margin-bottom:0; background:#fff;" onchange="renderIOPageTable()">
@@ -627,15 +719,13 @@
                 </div>
             </div>
             
-            <div class="type-tabs glass-panel no-print" id="invTabs" style="display:none;"></div>
-
             <div id="invNewSection" class="no-print">
                 <div class="box glass-panel">
                     <div class="box-title" style="color:var(--accent-blue);">✍️ ইনভয়েস কাস্টমাইজেশন</div>
                     
                     <div style="display:flex; gap:15px; align-items:flex-start; flex-wrap:wrap; margin-bottom:15px;">
                         <div style="flex:1.5; min-width:250px;">
-                            <div style="font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:8px;">অফিসার নির্বাচন করুন</div>
+                            <div style="font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:8px;">১. অফিসার নির্বাচন করুন</div>
                             
                             <div style="margin-bottom:10px; display:flex; gap:15px; font-weight:600; font-size:14px; background: rgba(255,255,255,0.6); padding: 8px; border-radius: 8px;">
                                 <label style="cursor:pointer;"><input type="radio" name="invIoType" value="কর্মরত" checked onchange="renderInvIOList()"> কর্মরত অফিসার</label>
@@ -647,15 +737,15 @@
                         </div>
 
                         <div style="flex:1; min-width:200px;">
-                            <div style="font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:8px;">যেই মাসের মামলা</div>
+                            <div style="font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:8px;">২. যেই মাসের মামলা</div>
                             <div class="date-picker-box" id="invMonth_disp" onclick="openMP('invMonth')" style="margin-bottom:15px;">🗓️ মাস সিলেক্ট করুন</div>
                             <input type="hidden" id="invMonth">
                             
-                            <div style="font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:8px;">ইনভয়েস ইস্যুর তারিখ (প্রিন্টের জন্য)</div>
+                            <div style="font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:8px;">৩. ইনভয়েস ইস্যুর তারিখ</div>
                             <div class="date-picker-box" id="customInvDate_disp" onclick="openDP('customInvDate')" style="margin-bottom:15px;">📅 আজকের তারিখ (পরিবর্তনযোগ্য)</div>
                             <input type="hidden" id="customInvDate">
 
-                            <button type="button" class="btn-ios btn-solid-blue" style="padding:14px;" onclick="loadInvCases()">মামলা খুঁজুন</button>
+                            <button type="button" class="btn-ios btn-solid-blue" style="padding:14px;" onclick="loadInvCases()">৪. মামলা খুঁজুন</button>
                         </div>
                     </div>
 
@@ -867,7 +957,7 @@
         <h3 id="accEmpName" style="text-align:center; color:var(--text-muted); margin-bottom:15px;"></h3>
         
         <label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid var(--accent-green);">
-            <span style="font-weight:800; color:var(--accent-green);">🟢 অ্যাকাউন্ট অ্যাক্টিভ (লগইন)</span>
+            <span style="font-weight:800; color:var(--accent-green);">🟢 অ্যাকাউন্ট অ্যাক্টিভ (লgin)</span>
             <input type="checkbox" id="accStatus" style="width:20px; height:20px; cursor:pointer;">
         </label>
         
@@ -927,7 +1017,7 @@
         <h2 style="color:var(--accent-purple); margin-bottom:15px; text-align:center; font-size:20px;">📝 দৈনিক মামলার হালনাগাদ</h2>
         <p style="text-align:center; font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:20px;">আজকের কাজের আপডেট দিন</p>
         
-        <div class="date-picker-box" id="updDate_disp" onclick="openDP('updDate')" style="margin-bottom:15px;">📅 তারিখ নির্বাচন করুন</div>
+        <div class="date-picker-box" id="updDate_disp" onclick="openDP('updDate')" style="margin-bottom:15px;">📅 তারিখ নির্বাচন করুন (DD-MM-YYYY)</div>
         <input type="hidden" id="updDate">
         
         <input type="number" id="updCD" placeholder="কয়টা সিডি (CD) লিখেছেন?" style="font-weight:700;">
@@ -945,7 +1035,7 @@
 <div class="modal no-print" id="transferModal"><div class="modal-box">
     <h2 style="color:var(--accent-orange); margin-bottom:15px; text-align:center; font-size:20px;">🔄 মামলা হস্তান্তর</h2>
     <p style="margin-bottom:15px; color:var(--text-muted); font-size:14px; text-align:center; font-weight:600;">মামলাটি বর্তমান অফিসারের তালিকা থেকে 'হস্তান্তর' হিসেবে মার্ক করা হবে.</p>
-    <div class="date-picker-box" id="transDate_disp" onclick="openDP('transDate')" style="margin-bottom:15px;">📅 হস্তান্তরের তারিখ</div>
+    <div class="date-picker-box" id="transDate_disp" onclick="openDP('transDate')" style="margin-bottom:15px;">📅 হস্তান্তরের তারিখ (DD-MM-YYYY)</div>
     <input type="hidden" id="transDate">
     <input type="text" id="transNote" placeholder="নোট বা স্মারক নং (ঐচ্ছিক)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); confirmTransfer(); }">
     <button type="button" class="btn-ios" style="background:var(--accent-orange); color:#fff; border:none;" onclick="confirmTransfer()">হস্তান্তর সম্পন্ন করুন</button>
@@ -954,23 +1044,46 @@
 
 <div class="modal no-print" id="editIOModal"><div class="modal-box"><h2 style="margin-bottom:15px; text-align:center; font-size:20px; color:var(--accent-blue);">👮 অফিসার তথ্য আপডেট</h2><input type="text" id="edION" placeholder="নাম" onkeypress="if(event.key === 'Enter') { event.preventDefault(); updateIO(); }"><input type="text" id="edIOS" placeholder="থানা/কর্মস্থল" onkeypress="if(event.key === 'Enter') { event.preventDefault(); updateIO(); }"><select id="edIOSt"><option value="কর্মরত">কর্মরত</option><option value="বদলী">বদলী</option></select><button type="button" class="btn-ios btn-solid-blue" onclick="updateIO()">পরিবর্তন সেভ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বাতিল</button></div></div>
 
-<div class="modal no-print" id="editCaseModal"><div class="modal-box" style="max-width:550px;">
-    <h2 style="color:var(--accent-blue); text-align:center; font-size:20px; margin-bottom:15px;">📝 মামলা এডিট করুন</h2>
-    <select id="eType"><option value="জিআর">জিআর</option><option value="সিআর">সিআর</option><option value="ইউডি">ইউডি</option><option value="জিডি">জিডি</option></select>
-    <input type="text" id="eNo" placeholder="নম্বর" onkeypress="if(event.key === 'Enter') { event.preventDefault(); saveCaseEdit(); }">
-    <input type="text" id="eCat" placeholder="বিষয়/ধারা (যেমন: দস্যুতা, মাদক)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('eIOSearch').focus(); }">
-    <div class="date-picker-box" id="eDate_disp" onclick="openDP('eDate')" style="margin-bottom:15px;">📅 তারিখ আপডেট করুন</div>
-    <input type="hidden" id="eDate">
+<div class="modal no-print" id="editCaseModal"><div class="modal-box" style="max-width:650px;">
+    <h2 style="color:var(--accent-blue); text-align:center; font-size:20px; margin-bottom:20px;">📝 মামলা এডিট করুন</h2>
     
-    <div style="margin-bottom: 15px;">
-        <input type="text" id="eIOSearch" placeholder="🔍 অফিসারের নাম লিখুন..." onkeyup="filterIOSelect('e')" style="border-radius: 14px 14px 0 0; margin-bottom: 0; border-bottom: none; border-color: var(--accent-blue);">
-        <select id="eIOList" size="4" style="border-radius: 0 0 14px 14px; height: 120px; background: #fff; border-color: var(--accent-blue);" onchange="document.getElementById('eRate').focus()"></select>
+    <div class="form-grid">
+        <div>
+            <label class="form-label">মামলার ধরণ</label>
+            <select id="eType"><option value="জিআর">জিআর</option><option value="সিআর">সিআর</option><option value="ইউডি">ইউডি</option><option value="জিডি">জিডি</option></select>
+        </div>
+        <div>
+            <label class="form-label">মামলা/জিডি নং</label>
+            <input type="text" id="eNo" placeholder="নম্বর" onkeypress="if(event.key === 'Enter') { event.preventDefault(); saveCaseEdit(); }">
+        </div>
+        
+        <div class="form-full">
+            <label class="form-label">বিষয়/ধারা</label>
+            <input type="text" id="eCat" placeholder="বিষয়/ধারা (যেমন: দস্যুতা, মাদক)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('eIOSearch').focus(); }">
+        </div>
+        
+        <div class="form-full">
+            <label class="form-label">এন্ট্রির তারিখ</label>
+            <div class="date-picker-box" id="eDate_disp" onclick="openDP('eDate')" style="margin-bottom:15px;">📅 তারিখ আপডেট করুন (DD-MM-YYYY)</div>
+            <input type="hidden" id="eDate">
+        </div>
+
+        <div class="form-full" style="background:#f8fafc; padding:15px; border-radius:12px; border:1px solid var(--glass-border);">
+            <label class="form-label" style="color:var(--accent-purple);">👮 অফিসার নির্বাচন করুন</label>
+            <input type="text" id="eIOSearch" placeholder="🔍 অফিসারের নাম লিখুন..." onkeyup="filterIOSelect('e')" style="border-radius: 10px; margin-bottom: 10px; border-color: var(--accent-purple);">
+            <select id="eIOList" size="4" style="border-radius: 10px; height: 120px; background: #fff; border-color: var(--accent-blue);" onchange="document.getElementById('eRate').focus()"></select>
+        </div>
+
+        <div>
+            <label class="form-label">মোট বিল (৳)</label>
+            <input type="number" id="eRate" placeholder="মোট বিল (৳)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('ePaid').focus(); }">
+        </div>
+        <div>
+            <label class="form-label">জমা (৳)</label>
+            <input type="number" id="ePaid" placeholder="জমা (৳)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); saveCaseEdit(); }">
+        </div>
     </div>
 
-    <div style="display:flex; gap:10px;">
-        <input type="text" id="eRate" placeholder="মোট বিল (৳)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('ePaid').focus(); }">
-        <input type="text" id="ePaid" placeholder="জমা (৳)" onkeypress="if(event.key === 'Enter') { event.preventDefault(); saveCaseEdit(); }">
-    </div>
     <button type="button" class="btn-ios btn-solid-blue" onclick="saveCaseEdit()">আপডেট সেভ করুন</button>
     <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বাতিল</button>
 </div></div>
@@ -991,7 +1104,7 @@
         <div id="udOps" style="display:none; background:rgba(255,255,255,0.6); padding:15px; border-radius:10px; margin-bottom:15px; text-align:center; border:1px solid rgba(255,255,255,0.8); font-weight:700; color:var(--accent-blue);">চূড়ান্ত রিপোর্ট দাখিল</div>
         <div id="gdOps" style="display:none"><input type="text" id="proNo" placeholder="প্রসিকিউশন নম্বর" onkeypress="if(event.key === 'Enter') { event.preventDefault(); processDisp(); }"></div>
         
-        <div class="date-picker-box" id="dispD_disp" onclick="openDP('dispD')" style="margin-bottom:15px;">📅 নিষ্পত্তির তারিখ (ক্লিক করুন)</div>
+        <div class="date-picker-box" id="dispD_disp" onclick="openDP('dispD')" style="margin-bottom:15px;">📅 নিষ্পত্তির তারিখ (DD-MM-YYYY)</div>
         <input type="hidden" id="dispD">
 
         <button type="button" class="btn-ios btn-solid-blue" onclick="processDisp()">সম্পন্ন করুন</button>
@@ -1007,9 +1120,9 @@
     <div class="modal-box" style="max-width:380px; text-align:center;">
         <h2 style="color:var(--accent-blue); margin-bottom: 20px; font-size:22px;">📅 তারিখ নির্বাচন</h2>
         <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 25px;">
+            <div style="flex:1;"><div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:5px;">দিন</div><select id="dpDay" class="dp-select"></select></div>
             <div style="flex:1.5;"><div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:5px;">মাস</div><select id="dpMonth" class="dp-select" onchange="updateDPDays()"></select></div>
             <div style="flex:1.5;"><div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:5px;">বছর</div><select id="dpYear" class="dp-select" onchange="updateDPDays()"></select></div>
-            <div style="flex:1;"><div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:5px;">তারিখ</div><select id="dpDay" class="dp-select"></select></div>
         </div>
         <button type="button" class="btn-ios btn-solid-blue" onclick="confirmDate()">ঠিক আছে, সেভ করুন</button>
         <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); margin-top:10px; border:none; color:var(--text-main);" onclick="document.getElementById('datePickerModal').style.display='none'">বাতিল</button>
@@ -1131,6 +1244,25 @@
     const toBN = n => (n == null ? "" : n.toString()).replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
     const fromBN = n => parseFloat((n == null ? "" : n.toString()).replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d)).replace(/[^0-9.]/g, '')) || 0;
 
+    // 🌟 NEW: SIDEBAR & ACCORDION TOGGLE LOGIC 🌟
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('show');
+    }
+    
+    function toggleSubMenu(subId, el) {
+        const sub = document.getElementById(subId);
+        const isOpen = sub.style.display === 'block';
+        document.querySelectorAll('.side-sub-menu').forEach(s => s.style.display = 'none');
+        document.querySelectorAll('.side-item-main').forEach(m => m.classList.remove('open'));
+        if(!isOpen) {
+            sub.style.display = 'block';
+            el.classList.add('open');
+        }
+    }
+
     function generateFingerprint() { let fp = 'dev_' + Math.random().toString(36).substr(2, 9); localStorage.setItem('deviceFingerprint', fp); return fp; }
 
     const firebaseConfig = { apiKey: "AIzaSyCNOTKFnWbBMCj2kbVa1yjENLixwyF4ASE", authDomain: "case-data-management-system.firebaseapp.com", databaseURL: "https://case-data-management-system-default-rtdb.asia-southeast1.firebasedatabase.app", projectId: "case-data-management-system", storageBucket: "case-data-management-system.firebasestorage.app", messagingSenderId: "706396545562", appId: "1:706396545562:web:264d8620652f8ef4e327a3" };
@@ -1144,7 +1276,7 @@
         localStorage.setItem('ERP_db', JSON.stringify(db)); localStorage.setItem('ERP_ios', JSON.stringify(ios)); localStorage.setItem('ERP_emps', JSON.stringify(emps)); localStorage.setItem('ERP_logs', JSON.stringify(logs)); localStorage.setItem('ERP_inv', JSON.stringify(savedInvoices)); localStorage.setItem('ERP_pending', JSON.stringify(pendingDb)); localStorage.setItem('ERP_recycle', JSON.stringify(recycleDb)); localStorage.setItem('ERP_uId', uId); localStorage.setItem('ERP_pin', pin); localStorage.setItem('ERP_sq', sq); localStorage.setItem('ERP_sa', sa); localStorage.setItem('ERP_adminName', adminName); localStorage.setItem('ERP_adminRank', adminRank); localStorage.setItem('ERP_adminPhone', adminPhone); localStorage.setItem('ERP_adminBlood', adminBlood); localStorage.setItem('ERP_adminJoinDate', adminJoinDate); localStorage.setItem('ERP_adminAddress', adminAddress); localStorage.setItem('ERP_thanaName', thanaName); localStorage.setItem('ERP_distName', distName); localStorage.setItem('ERP_sysLogo', sysLogo); localStorage.setItem('ERP_officeTime', officeTimeRestricted); localStorage.setItem('ERP_adminLockPin', adminLockPin);
     }
 
-    // 🔥 FIX 5: SAFE DATA UPDATE IN FIREBASE (prevents wiping)
+    // 🔥 SAFE FIREBASE UPDATE (No more missing data)
     function save() { 
         localSaveOnly(); 
         if(typeof fireDb !== 'undefined') {
@@ -1205,15 +1337,18 @@
     function addLog(actionText) { let timeStr = getToday(); logs.unshift({ time: timeStr, u: activeUserName, txt: actionText }); if(logs.length > 300) logs.pop(); save(); renderLogs(); }
     function renderLogs() { let html = logs.map(l => `<div class="log-box"><div class="log-time">🕒 ${toBN(l.time)}</div><div style="display:flex; justify-content:space-between; align-items:center;"><span class="log-user">👤 ${l.u}</span><span class="log-text">${toBN(l.txt)}</span></div></div>`).join(''); if(logs.length === 0) html = `<div style="text-align:center; color:var(--text-muted); font-weight:600; padding:20px;">কোনো অ্যাক্টিভিটি পাওয়া যায়নি</div>`; if(document.getElementById('logContainer')) document.getElementById('logContainer').innerHTML = html; }
     function applyLogos() { let defaultLogo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bangladesh_Police_logo.svg/200px-Bangladesh_Police_logo.svg.png'; let logoToUse = (sysLogo && sysLogo.length > 10) ? sysLogo : defaultLogo; let ids = ['loginLogoImg', 'reportLogoImg', 'invoiceLogoImg', 'navLogo']; ids.forEach(id => { let el = document.getElementById(id); if(el) { el.src = logoToUse; el.style.display = 'inline-block'; } }); }
-    function dateBN(s) { if(!s) return "--"; const parts = s.split('-'); if(parts.length !== 3) return "--"; return `${toBN(parts[2])} ${bnMonths[parseInt(parts[1])-1]} ${toBN(parts[0])}`; }
-    function getToday() { let d = new Date(); return `${toBN(d.getDate())} ${bnMonths[d.getMonth()]} ${toBN(d.getFullYear())} - ${toBN(d.getHours())}:${toBN(d.getMinutes())}`; }
+    
+    // 🌟 FORMAT: DD-MM-YYYY (দিন-মাস-বছর) 🌟
+    function dateBN(s) { if(!s) return "--"; const parts = s.split('-'); if(parts.length !== 3) return "--"; return `${toBN(parts[2])}-${toBN(parts[1])}-${toBN(parts[0])}`; }
+    function getToday() { let d = new Date(); return `${toBN(d.getDate())}-${toBN(d.getMonth()+1)}-${toBN(d.getFullYear())} | ${toBN(d.getHours())}:${toBN(d.getMinutes())}`; }
     function togglePin(id) { const p = document.getElementById(id); p.type = p.type === 'password' ? 'text' : 'password'; }
 
     function updateDPDays() { let y = parseInt(document.getElementById('dpYear').value); let m = parseInt(document.getElementById('dpMonth').value); let daysInMonth = new Date(y, m, 0).getDate(); let daySel = document.getElementById('dpDay'); let currentDay = parseInt(daySel.value) || 1; daySel.innerHTML = ''; for(let i=1; i<=daysInMonth; i++) { let valStr = i < 10 ? '0'+i : i; daySel.innerHTML += `<option value="${valStr}">${toBN(i)}</option>`; } if(currentDay <= daysInMonth) daySel.value = currentDay < 10 ? '0'+currentDay : currentDay; else daySel.value = daysInMonth < 10 ? '0'+daysInMonth : daysInMonth; }
-    function openDP(targetId) { document.getElementById('datePickerModal').dataset.target = targetId; let d = new Date(); let existing = document.getElementById(targetId).value; if(existing) { let p = existing.split('-'); if(p.length===3) d = new Date(p[0], p[1]-1, p[2]); } let monthSel = document.getElementById('dpMonth'); let yearSel = document.getElementById('dpYear'); monthSel.innerHTML=''; yearSel.innerHTML=''; for(let i=0; i<12; i++) monthSel.innerHTML += `<option value="${(i+1)<10?'0'+(i+1):(i+1)}">${bnMonths[i]}</option>`; let curY = new Date().getFullYear(); for(let i=curY-5; i<=curY+5; i++) yearSel.innerHTML += `<option value="${i}">${toBN(i)}</option>`; monthSel.value = (d.getMonth()+1)<10?'0'+(d.getMonth()+1):(d.getMonth()+1); yearSel.value = d.getFullYear(); updateDPDays(); document.getElementById('dpDay').value = d.getDate()<10?'0'+d.getDate():d.getDate(); document.getElementById('datePickerModal').style.display='flex'; }
-    function confirmDate() { let t = document.getElementById('datePickerModal').dataset.target; let y = document.getElementById('dpYear').value; let m = document.getElementById('dpMonth').value; let d = document.getElementById('dpDay').value; document.getElementById(t).value = `${y}-${m}-${d}`; document.getElementById(t+'_disp').innerHTML = `📅 ${toBN(d)} ${bnMonths[parseInt(m)-1]} ${toBN(y)}`; document.getElementById(t+'_disp').style.borderColor = "var(--accent-blue)"; document.getElementById(t+'_disp').style.background = "#fff"; document.getElementById('datePickerModal').style.display = 'none'; }
+    function openDP(targetId) { document.getElementById('datePickerModal').dataset.target = targetId; let d = new Date(); let existing = document.getElementById(targetId).value; if(existing) { let p = existing.split('-'); if(p.length===3) d = new Date(p[0], p[1]-1, p[2]); } let monthSel = document.getElementById('dpMonth'); let yearSel = document.getElementById('dpYear'); monthSel.innerHTML=''; yearSel.innerHTML=''; for(let i=0; i<12; i++) monthSel.innerHTML += `<option value="${(i+1)<10?'0'+(i+1):(i+1)}">${toBN(i+1)}</option>`; let curY = new Date().getFullYear(); for(let i=curY-5; i<=curY+5; i++) yearSel.innerHTML += `<option value="${i}">${toBN(i)}</option>`; monthSel.value = (d.getMonth()+1)<10?'0'+(d.getMonth()+1):(d.getMonth()+1); yearSel.value = d.getFullYear(); updateDPDays(); document.getElementById('dpDay').value = d.getDate()<10?'0'+d.getDate():d.getDate(); document.getElementById('datePickerModal').style.display='flex'; }
+    function confirmDate() { let t = document.getElementById('datePickerModal').dataset.target; let y = document.getElementById('dpYear').value; let m = document.getElementById('dpMonth').value; let d = document.getElementById('dpDay').value; document.getElementById(t).value = `${y}-${m}-${d}`; document.getElementById(t+'_disp').innerHTML = `📅 ${toBN(d)}-${toBN(m)}-${toBN(y)}`; document.getElementById(t+'_disp').style.borderColor = "var(--accent-blue)"; document.getElementById(t+'_disp').style.background = "#fff"; document.getElementById('datePickerModal').style.display = 'none'; }
+    
     function openMP(targetId) { document.getElementById('monthPickerModal').dataset.target = targetId; let d = new Date(); let existing = document.getElementById(targetId).value; if(existing) { let p = existing.split('-'); if(p.length===2) d = new Date(p[0], p[1]-1, 1); } let monthSel = document.getElementById('mpMonth'); let yearSel = document.getElementById('mpYear'); monthSel.innerHTML=''; yearSel.innerHTML=''; for(let i=0; i<12; i++) monthSel.innerHTML += `<option value="${(i+1)<10?'0'+(i+1):(i+1)}">${bnMonths[i]}</option>`; let curY = new Date().getFullYear(); for(let i=curY-5; i<=curY+5; i++) yearSel.innerHTML += `<option value="${i}">${toBN(i)}</option>`; monthSel.value = (d.getMonth()+1)<10?'0'+(d.getMonth()+1):(d.getMonth()+1); yearSel.value = d.getFullYear(); document.getElementById('monthPickerModal').style.display='flex'; }
-    function confirmMonth() { let t = document.getElementById('monthPickerModal').dataset.target; let y = document.getElementById('mpYear').value; let m = document.getElementById('mpMonth').value; document.getElementById(t).value = `${y}-${m}`; document.getElementById(t+'_disp').innerHTML = `🗓️ ${bnMonths[parseInt(m)-1]} ${toBN(y)}`; document.getElementById(t+'_disp').style.borderColor = "var(--accent-purple)"; document.getElementById(t+'_disp').style.background = "#fff"; document.getElementById('monthPickerModal').style.display = 'none'; }
+    function confirmMonth() { let t = document.getElementById('monthPickerModal').dataset.target; let y = document.getElementById('mpYear').value; let m = document.getElementById('mpMonth').value; document.getElementById(t).value = `${y}-${m}`; document.getElementById(t+'_disp').innerHTML = `🗓️ ${bnMonths[parseInt(m)-1]}-${toBN(y)}`; document.getElementById(t+'_disp').style.borderColor = "var(--accent-purple)"; document.getElementById(t+'_disp').style.background = "#fff"; document.getElementById('monthPickerModal').style.display = 'none'; }
     
     function toggleOfficeTime(isOn) { officeTimeRestricted = isOn; save(); showToast(isOn ? "অফিস টাইম রেস্ট্রিকশন চালু হয়েছে" : "অফিস টাইম রেস্ট্রিকশন বন্ধ"); }
     function toggleAutoLogout(isOn) { autoLogoutEnabled = isOn; save(); resetLogoutTimer(); showToast(isOn ? "অটো-লগআউট চালু হয়েছে" : "অটো-লগআউট বন্ধ করা হয়েছে"); }
@@ -1243,7 +1378,6 @@
     }
     if(sessionStorage.getItem('L') && !isInvoiceViewMode) document.getElementById('loginWall').style.display = 'none';
 
-    // 🔥 FIX 6: SIDEBAR LOGIC (Updated to work perfectly with existing code)
     function go(id) { 
         if(isNavigating) return;
         let acc = empAccess(); let isFull = activeRole === 'admin' || acc.full;
@@ -1268,61 +1402,24 @@
         document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active')); 
         if(document.getElementById('mob-' + id)) document.getElementById('mob-' + id).classList.add('active'); 
 
+        // Update active class in sidebar main items
+        document.querySelectorAll('.side-item-main').forEach(n => n.classList.remove('active'));
+        if(document.getElementById('menu-' + id)) document.getElementById('menu-' + id).classList.add('active');
+
         if(activePage) { activePage.style.display = 'none'; activePage.classList.remove('active-page'); }
         document.getElementById(id).style.display = 'block'; document.getElementById(id).classList.add('active-page');
-
-        // Sidebar Control Magic
-        let sb = document.getElementById('sidebar');
-        if(id === 'dash') {
-            sb.style.display = 'flex';
-            sb.innerHTML = `<div class="sidebar-title">তারিখ ফিল্টার</div>
-                            <label style="font-size:12px; font-weight:bold; color:var(--text-muted);">শুরুর তারিখ</label>
-                            <input type="date" id="dashStart" value="${defStart}" onchange="init()" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;">
-                            <label style="font-size:12px; font-weight:bold; color:var(--text-muted);">শেষ তারিখ</label>
-                            <input type="date" id="dashEnd" value="${defEnd}" onchange="init()" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc;">`;
-        } else if(id === 'add') {
-            sb.style.display = 'flex';
-            sb.innerHTML = `<div class="sidebar-title">মামলার ধরণ</div>
-                            <div class="sidebar-item active" id="sb_gr" onclick="setMType('জিআর', this)">📁 জিআর মামলা</div>
-                            <div class="sidebar-item" id="sb_cr" onclick="setMType('সিআর', this)">📁 সিআর মামলা</div>
-                            <div class="sidebar-item" id="sb_ud" onclick="setMType('ইউডি', this)">📁 ইউডি মামলা</div>
-                            <div class="sidebar-item" id="sb_gd" onclick="setMType('জিডি', this)">📁 জিডি এন্ট্রি</div>`;
-            setMType('জিআর', document.getElementById('sb_gr'));
-        } else if(id === 'act') {
-            sb.style.display = 'flex';
-            sb.innerHTML = `<div class="sidebar-title">তালিকা ফিল্টার</div>
-                            <div class="sidebar-item active" id="sb_act_all" onclick="setActFilter('সব', this)">📋 সকল তালিকা</div>
-                            <div class="sidebar-item" id="sb_act_run" onclick="setActFilter('চলমান', this)">⏳ চলমান মামলা</div>
-                            <div class="sidebar-item" id="sb_act_fin" onclick="setActFilter('নিষ্পত্তি', this)">✅ নিষ্পত্তিকৃত</div>
-                            <div class="sidebar-item" id="sb_act_due" onclick="setActFilter('বকেয়া', this)">💰 বকেয়া তালিকা</div>
-                            <div class="sidebar-item" id="sb_act_trans" onclick="setActFilter('বদলী_মামলা', this)" style="background: rgba(148, 163, 184, 0.2); color: #475569;">🔄 বদলীকৃত আই.ও কাজ</div>`;
-            setActFilter('সব', document.getElementById('sb_act_all'));
-        } else if(id === 'io') {
-            sb.style.display = 'flex';
-            sb.innerHTML = `<div class="sidebar-title">অফিসার ফিল্টার</div>
-                            <div class="sidebar-item active" id="sb_io_run" onclick="filterIOs('কর্মরত', this)">👮 কর্মরত অফিসার</div>
-                            <div class="sidebar-item" id="sb_io_trans" onclick="filterIOs('বদলী', this)">🔄 বদলী অফিসার</div>`;
-            filterIOs('কর্মরত', document.getElementById('sb_io_run'));
-        } else if(id === 'invPage') {
-            sb.style.display = 'flex';
-            sb.innerHTML = `<div class="sidebar-title">ইনভয়েস অপশন</div>
-                            <div class="sidebar-item active" id="sb_inv_new" onclick="switchInvTab('new', this)">➕ নতুন ইনভয়েস</div>
-                            <div class="sidebar-item" id="sb_inv_arc" onclick="switchInvTab('archive', this)">🗂️ আর্কাইভ (হিস্ট্রি)</div>`;
-            switchInvTab('new', document.getElementById('sb_inv_new'));
-        } else {
-            sb.style.display = 'none'; // Report, Emp and Set do not need sidebar for now
-        }
 
         init(); setTimeout(() => { isNavigating = false; }, 200); 
     }
 
     function setMType(val, el) { 
         document.getElementById('mType').value = val; 
-        document.querySelectorAll('.sidebar-item').forEach(t => t.classList.remove('active')); 
+        document.querySelectorAll('.side-sub-item').forEach(t => t.classList.remove('active')); 
         if(el) el.classList.add('active'); 
-        let t = document.getElementById('mType').value; 
-        document.getElementById('mDate_disp').style.display = (t === 'সিআর') ? 'none' : 'block'; 
-        document.getElementById('mCat').style.display = (t === 'ইউডি') ? 'none' : 'block'; 
+        let t = document.getElementById('mType').value;
+        document.getElementById('addFormTitle').innerText = t + " মামলা এন্ট্রি";
+        document.getElementById('mDate_disp').parentElement.style.display = (t === 'সিআর') ? 'none' : 'block'; 
+        document.getElementById('mCat').parentElement.style.display = (t === 'ইউডি') ? 'none' : 'block'; 
     }
 
     function filterIOSelect(mode) { let query = document.getElementById(mode + 'IOSearch').value.toLowerCase(); let selectEl = document.getElementById(mode + 'IOList'); let ioArray = (mode === 'm') ? ios.filter(i => (i.st || 'কর্মরত') !== 'বদলী') : ios; let filtered = ioArray.filter(i => i.n.toLowerCase().includes(query)); selectEl.innerHTML = filtered.map((i, idx) => `<option value="${i.n}" ${idx===0 ? 'selected' : ''}>${i.n} ${(i.st==='বদলী')?'(বদলী)':''}</option>`).join(''); if(filtered.length > 0 && !selectEl.value) { selectEl.value = filtered[0].n; } }
@@ -1362,22 +1459,16 @@
         document.getElementById('tlBody').innerHTML = detailsHtml + `<div class="timeline" style="text-align:left;">${hHtml}</div>`; document.getElementById('timelineModal').style.display = 'flex';
     }
 
-    function gotoAct(filterVal) { 
+    function gotoAct(filterVal, el) { 
         go('act');
-        setTimeout(() => {
-            let elId = 'sb_act_all';
-            if(filterVal==='চলমান') elId='sb_act_run';
-            if(filterVal==='নিষ্পত্তি') elId='sb_act_fin';
-            if(filterVal==='বকেয়া') elId='sb_act_due';
-            setActFilter(filterVal, document.getElementById(elId)); 
-        }, 100);
+        setActFilter(filterVal, el); 
     }
     
     function openSpecList(type) { currentSpecFilter = type; let title = ""; let listData = []; if(type === 'run') { title = "চলমান মামলা সমূহ"; listData = db.filter(c => c.st === 'চলমান' && !isTransferred(c.io)).reverse(); } else if(type === 'fin') { title = "নিষ্পত্তিকৃত মামলা সমূহ"; listData = db.filter(c => c.st !== 'চলমান' && !isTransferred(c.io)).reverse(); } else if(type === 'due') { title = "বকেয়া টাকার তালিকা"; listData = db.filter(c => (fromBN(c.r) - fromBN(c.p)) > 0 && !isTransferred(c.io)).reverse(); } document.getElementById('specListTitle').innerText = title; document.querySelector('#specListTable tbody').innerHTML = getTableRows(listData, 0); go('specList'); }
 
     function setActFilter(val, el) { 
         currentActFilter = val; 
-        document.querySelectorAll('.sidebar-item').forEach(t => t.classList.remove('active')); 
+        document.querySelectorAll('.side-sub-item').forEach(t => t.classList.remove('active')); 
         if(el) el.classList.add('active');
         currentPage = 1; filterActTable(); 
     }
@@ -1394,27 +1485,27 @@
         let dS = document.getElementById('dashStart') ? document.getElementById('dashStart').value : defStart;
         let dE = document.getElementById('dashEnd') ? document.getElementById('dashEnd').value : defEnd;
         
-        let filteredCases = activeCases;
+        let filteredDashCases = activeCases;
         if(dS && dE) {
             let startObj = new Date(dS); let endObj = new Date(dE); endObj.setHours(23,59,59);
-            filteredCases = activeCases.filter(c => {
+            filteredDashCases = activeCases.filter(c => {
                 if(!c.d) return true;
                 let caseDate = new Date(c.d);
                 return caseDate >= startObj && caseDate <= endObj;
             });
         }
 
-        let total = filteredCases.length || 1; 
-        let run = filteredCases.filter(c=>c.st==='চলমান').length; 
-        let fin = filteredCases.filter(c=>c.st!=='চলমান' && !c.st.includes('হস্তান্তর')).length; 
-        let trans = filteredCases.filter(c=>c.st.includes('হস্তান্তর')).length; 
+        let total = filteredDashCases.length || 1; 
+        let run = filteredDashCases.filter(c=>c.st==='চলমান').length; 
+        let fin = filteredDashCases.filter(c=>c.st!=='চলমান' && !c.st.includes('হস্তান্তর')).length; 
+        let trans = filteredDashCases.filter(c=>c.st.includes('হস্তান্তর')).length; 
         
-        document.getElementById('chtTotal').innerText = toBN(filteredCases.length); 
+        document.getElementById('chtTotal').innerText = toBN(filteredDashCases.length); 
         let rP = Math.round((run/total)*100); let fP = Math.round((fin/total)*100); let tP = Math.round((trans/total)*100); 
         document.getElementById('chtR').innerText = toBN(rP); document.getElementById('chtF').innerText = toBN(fP); document.getElementById('chtT').innerText = toBN(tP); 
         document.getElementById('dashDonut').style.background = `conic-gradient(var(--accent-blue) 0% ${rP}%, var(--accent-green) ${rP}% ${rP+fP}%, var(--accent-orange) ${rP+fP}% 100%)`; 
         
-        let gr = filteredCases.filter(c=>c.t==='জিআর').length; let cr = filteredCases.filter(c=>c.t==='সিআর').length; let ud = filteredCases.filter(c=>c.t==='ইউডি').length; let gd = filteredCases.filter(c=>c.t==='জিডি').length; 
+        let gr = filteredDashCases.filter(c=>c.t==='জিআর').length; let cr = filteredDashCases.filter(c=>c.t==='সিআর').length; let ud = filteredDashCases.filter(c=>c.t==='ইউডি').length; let gd = filteredDashCases.filter(c=>c.t==='জিডি').length; 
         document.getElementById('pbGrV').innerText = toBN(gr); document.getElementById('pbGr').style.width = (gr/total)*100 + '%'; 
         document.getElementById('pbCrV').innerText = toBN(cr); document.getElementById('pbCr').style.width = (cr/total)*100 + '%'; 
         document.getElementById('pbUdV').innerText = toBN(ud); document.getElementById('pbUd').style.width = (ud/total)*100 + '%'; 
@@ -1423,7 +1514,7 @@
 
     function toggleAllIO(el) { document.querySelectorAll('.inv-io-chk').forEach(chk => chk.checked = el.checked); }
     
-    // 🔥 FIX 2: IO AUTO-SELECT OFF & LIVE SEARCH
+    // 🔥 FIXED: IO Auto Select
     function filterInvIOList() {
         let q = document.getElementById('invIoSearchFilter').value.toLowerCase();
         document.querySelectorAll('.inv-io-label').forEach(lbl => {
@@ -1434,7 +1525,7 @@
         let ioType = document.querySelector('input[name="invIoType"]:checked').value; 
         let filteredIOs = ios.filter(i => (i.st || 'কর্মরত') === ioType); 
         let html = `<label><input type="checkbox" id="invChkAll" onchange="toggleAllIO(this)" style="margin-right:8px;"><b>সব সিলেক্ট করুন</b></label><hr style="border:0; border-top:1px dashed #ccc; margin:10px 0;">`; 
-        html += filteredIOs.map(i => `<label class="inv-io-label" style="display:block; margin-bottom:5px;"><input type="checkbox" class="inv-io-chk" value="${i.n}" style="margin-right:8px;">${i.n}</label>`).join(''); 
+        html += filteredIOs.map(i => `<label class="inv-io-label" style="display:flex; align-items:center; margin-bottom:8px; cursor:pointer;"><input type="checkbox" class="inv-io-chk" value="${i.n}" style="width:16px; height:16px; margin:0 8px 0 0;">${i.n}</label>`).join(''); 
         if(document.getElementById('invIOListContainer')) document.getElementById('invIOListContainer').innerHTML = html; 
     }
     
@@ -1442,7 +1533,7 @@
     
     function filterIOs(status, el) { 
         currentIOTabFilter = status; 
-        document.querySelectorAll('.sidebar-item').forEach(t => t.classList.remove('active')); 
+        document.querySelectorAll('.side-sub-item').forEach(t => t.classList.remove('active')); 
         if(el) el.classList.add('active'); 
         renderIOPageTable(); 
     }
@@ -1723,12 +1814,11 @@
     }
     function rejectAction(pid) { pendingDb = pendingDb.filter(x => x.pid !== pid); save(); renderApprovals(); init(); showToast("কাজটি বাতিল করা হয়েছে", "var(--accent-red)"); }
 
-    // 🔥 FIX 4: DASHBOARD AUTO UPDATE AFTER NEW IO
     function askSaveIO() { let n = document.getElementById('ioN').value; let s = document.getElementById('ioS').value; let st = document.getElementById('ioSt').value; if(!n) return showToast("অফিসারের নাম দিন", "var(--accent-red)"); ios.push({n: n, s: s, st: st || 'কর্মরত'}); addLog(`অফিসার যুক্ত: ${n}`); updateWorkplaceDropdown(); save(); init(); updateDashCharts(); showToast("অফিসার যুক্ত হয়েছে!"); document.getElementById('ioN').value=''; document.getElementById('ioS').value=''; document.getElementById('ioSt').value='কর্মরত'; }
     
     function restoreToRunning() { if(activeRole === 'emp' && !empAccess().b_disp && !empAccess().full) return showToast("আপনার অনুমতি নেই!", "var(--accent-red)"); if(isProcessing) return; isProcessing = true; try { let c = db.find(x=>x.id==curId); c.st = "চলমান"; c.dispNo = ""; c.dispD = ""; if(!c.h) c.h=[]; c.h.push({time: getToday(), text: `নিষ্পত্তি বাতিল, চলমান - By ${activeUserName}`}); addLog(`নিষ্পত্তি বাতিল: ${toBN(c.no)}`); processUIUpdate(); showToast("মামলা চলমান করা হয়েছে"); } finally { setTimeout(() => { isProcessing = false; }, 400); } }
     function generateReport() { let mVal = document.getElementById('repMonth').value; if(!mVal) return showToast("মাসের নাম নির্বাচন করুন", "var(--accent-red)"); let parts = mVal.split('-'); let monthName = `${bnMonths[parseInt(parts[1])-1]} ${toBN(parts[0])}`; document.getElementById('repTitleMonth').innerText = monthName; let types = ['জিআর', 'সিআর', 'ইউডি', 'জিডি']; let htmlStr = ""; let totalRev = 0; types.forEach(type => { let typeCases = db.filter(c => c.t === type && c.d && c.d.startsWith(mVal)); let totalNew = typeCases.length; let totalFin = typeCases.filter(c => c.st !== 'চলমান').length; let totalPend = totalNew - totalFin; htmlStr += `<tr><td style="border-bottom: 1px solid #e2e8f0;"><b>${type}</b></td><td style="border-bottom: 1px solid #e2e8f0;">${toBN(totalNew)}</td><td style="border-bottom: 1px solid #e2e8f0;">${toBN(totalFin)}</td><td style="border-bottom: 1px solid #e2e8f0;"><b>${toBN(totalPend)}</b></td></tr>`; typeCases.forEach(c => { totalRev += fromBN(c.p); }); }); document.getElementById('repTableBody').innerHTML = htmlStr; document.getElementById('repTotalCol').innerText = "৳ " + toBN(totalRev.toLocaleString()); document.getElementById('reportPrintArea').style.display = 'block'; document.getElementById('repPrintBtn').style.display = 'block'; showToast("রিপোর্ট প্রস্তুত হয়েছে!"); }
-    function switchInvTab(type, el) { document.querySelectorAll('.sidebar-item').forEach(t => t.classList.remove('active')); if(el) el.classList.add('active'); document.getElementById('invNewSection').style.display = type === 'new' ? 'block' : 'none'; document.getElementById('invArchiveSection').style.display = type === 'archive' ? 'block' : 'none'; if(type==='archive') renderInvoiceArchive(); }
+    function switchInvTab(type, el) { document.querySelectorAll('.side-sub-item').forEach(t => t.classList.remove('active')); if(el) el.classList.add('active'); document.getElementById('invNewSection').style.display = type === 'new' ? 'block' : 'none'; document.getElementById('invArchiveSection').style.display = type === 'archive' ? 'block' : 'none'; if(type==='archive') renderInvoiceArchive(); }
     function loadInvCases() { let selectedIOs = Array.from(document.querySelectorAll('.inv-io-chk:checked')).map(chk => chk.value); let month = document.getElementById('invMonth').value; if(selectedIOs.length === 0) return showToast("অন্তত একজন অফিসার নির্বাচন করুন", "var(--accent-red)"); if(!month) return showToast("যেই মাসের মামলা তা নির্বাচন করুন", "var(--accent-red)"); let cases = db.filter(c => selectedIOs.includes(c.io) && c.st !== 'চলমান' && c.dispD && c.dispD.startsWith(month)); if(cases.length === 0) { document.getElementById('invCaseSelection').style.display = 'none'; return showToast("এই মাসে নির্বাচিত অফিসারদের কোনো নিষ্পত্তিকৃত মামলা নেই", "var(--accent-orange)"); } let tbody = ""; cases.forEach(c => { let dateLabel = (c.t === 'সিআর') ? 'প্রাপ্তীর তারিখ' : 'রুজুর তারিখ'; let ioNameDisplay = (selectedIOs.length > 1) ? `<br><small style="color:#8b5cf6;">অফিসার: ${c.io}</small>` : ''; tbody += `<tr><td style="text-align:center;"><input type="checkbox" class="inv-case-chk" value="${c.id}" checked style="width:18px; height:18px; margin:0; cursor:pointer;"></td><td style="text-align:left; line-height:1.4;"><b>${toBN(c.no)}</b> <span style="background:#f1f5f9; padding:2px 6px; border-radius:4px; font-size:12px; font-weight:bold; color:#475569;">${c.t}</span>${ioNameDisplay}<br><small style="color:var(--accent-blue);">${dateLabel}: ${dateBN(c.d)}</small></td><td><input type="text" id="invRate_${c.id}" value="${toBN(c.r)}" style="padding:10px; margin:0; border-radius:8px; border:1px solid #ccc; width:100%; font-weight:bold; text-align:center;"></td><td><input type="text" id="invDisc_${c.id}" placeholder="০" style="padding:10px; margin:0; border-radius:8px; border:1px solid #ccc; width:100%; text-align:center;"></td></tr>`; }); document.getElementById('invCaseBody').innerHTML = tbody; document.getElementById('invCaseSelection').style.display = 'block'; showToast("মামলা লোড হয়েছে!"); }
     function toggleAllInvCases(el) { document.querySelectorAll('.inv-case-chk').forEach(chk => chk.checked = el.checked); }
     function renderInvoiceArchive() { let q = document.getElementById('searchInvInput') ? document.getElementById('searchInvInput').value.toLowerCase() : ''; let filtered = savedInvoices.filter(i => i.invNo.toLowerCase().includes(q) || i.offNameText.toLowerCase().includes(q)); let html = filtered.map((inv, idx) => `<tr><td style="font-weight:bold;">${toBN(idx+1)}</td><td>${dateBN(inv.date)}</td><td><b>${toBN(inv.invNo)}</b></td><td>${inv.offNameText}</td><td style="color:var(--accent-blue); font-weight:800;">৳ ${toBN(inv.total.toLocaleString())}</td><td style="text-align:center; white-space:nowrap;"><button class="btn-action" style="background:var(--accent-green);" onclick="viewSavedInvoice('${inv.id}')">প্রিন্ট / ভিউ</button><button class="btn-action admin-only" style="background:var(--accent-blue);" onclick="openEditInvoice('${inv.id}')">এডিট</button><button class="btn-action admin-only" style="background:var(--accent-red);" onclick="deleteInvoice('${inv.id}')">মুছুন</button></td></tr>`).join(''); if(filtered.length === 0) html = `<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--text-muted);">কোনো ইনভয়েস পাওয়া যায়নি</td></tr>`; if(document.getElementById('invArchiveBody')) document.getElementById('invArchiveBody').innerHTML = html; document.querySelectorAll('#invArchiveBody .admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; }); }
@@ -1758,7 +1848,6 @@
         document.body.classList.add('print-inv'); applyLogos();
     }
 
-    // 🔥 FIX 1: PDF DOWNLOAD FEATURE
     function downloadInvoicePDF() {
         let element = document.getElementById('invoiceArea');
         let opt = { 
