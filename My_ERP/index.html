@@ -185,9 +185,6 @@
         </div>
     </div>
 
-    <!-- Other Pages Follow (specList, act, add, report, io, invPage, emp, set) -->
-    <!-- The structure is kept identical but functionality in JS is enhanced -->
-    
     <div id="specList" class="page">
         <div class="page-header"><div class="page-header-left"><button type="button" class="btn-back" onclick="go('dash')">⬅ পিছনে</button><h1 id="specListTitle" style="color:var(--text-main); font-weight:800; font-size:22px; margin:0;">তালিকা</h1></div><button type="button" class="btn-ios no-print" style="width:auto; padding:8px 15px;" onclick="window.print()">🖨️ প্রিন্ট করুন</button></div>
         <div class="box glass-panel" style="overflow-x: auto;"><table id="specListTable"><thead><tr><th>ক্রমিক</th><th>নম্বর</th><th>ধরণ ও বিষয়</th><th>অফিসার</th><th>বকেয়া</th><th>অবস্থা</th><th style="text-align:center;" class="no-print">অ্যাকশন</th></tr></thead><tbody></tbody></table></div>
@@ -261,7 +258,7 @@
         </div>
     </div>
 
-    <div id="emp" class="page admin-only">
+    <div id="emp" class="page">
         <div class="page-header"><div class="page-header-left"><button type="button" class="btn-back" onclick="go('dash')">⬅ পিছনে</button><h1 style="color:var(--text-main); font-weight:800; font-size:22px; margin:0;">লগ ও সিকিউরিটি কন্ট্রোল</h1></div><button type="button" class="btn-ios no-print" style="width:auto; padding:8px 15px;" onclick="window.print()">🖨️ প্রিন্ট করুন</button></div>
         <div class="box glass-panel no-print"><div class="box-title">👤 নতুন কর্মচারী একাউন্ট তৈরি করুন</div><div style="display:flex; gap:10px; flex-wrap:wrap;"><input type="text" id="newEmpName" placeholder="কর্মচারীর নাম" style="flex:1; margin-bottom:0;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('newEmpId').focus(); }"><input type="text" id="newEmpId" placeholder="লগইন আইডি" style="flex:1; margin-bottom:0;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('newEmpPin').focus(); }"><input type="text" id="newEmpPin" placeholder="পাসওয়ার্ড" style="flex:1; margin-bottom:0;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); addEmp(); }"><button type="button" class="btn-ios btn-solid-blue" style="flex:0.5; margin-bottom:0; padding:12px;" onclick="addEmp()">যুক্ত করুন</button></div></div>
         <div class="box glass-panel"><div class="box-title">👥 বর্তমান কর্মচারী তালিকা</div><div style="overflow-x:auto;"><table id="empTable"><thead><tr><th>নাম ও অবস্থা</th><th>আইডি ও পিসি লক</th><th>পাসওয়ার্ড</th><th style="text-align:center;" class="no-print">অ্যাকশন</th></tr></thead><tbody></tbody></table></div></div>
@@ -273,7 +270,7 @@
         </div>
     </div>
 
-    <div id="set" class="page admin-only">
+    <div id="set" class="page">
         <div class="page-header"><div class="page-header-left"><button type="button" class="btn-back" onclick="go('dash')">⬅ পিছনে</button><h1 style="color:var(--text-main); font-weight:800; font-size:22px; margin:0;">সিস্টেম সেটিংস</h1></div></div>
         <div class="box glass-panel" style="max-width:600px; margin:0 auto;">
             
@@ -321,7 +318,6 @@
 
 <div id="toast">✅ সম্পন্ন হয়েছে!</div>
 
-<!-- Modals -->
 <div class="modal no-print" id="approvalModal"><div class="modal-box" style="max-width:700px; padding:30px;"><h2 style="color:var(--accent-orange); margin-bottom:15px; font-size:20px; text-align:center;">🔔 অপেক্ষমান অনুমোদন</h2><div style="overflow-x:auto; max-height:400px; border-radius:12px; border:1px solid var(--glass-border);"><table style="width:100%;"><thead style="background:var(--glass-bg);"><tr><th>কর্মচারী</th><th>কাজের বিবরণ</th><th>সময়</th><th style="text-align:center;">অ্যাকশন</th></tr></thead><tbody id="approvalBody"></tbody></table></div><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:15px; border:none;" onclick="closeM()">বন্ধ করুন</button></div></div>
 <div class="modal no-print" id="empPassModal"><div class="modal-box" style="max-width:400px; text-align:center;"><h2 style="color:var(--accent-blue); margin-bottom:15px; font-size:20px;">🔑 পাসওয়ার্ড পরিবর্তন</h2><input type="password" id="empOldPass" placeholder="বর্তমান পাসওয়ার্ড" style="margin-bottom:15px;"><input type="password" id="empNewPass" placeholder="নতুন পাসওয়ার্ড" style="margin-bottom:15px;"><button type="button" class="btn-ios btn-solid-blue" onclick="saveEmpNewPass()">সেভ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বাতিল</button></div></div>
 <div class="modal no-print" id="accessModal"><div class="modal-box" style="max-width:450px;"><h2 style="color:var(--accent-purple); margin-bottom:15px; font-size:20px; text-align:center;">⚙️ এক্সেস ও পারমিশন কন্ট্রোল</h2><h3 id="accEmpName" style="text-align:center; color:var(--text-muted); margin-bottom:15px;"></h3><label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid var(--accent-green);"><span style="font-weight:800; color:var(--accent-green);">🟢 অ্যাকাউন্ট অ্যাক্টিভ</span><input type="checkbox" id="accStatus" style="width:20px; height:20px;"></label><label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:20px; border:1px solid var(--accent-red);"><span style="font-weight:800; color:var(--accent-red);">👑 সুপার অ্যাডমিন এক্সেস</span><input type="checkbox" id="accFull" style="width:20px; height:20px;"></label><div style="font-size:13px; font-weight:700; color:var(--text-muted); margin-bottom:10px;">নির্দিষ্ট কাজের পারমিশন:</div><label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;"><span style="font-weight:700;">📝 নতুন মামলা এন্ট্রি</span><input type="checkbox" id="accAdd" style="width:20px; height:20px;"></label><label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;"><span style="font-weight:700;">✏️ মামলা এডিট</span><input type="checkbox" id="accEdit" style="width:20px; height:20px;"></label><label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;"><span style="font-weight:700;">💰 টাকা জমা গ্রহণ</span><input type="checkbox" id="accPay" style="width:20px; height:20px;"></label><label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;"><span style="font-weight:700;">⚖️ মামলা নিষ্পত্তি/হস্তান্তর</span><input type="checkbox" id="accDisp" style="width:20px; height:20px;"></label><label style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.8); border-radius:12px; margin-bottom:10px; border:1px solid #cbd5e1;"><span style="font-weight:700;">🧾 ইনভয়েস তৈরি</span><input type="checkbox" id="accInv" style="width:20px; height:20px;"></label>
@@ -343,7 +339,7 @@
 <div class="modal no-print" id="editInvModal"><div class="modal-box" style="max-width:600px;"><h2 style="color:var(--accent-blue); text-align:center; font-size:20px; margin-bottom:15px;">🧾 সংরক্ষিত ইনভয়েস এডিট</h2><input type="text" id="edInvTitle" placeholder="ইনভয়েসের টাইটেল"><input type="text" id="edInvNote" placeholder="বিশেষ নোট (ঐচ্ছিক)"><div style="overflow-x:auto; margin-bottom:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.8);"><table style="width:100%; margin-bottom:0;"><thead><tr><th>মামলা নং</th><th>বিল (৳)</th><th>ডিসকাউন্ট (৳)</th></tr></thead><tbody id="edInvCaseBody"></tbody></table></div><button type="button" class="btn-ios btn-solid-blue" onclick="saveInvEdit()">আপডেট সেভ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বাতিল</button></div></div>
 <div class="modal" id="invoiceModal"><div class="modal-box" style="max-width: 900px; width: 95%; padding:0; overflow-y:auto; overflow-x:hidden; max-height:90vh;"><div style="background:var(--text-main); padding: 15px 25px; display:flex; justify-content:space-between; align-items:center;" class="no-print"><h3 style="color:#fff; margin:0; font-size:18px;">ইনভয়েস প্রিভিউ</h3><div><button type="button" class="btn-ios" style="width:auto; padding:8px 18px; background:var(--accent-green); color:#fff; border:none; margin-right:10px;" onclick="window.print()">🖨️ প্রিন্ট করুন</button><button type="button" class="btn-ios" style="width:auto; padding:8px 18px; background:#fff; color:var(--text-main); border:none;" onclick="closeInvoiceModal()">বন্ধ করুন</button></div></div><div id="invoiceArea" class="print-document" style="display:block; border-radius:0; border:none; box-shadow:none; margin:0;"><div class="doc-header" style="display:flex; justify-content:space-between; align-items:center; padding-bottom: 5px;"><div style="text-align:left;"><img id="invoiceLogoImg" src="" style="width:75px; max-height:75px; object-fit:contain; position:static;"></div><div style="text-align:center; flex:1;"><h1 style="font-size: 28px; font-weight: 800; margin: 0 0 5px 0; color: #0ea5e9;">বাংলাদেশ পুলিশ</h1><h3 id="pInvSub" style="font-size: 16px; color: #475569; font-weight: 600; margin: 0 0 10px 0;">সিরাজদিখান থানা, মুন্সীগঞ্জ</h3><div class="doc-title" id="pInvTitle"></div></div><div style="text-align:right;"><img id="invQRCode" src="" alt="QR Code" style="width:75px; height:75px; border:1px solid rgba(14,165,233,0.5); padding:2px; border-radius:8px;"></div></div><hr style="border: 0; border-top: 2px dashed rgba(14, 165, 233, 0.4); margin: 20px 0;"><div class="doc-meta" style="color:#1e293b; font-weight: 600;"><div><b>অফিসারের নাম:</b> <span id="invOffName"></span></div><div style="text-align:right;"><b>ইনভয়েস নং:</b> <span id="invNo"></span><br><b>ইস্যু তারিখ:</b> <span id="invGenDate"></span></div></div><div id="invBodyArea"></div><div class="doc-signatures"><div class="sig-line"><span id="invIoNameSig" style="font-size:17px; color:#1e293b; display:block;"></span><span id="invIoTitleSig">তদন্তকারী কর্মকর্তা</span></div><div class="sig-line"><span style="font-size:17px; color:#1e293b; display:block;" class="sig-name-admin">সাকিব আল হাসান</span><span>প্রস্তুতকারক</span></div></div></div></div></div>
 
-<div class="modal no-print" id="pinLockModal"><div class="modal-box" style="max-width:400px; text-align:center;"><h2 style="color:var(--accent-red); margin-bottom:15px; font-size:20px;">🔒 অ্যাডমিন পিন প্রয়োজন</h2><p style="margin-bottom:15px; font-size:14px; font-weight:bold; color:var(--text-muted);">এই পেজে প্রবেশের জন্য আপনার গোপন পিন দিন।</p><input type="password" id="entryLockPin" placeholder="পিন কোড" style="text-align:center; font-weight:bold; letter-spacing:3px;"><button type="button" class="btn-ios btn-solid-blue" onclick="verifyAdminPin()">প্রবেশ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM(); go('dash')">ফিরে যান</button></div></div>
+<div class="modal no-print" id="pinLockModal"><div class="modal-box" style="max-width:400px; text-align:center;"><h2 style="color:var(--accent-red); margin-bottom:15px; font-size:20px;">🔒 অ্যাডমিন পিন প্রয়োজন</h2><p style="margin-bottom:15px; font-size:14px; font-weight:bold; color:var(--text-muted);">এই পেজে প্রবেশের জন্য আপনার গোপন পিন দিন。</p><input type="password" id="entryLockPin" placeholder="পিন কোড" style="text-align:center; font-weight:bold; letter-spacing:3px;"><button type="button" class="btn-ios btn-solid-blue" onclick="verifyAdminPin()">প্রবেশ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM(); go('dash')">ফিরে যান</button></div></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
@@ -402,12 +398,33 @@
         }
     }
 
-    // 🌟 QR ROUTING LOGIC 🌟
+    // FIX 2: QR ROUTING LOGIC - BYPASS LOGIN WALL
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const viewInv = urlParams.get('inv');
+        
         if (viewInv) {
-            setTimeout(() => { let inv = savedInvoices.find(i => i.id === viewInv); if(inv) renderAndShowInvoice(inv); }, 1500);
+            // ১. লগইন ওয়াল ও অন্যান্য মেনু হাইড করে দিচ্ছি যাতে সরাসরি বিল দেখা যায়
+            document.getElementById('loginWall').style.display = 'none';
+            document.querySelector('.top-navbar').style.display = 'none';
+            document.querySelector('.bottom-nav').style.display = 'none';
+            
+            // ২. ফায়ারবেস থেকে ডাটা আসা পর্যন্ত অপেক্ষা করা
+            let attempts = 0;
+            let checkExist = setInterval(() => {
+                attempts++;
+                if (savedInvoices && savedInvoices.length > 0) {
+                    let inv = savedInvoices.find(i => i.id === viewInv); 
+                    if(inv) {
+                        renderAndShowInvoice(inv);
+                    } else {
+                        alert("দুঃখিত, এই ইনভয়েসটি পাওয়া যায়নি বা মুছে ফেলা হয়েছে!");
+                    }
+                    clearInterval(checkExist);
+                }
+                // যদি ১০ সেকেন্ডেও ডাটা না আসে তবে থামা
+                if(attempts > 20) { clearInterval(checkExist); } 
+            }, 500); 
         }
     });
 
@@ -457,7 +474,6 @@
                 if(emp.access && emp.access.deviceId && emp.access.deviceId !== deviceFingerprint) return showToast("আপনি শুধুমাত্র অনুমোদিত পিসি থেকে লগইন করতে পারবেন!", "var(--accent-red)");
                 if(officeTimeRestricted) { let hr = new Date().getHours(); if(hr < 9 || hr >= 17) return showToast("লগইন শুধুমাত্র সকাল ৯টা থেকে বিকাল ৫টা পর্যন্ত অনুমোদিত!", "var(--accent-red)"); }
                 
-                // Set device ID if binding is required but not set yet
                 if(emp.access && emp.access.requireBind && !emp.access.deviceId) { emp.access.deviceId = deviceFingerprint; emp.access.requireBind = false; save(); }
                 
                 activeRole = 'emp'; activeUserName = emp.name; loginSuccess = true; 
@@ -542,9 +558,11 @@
     function restoreCase(id) { let c = recycleDb.find(x => x.id == id); if(c) { delete c.delTime; db.push(c); recycleDb = recycleDb.filter(x => x.id != id); addLog(`রিসাইকেল থেকে রিস্টোর: ${c.no}`); processUIUpdate(); showToast("মামলাটি রিস্টোর হয়েছে!"); } }
 
     function init() {
-        document.getElementById('dashUserName').innerText = activeUserName; document.getElementById('dashUserRole').innerText = activeRole === 'admin' ? "সিস্টেম এডমিন" : "কর্মচারী (Employee)"; document.querySelectorAll('.admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; }); document.querySelectorAll('.admin-only.nav-item, .admin-only.mobile-nav-item').forEach(el => { el.style.display = activeRole === 'admin' ? 'flex' : 'none'; }); document.getElementById('autoLogoutSwitch').checked = autoLogoutEnabled; if(document.getElementById('officeTimeSwitch')) document.getElementById('officeTimeSwitch').checked = officeTimeRestricted;
+        document.getElementById('dashUserName').innerText = activeUserName; document.getElementById('dashUserRole').innerText = activeRole === 'admin' ? "সিস্টেম এডমিন" : "কর্মচারী (Employee)"; 
+        document.querySelectorAll('.admin-only').forEach(el => { el.style.display = activeRole === 'admin' ? 'inline-block' : 'none'; }); 
+        document.querySelectorAll('.admin-only.nav-item, .admin-only.mobile-nav-item').forEach(el => { el.style.display = activeRole === 'admin' ? 'flex' : 'none'; }); 
+        document.getElementById('autoLogoutSwitch').checked = autoLogoutEnabled; if(document.getElementById('officeTimeSwitch')) document.getElementById('officeTimeSwitch').checked = officeTimeRestricted;
         
-        // Hide UI based on Role
         if(activeRole === 'emp') {
             let acc = empAccess();
             if(!acc.add) { document.getElementById('nav-add').style.display = 'none'; document.getElementById('mob-add').style.display = 'none'; }
@@ -567,7 +585,6 @@
         let badgeCount = pendingDb.length; if(document.getElementById('navAppBadge')) { document.getElementById('navAppBadge').innerText = badgeCount; document.getElementById('navApprBtn').style.display = badgeCount > 0 && activeRole === 'admin' ? 'flex' : 'none'; } if(document.getElementById('dashApprBtn')) { document.getElementById('dashApprBtn').style.display = badgeCount > 0 && activeRole === 'admin' ? 'inline-block' : 'none'; document.getElementById('dashApprBtn').innerHTML = `🔔 পেন্ডিং কাজ <span style="background:#fff; color:var(--accent-orange); padding:2px 6px; border-radius:10px; font-size:12px; margin-left:5px; font-weight:bold;">${badgeCount}</span>`; }
     }
 
-    // 🌟 MAKER-CHECKER (APPROVAL SYSTEM WITH EDIT) 🌟
     function askSaveCase() { 
         if(activeRole === 'emp' && !empAccess().add && !empAccess().full) return showToast("আপনার নতুন এন্ট্রি করার অনুমতি নেই!", "var(--accent-red)");
         if(!document.getElementById('mNo').value) return showToast("মামলার নম্বর দিন", "var(--accent-red)"); let ioVal = document.getElementById('mIOList').value; if(!ioVal || !ios.find(i=>i.n === ioVal)) return showToast("সঠিক কর্মরত অফিসারের নাম নির্বাচন করুন", "var(--accent-red)"); openSheet('নিশ্চিত করুন', 'আপনি কি নতুন মামলাটি এন্ট্রি করতে চান?', 'এন্ট্রি করুন', proceedSaveCase);
@@ -580,7 +597,6 @@
             let newCase = {id:Date.now(), t:document.getElementById('mType').value, no:noVal, cat:catVal, d:mDateVal, io:document.getElementById('mIOList').value, r:document.getElementById('mRate').value||0, p:document.getElementById('mPaid').value||0, st:'চলমান'};
             
             if(editingPendingId) {
-                // If editing from approval screen
                 let p = pendingDb.find(x => x.pid === editingPendingId);
                 p.data = newCase;
                 approveAction(editingPendingId);
@@ -733,8 +749,7 @@
     function renderAndShowInvoice(inv) {
         document.getElementById('pInvTitle').innerText = inv.title; document.getElementById('invOffName').innerText = inv.offNameText; document.getElementById('invNo').innerText = toBN(inv.invNo); document.getElementById('invGenDate').innerText = dateBN(inv.date); document.getElementById('invIoNameSig').innerText = inv.ioSigName; document.getElementById('invIoTitleSig').innerText = inv.ioSigTitle; document.getElementById('invIoTitleSig').style.display = inv.ioSigTitle ? "block" : "none";
         
-        // Dynamic QR routing fix
-        let currentUrl = window.location.href.split('?')[0];
+        let currentUrl = window.location.href.split('?')[0].split('#')[0];
         document.getElementById('invQRCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=` + encodeURIComponent(currentUrl + "?inv=" + inv.id);
 
         let htmlTable = `<table class="print-table"><thead><tr><th style="width:60px;">ক্রমিক</th><th style="text-align:left; padding-left:15px;">মামলা নম্বর ও ধরন</th><th style="text-align:left; padding-left:15px;">নিষ্পত্তির বিবরণ</th><th style="width:120px;">টাকা</th></tr></thead><tbody>`; let sl = 1;
@@ -744,7 +759,27 @@
     }
     function closeInvoiceModal() { let modal = document.getElementById('invoiceModal'); let box = modal.querySelector('.modal-box'); box.classList.add('modal-leave'); setTimeout(() => { modal.style.display = 'none'; box.classList.remove('modal-leave'); document.body.classList.remove('print-inv'); }, 200); }
     function openIO(n) { let f=db.filter(c=>c.io===n).reverse(); let d=0; document.getElementById('mION').innerText=n; document.getElementById('mIOBody').innerHTML=f.map((c, idx)=>{let du=fromBN(c.r)-fromBN(c.p); d+=du; return `<tr><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.8);">${dateBN(c.d)}</td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.8);">${toBN(c.no)}</td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.8); color:var(--accent-red); font-weight:700">${toBN(du)}</td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.8);"><span class="badge ${c.st==='চলমান'?'bg-run':(c.st.includes('হস্তান্তর')?'bg-trans':'bg-fin')}">${c.st}</span></td></tr>`}).join(''); document.getElementById('mIOSum').innerText="মোট বকেয়া: ৳ "+toBN(d.toLocaleString()); document.getElementById('ioModal').style.display='flex'; }
-    function go(id) { if(isNavigating) return; let activePage = document.querySelector('.page.active-page'); if(activePage && activePage.id === id) return; isNavigating = true; document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); if(document.getElementById('nav-' + id)) document.getElementById('nav-' + id).classList.add('active'); document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active')); if(document.getElementById('mob-' + id)) document.getElementById('mob-' + id).classList.add('active'); if(activePage) { activePage.style.display = 'none'; activePage.classList.remove('active-page'); } document.getElementById(id).style.display = 'block'; document.getElementById(id).classList.add('active-page'); init(); setTimeout(() => { isNavigating = false; }, 200); }
+    
+    // FIX 1: go() function updated to prevent unauthorized access
+    function go(id) { 
+        if(isNavigating) return; 
+        if((id === 'emp' || id === 'set') && activeRole !== 'admin') return showToast("আপনার অনুমতি নেই!", "var(--accent-red)");
+        
+        let activePage = document.querySelector('.page.active-page'); 
+        if(activePage && activePage.id === id) return; 
+        
+        isNavigating = true; 
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); 
+        if(document.getElementById('nav-' + id)) document.getElementById('nav-' + id).classList.add('active'); 
+        document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active')); 
+        if(document.getElementById('mob-' + id)) document.getElementById('mob-' + id).classList.add('active'); 
+        
+        if(activePage) { activePage.style.display = 'none'; activePage.classList.remove('active-page'); } 
+        document.getElementById(id).style.display = 'block'; document.getElementById(id).classList.add('active-page'); 
+        init(); 
+        setTimeout(() => { isNavigating = false; }, 200); 
+    }
+    
     function openEditIO(idx) { curIOIdx = idx; let io = ios[idx]; document.getElementById('edION').value = io.n; document.getElementById('edIOS').value = io.s; document.getElementById('edIOSt').value = io.st || 'কর্মরত'; document.getElementById('editIOModal').style.display = 'flex'; }
     function updateIO() { if(isProcessing) return; isProcessing = true; try { let oldName = ios[curIOIdx].n; let newName = document.getElementById('edION').value; if(!newName) { showToast("অফিসারের নাম দিন", "var(--accent-red)"); return; } ios[curIOIdx].n = newName; ios[curIOIdx].s = document.getElementById('edIOS').value; ios[curIOIdx].st = document.getElementById('edIOSt').value; if(oldName !== newName) { db.forEach(c => { if(c.io === oldName) c.io = newName; }); } addLog(`অফিসার আপডেট: ${newName}`); updateWorkplaceDropdown(); save(); closeM(); showToast("অফিসার তথ্য আপডেট হয়েছে"); } finally { setTimeout(() => { isProcessing = false; }, 400); } }
     function openSheet(t, m, b, cb) { document.getElementById('sheetTitle').innerText = t; document.getElementById('sheetMsg').innerText = m; let btn = document.getElementById('sheetConfirmBtn'); btn.innerText = b; btn.onclick = () => { if(cb) cb(); closeM(); }; document.getElementById('sheetModal').style.display = 'flex'; }
