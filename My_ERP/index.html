@@ -10,29 +10,29 @@
         @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;800&display=swap');
         
         :root { 
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(226, 232, 240, 0.6);
+            --glass-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.1);
             --text-main: #0f172a;
             --text-muted: #475569;
-            --accent-blue: #0ea5e9;
-            --accent-purple: #8b5cf6;
-            --accent-green: #10b981;
-            --accent-orange: #f59e0b;
-            --accent-red: #ef4444;
+            --accent-blue: #0284c7;
+            --accent-purple: #4f46e5;
+            --accent-green: #059669;
+            --accent-orange: #d97706;
+            --accent-red: #dc2626;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
         
         body { 
-            background: #e0f2fe; color: var(--text-main);
+            background: #f8fafc; color: var(--text-main);
             height: 100vh; overflow: hidden; display: flex; flex-direction: column;
             position: relative;
         }
 
         .bg-fluid {
             position: absolute; inset: 0; z-index: -2; overflow: hidden;
-            background: linear-gradient(-45deg, #e0f2fe, #bae6fd, #e9d5ff, #fbcfe8, #d8b4fe);
+            background: linear-gradient(-45deg, #f8fafc, #e2e8f0, #cbd5e1, #bae6fd);
             background-size: 400% 400%;
             animation: premiumFluid 15s ease infinite;
         }
@@ -122,10 +122,10 @@
         .card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .card p { font-size: 34px; font-weight: 900; margin-top: 5px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         .card h3 { font-size: 15px; font-weight: 700; opacity: 0.95; text-transform: uppercase; letter-spacing: 1px; }
-        .c-blue { background: linear-gradient(135deg, var(--accent-blue), #38bdf8); }
-        .c-green { background: linear-gradient(135deg, var(--accent-green), #34d399); }
-        .c-orange { background: linear-gradient(135deg, var(--accent-orange), #fbbf24); }
-        .c-red { background: linear-gradient(135deg, var(--accent-red), #f87171); }
+        .c-blue { background: #2196f3; border: none; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2); }
+        .c-green { background: #2ecc71; border: none; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2); }
+        .c-orange { background: #f39c12; border: none; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.2); }
+        .c-red { background: #e74c3c; border: none; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2); }
 
         .box { padding: 30px; border-radius: 20px; margin-bottom: 25px; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
         .box-title { font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed rgba(255,255,255,0.6); padding-bottom: 10px; }
@@ -280,6 +280,10 @@
         .log-time { font-size: 12px; color: var(--text-muted); font-weight: 700; margin-bottom: 5px; }
         .log-user { font-size: 14px; color: var(--accent-blue); font-weight: 800; }
         .log-text { font-size: 15px; color: var(--text-main); font-weight: 600; }
+/* অফিসার সিলেক্ট লিস্ট ডিজাইন */
+        select[size] option { padding: 10px 15px; border-bottom: 1px solid #f1f5f9; font-size: 15px; font-weight: 600; cursor: pointer; transition: 0.2s;}
+        select[size] option:checked { background-color: #cbd5e1 !important; color: #0f172a !important; font-weight: 800; box-shadow: inset 5px 0 0 var(--accent-blue);}
+        select[size] option:hover { background-color: #e2e8f0; }
     </style>
 </head>
 <body>
@@ -450,6 +454,8 @@
                 <button type="button" class="btn-back" onclick="go('dash')">⬅ পিছনে</button>
                 <h1 style="color:var(--text-main); font-weight:800; font-size:22px; margin:0;">মামলার তালিকা ও কার্যক্রম</h1>
             </div>
+<button type="button" class="btn-ios no-print" style="width:auto; padding:8px 15px; background: var(--accent-green); color: white; margin-left:10px; border:none;" onclick="exportTableToCSV('Cases_List.csv')">📊 এক্সেলে সেভ করুন</button>
+
             <button type="button" class="btn-ios no-print" style="width:auto; padding:8px 15px;" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
         </div>
         
@@ -576,7 +582,12 @@
             <div class="box-title" style="border:none; margin-bottom:10px; font-size:16px;">➕ নতুন অফিসার যুক্ত করুন</div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                 <input type="text" id="ioN" placeholder="অফিসারের নাম" style="flex:1; margin-bottom:0;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('ioS').focus(); }">
-                <input type="text" id="ioS" placeholder="থানা/কর্মস্থল" style="flex:1; margin-bottom:0;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); askSaveIO(); }">
+                <input type="text" id="ioS" list="workplaceList" placeholder="থানা/কর্মস্থল (সিলেক্ট করুন বা টাইপ করুন)" style="flex:1; margin-bottom:0; background:#fff; padding: 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.8); font-weight: 600; color: #1e293b; outline: none;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); askSaveIO(); }">
+                <datalist id="workplaceList">
+                    <option value="সিরাজদিখান থানা, মুন্সীগঞ্জ">
+                    <option value="শেখরনগর পুলিশ তদন্ত কেন্দ্র, সিরাজদিখান থানা, মুন্সীগঞ্জ">
+                    <option value="হাঁসড়া হাইওয়ে থানা, মুন্সীগঞ্জ, হাইওয়ে পুলিশ, গাজীপুর রিজিয়ন, গাজীপুর">
+                </datalist>
                 <select id="ioSt" style="flex:0.5; margin-bottom:0; background:#fff;"><option value="কর্মরত">কর্মরত</option><option value="বদলী">বদলী</option></select>
                 <button type="button" class="btn-ios btn-solid-blue" style="flex:0.5; margin-bottom:0; padding:12px;" onclick="askSaveIO()">যুক্ত করুন</button>
             </div>
@@ -933,7 +944,12 @@
     <button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বাতিল</button>
 </div></div>
 
-<div class="modal no-print" id="editIOModal"><div class="modal-box"><h2 style="margin-bottom:15px; text-align:center; font-size:20px; color:var(--accent-blue);">👮 অফিসার তথ্য আপডেট</h2><input type="text" id="edION" placeholder="নাম" onkeypress="if(event.key === 'Enter') { event.preventDefault(); updateIO(); }"><input type="text" id="edIOS" placeholder="থানা/কর্মস্থল" onkeypress="if(event.key === 'Enter') { event.preventDefault(); updateIO(); }"><select id="edIOSt"><option value="কর্মরত">কর্মরত</option><option value="বদলী">বদলী</option></select><button type="button" class="btn-ios btn-solid-blue" onclick="updateIO()">পরিবর্তন সেভ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বাতিল</button></div></div>
+<div class="modal no-print" id="editIOModal"><div class="modal-box"><h2 style="margin-bottom:15px; text-align:center; font-size:20px; color:var(--accent-blue);">👮 অফিসার তথ্য আপডেট</h2><input type="text" id="edION" placeholder="নাম" onkeypress="if(event.key === 'Enter') { event.preventDefault(); updateIO(); }">
+<select id="edIOS" style="width:100%; padding: 16px; margin-bottom: 15px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.8); background: rgba(255,255,255,0.7); font-weight: 600;">
+    <option value="সিরাজদিখান থানা, মুন্সীগঞ্জ">সিরাজদিখান থানা, মুন্সীগঞ্জ</option>
+    <option value="শেখরনগর পুলিশ তদন্ত কেন্দ্র, সিরাজদিখান থানা, মুন্সীগঞ্জ">শেখরনগর পুলিশ তদন্ত কেন্দ্র, সিরাজদিখান থানা, মুন্সীগঞ্জ</option>
+    <option value="হাঁসড়া হাইওয়ে থানা, মুন্সীগঞ্জ, হাইওয়ে পুলিশ, গাজীপুর রিজিয়ন, গাজীপুর">হাঁসড়া হাইওয়ে থানা, মুন্সীগঞ্জ, হাইওয়ে পুলিশ, গাজীপুর রিজিয়ন, গাজীপুর</option>
+</select><input type="text" id="edIOS" list="workplaceList" placeholder="থানা/কর্মস্থল (সিলেক্ট করুন বা টাইপ করুন)" style="width:100%; padding: 16px; margin-bottom: 15px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.8); background: rgba(255,255,255,0.7); font-weight: 600;" onkeypress="if(event.key === 'Enter') { event.preventDefault(); updateIO(); }"><input type="text" id="edIOS" placeholder="থানা/কর্মস্থল" onkeypress="if(event.key === 'Enter') { event.preventDefault(); updateIO(); }"><select id="edIOSt"><option value="কর্মরত">কর্মরত</option><option value="বদলী">বদলী</option></select><button type="button" class="btn-ios btn-solid-blue" onclick="updateIO()">পরিবর্তন সেভ করুন</button><button type="button" class="btn-ios" style="background:rgba(255,255,255,0.8); color:var(--text-main); margin-top:10px; border:none;" onclick="closeM()">বাতিল</button></div></div>
 
 <div class="modal no-print" id="editCaseModal"><div class="modal-box" style="max-width:550px;">
     <h2 style="color:var(--accent-blue); text-align:center; font-size:20px; margin-bottom:15px;">📝 মামলা এডিট করুন</h2>
@@ -1251,7 +1267,17 @@
 
     function saveOfficialInfo() { thanaName = document.getElementById('setThanaName').value || thanaName; distName = document.getElementById('setDistName').value || distName; adminName = document.getElementById('setAdminName').value || adminName; adminRank = document.getElementById('setAdminRank').value || adminRank; adminPhone = document.getElementById('setAdminPhone').value || adminPhone; adminBlood = document.getElementById('setAdminBlood').value || adminBlood; adminJoinDate = document.getElementById('setAdminJoinDate').value || adminJoinDate; adminAddress = document.getElementById('setAdminAddress').value || adminAddress; if(activeRole==='admin') activeUserName = adminName; applyOfficialInfo(); save(); showToast("অফিসিয়াল তথ্য সেভ হয়েছে!"); }
     function applyOfficialInfo() { let fullLoc = thanaName + ", " + distName; document.getElementById('loginThanaName').innerText = fullLoc; if(document.getElementById('navThanaName')) document.getElementById('navThanaName').innerText = fullLoc; document.getElementById('reportPrintThana').innerText = fullLoc; document.getElementById('pInvSub').innerText = fullLoc; if(document.getElementById('setThanaName')) document.getElementById('setThanaName').value = thanaName; if(document.getElementById('setDistName')) document.getElementById('setDistName').value = distName; if(document.getElementById('setAdminName')) document.getElementById('setAdminName').value = adminName; if(document.getElementById('setAdminRank')) document.getElementById('setAdminRank').value = adminRank; if(document.getElementById('setAdminPhone')) document.getElementById('setAdminPhone').value = adminPhone; if(document.getElementById('setAdminBlood')) document.getElementById('setAdminBlood').value = adminBlood; if(document.getElementById('setAdminJoinDate')) document.getElementById('setAdminJoinDate').value = adminJoinDate; if(document.getElementById('setAdminAddress')) document.getElementById('setAdminAddress').value = adminAddress; document.querySelectorAll('.sig-name-admin').forEach(el => el.innerText = adminName); applyLogos(); }
-
+function animateValue(id, start, end, duration) {
+        if (start === end) return;
+        let range = end - start; let current = start; let increment = end > start ? 1 : -1;
+        let stepTime = Math.abs(Math.floor(duration / Math.max(range, 1)));
+        let obj = document.getElementById(id);
+        let timer = setInterval(function() {
+            current += increment;
+            obj.innerHTML = toBN(current);
+            if (current == end) { clearInterval(timer); }
+        }, stepTime);
+    }
     function updateDashCharts() { let activeCases = db.filter(c => !isTransferred(c.io)); let total = activeCases.length || 1; let run = activeCases.filter(c=>c.st==='চলমান').length; let fin = activeCases.filter(c=>c.st!=='চলমান' && !c.st.includes('হস্তান্তর')).length; let trans = activeCases.filter(c=>c.st.includes('হস্তান্তর')).length; document.getElementById('chtTotal').innerText = toBN(activeCases.length); let rP = Math.round((run/total)*100); let fP = Math.round((fin/total)*100); let tP = Math.round((trans/total)*100); document.getElementById('chtR').innerText = toBN(rP); document.getElementById('chtF').innerText = toBN(fP); document.getElementById('chtT').innerText = toBN(tP); document.getElementById('dashDonut').style.background = `conic-gradient(var(--accent-blue) 0% ${rP}%, var(--accent-green) ${rP}% ${rP+fP}%, var(--accent-orange) ${rP+fP}% 100%)`; let gr = activeCases.filter(c=>c.t==='জিআর').length; let cr = activeCases.filter(c=>c.t==='সিআর').length; let ud = activeCases.filter(c=>c.t==='ইউডি').length; let gd = activeCases.filter(c=>c.t==='জিডি').length; document.getElementById('pbGrV').innerText = toBN(gr); document.getElementById('pbGr').style.width = (gr/total)*100 + '%'; document.getElementById('pbCrV').innerText = toBN(cr); document.getElementById('pbCr').style.width = (cr/total)*100 + '%'; document.getElementById('pbUdV').innerText = toBN(ud); document.getElementById('pbUd').style.width = (ud/total)*100 + '%'; document.getElementById('pbGdV').innerText = toBN(gd); document.getElementById('pbGd').style.width = (gd/total)*100 + '%'; }
 
     function toggleAllIO(el) { document.querySelectorAll('.inv-io-chk').forEach(chk => chk.checked = el.checked); }
@@ -1361,7 +1387,10 @@
         applyOfficialInfo(); renderEmp(); renderLogs(); renderInvoiceArchive(); updateWorkplaceDropdown(); renderRecycleBin();
 
         let activeCases = db.filter(c => !isTransferred(c.io)); let run = activeCases.filter(c=>c.st==='চলমান').length; let fin = activeCases.filter(c=>c.st!=='চলমান').length; let due = activeCases.reduce((s,c)=>s+(fromBN(c.r)-fromBN(c.p)), 0);
-        document.getElementById('stRun').innerText = toBN(run); document.getElementById('stFin').innerText = toBN(fin); document.getElementById('stIO').innerText = toBN([...new Set(activeCases.map(c=>c.io))].length); document.getElementById('stDue').innerText = "৳ " + toBN(due.toLocaleString());
+        animateValue('stRun', 0, run, 800); 
+        animateValue('stFin', 0, fin, 800); 
+        animateValue('stIO', 0, [...new Set(activeCases.map(c=>c.io))].length, 800); 
+        document.getElementById('stDue').innerText = "৳ " + toBN(due.toLocaleString());
         
         let recentCases = activeCases.slice(-5).reverse(); document.querySelector('#dashRecentCases tbody').innerHTML = recentCases.map((c, idx) => `<tr><td style="font-weight:bold; color:var(--text-muted);">${toBN(idx+1)}</td><td><span class="clickable" onclick="openTimeline(${c.id})">${toBN(c.no)}</span></td><td style="line-height:1.2;"><span style="background:var(--accent-blue); color:#fff; padding:2px 6px; border-radius:4px; font-size:11px;">${c.t}</span><br><span style="font-size:13px; font-weight:700; color:var(--text-main); display:inline-block; margin-top:3px;">${c.cat || '-'}</span></td><td>${c.io}</td><td><span class="badge ${c.st==='চলমান'?'bg-run':(c.st.includes('হস্তান্তর')?'bg-trans':'bg-fin')}">${c.st}</span></td></tr>`).join(''); if(recentCases.length === 0) document.querySelector('#dashRecentCases tbody').innerHTML = `<tr><td colspan="5" style="text-align:center; padding:15px; color:var(--text-muted);">কোন তথ্য নেই</td></tr>`;
 
@@ -1377,13 +1406,25 @@
         if(!document.getElementById('mNo').value) return showToast("মামলার নম্বর দিন", "var(--accent-red)"); let ioVal = document.getElementById('mIOList').value; if(!ioVal || !ios.find(i=>i.n === ioVal)) return showToast("সঠিক কর্মরত অফিসারের নাম নির্বাচন করুন", "var(--accent-red)"); openSheet('নিশ্চিত করুন', 'আপনি কি নতুন মামলাটি এন্ট্রি করতে চান?', 'এন্ট্রি করুন', proceedSaveCase);
     }
     
-    function proceedSaveCase() {
+   function proceedSaveCase() {
         if(isProcessing) return; isProcessing = true;
+        
+        let saveBtn = document.querySelector('#add .btn-solid-blue');
+        let originalText = saveBtn.innerText;
+        saveBtn.innerText = '⏳ সেভ হচ্ছে...';
+        saveBtn.style.opacity = '0.7';
+
         try {
             let noVal = document.getElementById('mNo').value; let catVal = document.getElementById('mCat').value; let mDateVal = document.getElementById('mDate').value || new Date().toISOString().split('T')[0]; let newCase = {id:Date.now(), t:document.getElementById('mType').value, no:noVal, cat:catVal, d:mDateVal, io:document.getElementById('mIOList').value, r:document.getElementById('mRate').value||0, p:document.getElementById('mPaid').value||0, st:'চলমান'};
             if(activeRole === 'emp' && !empAccess().full) { pendingDb.push({ type: 'ADD', data: newCase, by: activeUserName, time: getToday(), pid: Date.now(), msg: `নতুন মামলা এন্ট্রি: ${toBN(noVal)}` }); addLog(`নতুন এন্ট্রির অনুরোধ: ${toBN(noVal)}`); showToast("অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে!", "var(--accent-orange)"); } else { newCase.h = [{time: getToday(), text: `মামলা রুজু হয়েছে (${document.getElementById('mIOList').value}) - By ${activeUserName}`}]; db.push(newCase); addLog(`নতুন এন্ট্রি: ${toBN(noVal)} (${catVal || '-'})`); showToast("মামলা এন্ট্রি হয়েছে!"); }
             document.getElementById('mNo').value=''; document.getElementById('mCat').value=''; document.getElementById('mRate').value=''; document.getElementById('mPaid').value=''; document.getElementById('mIOSearch').value=''; filterIOSelect('m'); document.getElementById('mDate').value=''; document.getElementById('mDate_disp').innerHTML='📅 এন্ট্রির তারিখ নির্বাচন করুন'; document.getElementById('mDate_disp').style.background=''; save(); init();
-        } finally { setTimeout(() => { isProcessing = false; }, 400); }
+        } finally { 
+            setTimeout(() => { 
+                isProcessing = false; 
+                saveBtn.innerText = originalText;
+                saveBtn.style.opacity = '1';
+            }, 400); 
+        }
     }
 
     function openCaseUpdate(id) {
@@ -1630,6 +1671,30 @@
             requireBind: document.getElementById('accDeviceBind').checked, deviceId: document.getElementById('accDeviceBind').checked ? currentDeviceId : null, payLimit: parseFloat(document.getElementById('accPayLimit').value) || 0, tempExpiry: tempExpiry
         };
         addLog(`অ্যাডমিন ${emps[curAccessEmpIdx].name} এর পারমিশন আপডেট করেছেন`); save(); closeM(); renderEmp(); showToast("পারমিশন আপডেট হয়েছে!");
+    }
+function exportTableToCSV(filename) {
+        let csv = [];
+        let rows = document.querySelectorAll("#actTable tr"); 
+        
+        for (let i = 0; i < rows.length; i++) {
+            let row = [], cols = rows[i].querySelectorAll("td, th");
+            // শেষের কলাম (অ্যাকশন বাটন) বাদ দিয়ে এক্সপোর্ট করা
+            for (let j = 0; j < cols.length - 1; j++) {
+                row.push('"' + cols[j].innerText.replace(/"/g, '""') + '"');
+            }
+            csv.push(row.join(","));
+        }
+
+        // বাংলা ফন্ট ঠিক রাখার জন্য BOM যুক্ত করা
+        let csvFile = new Blob(["\uFEFF" + csv.join("\n")], {type: "text/csv;charset=utf-8;"});
+        let downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        showToast("এক্সেল ফাইল ডাউনলোড শুরু হয়েছে!", "var(--accent-green)");
     }
 
     syncFirebase();
